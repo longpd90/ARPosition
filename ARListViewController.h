@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #import "ARPositionCell.h"
+#import <ArroundPlaceService/ArroundPlaceService.h>
 
 @class ARListViewController;
 
@@ -20,13 +21,13 @@
 @optional
 
 -(void)animationScaleOff:(UINavigationController *)listview;
--(void)showDetailInMapView:(BeNCShopEntity *)shop;
+-(void)showDetailInMapView:(InstanceData *)positionEntity;
 
 @end
 
 
 
-@interface ARListViewController : UIViewController<ARPositionCellDelegate,UITableViewDelegate,UITableViewDataSource>{
+@interface ARListViewController : UIViewController<ARPositionCellDelegate,UITableViewDelegate,UITableViewDataSource,ServiceControllerDelegate>{
     int listType;
     IBOutlet UITableView *listShopView;
     NSMutableArray *shopsArray;
@@ -45,6 +46,7 @@
 @property(nonatomic,retain)IBOutlet UITableView *listShopView;
 @property(nonatomic,retain)CLLocation *userLocation ;
 @property(nonatomic) int listType;
+@property (nonatomic, retain) NSMutableArray *arrayPosition;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)getShopData;
 -(int)calculeDistance:(BeNCShopEntity *)shop;

@@ -8,7 +8,7 @@
 
 #import "ARListViewController.h"
 #import "LocationService.h"
-#import "BeNCDetailViewController.h"
+#import "ARDetailViewController.h"
 #import "ARUtility.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
@@ -25,7 +25,7 @@
 
 @implementation ARListViewController
 @synthesize listShopView,userLocation,distanceToShop,shopsArray;
-@synthesize listType,delegate;
+@synthesize listType,delegate,arrayPosition;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +33,7 @@
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [self getShopData];
         [self sortShopByDistance];
+        [self getData:100 withPageSize:8 withPageIndex:1 withCatagory:2 withLanguage:@"vn"];
 
     }
     return self;
@@ -85,8 +86,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -96,7 +95,6 @@
 
 #pragma mark getdata
 -(void)getShopDataFromMap:(NSArray *)shopArray{
-    NSLog(@"get shop data from map");
     shopsArray = [[NSMutableArray alloc]initWithArray:shopArray];
     if (userLocation==nil) {
        userLocation = [[LocationService sharedLocation]getOldLocation]; 
@@ -109,6 +107,30 @@
     shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
     [self.listShopView reloadData];
 }
+
+- (void)getData:(float)radius withPageSize:(int)pageSize withPageIndex:(int)pageIndex withCatagory:(int)catagory  withLanguage:(NSString *)language {
+    NSLog(@"user lat = %f, user lng = %f",userLocation.coordinate.latitude, userLocation.coordinate.longitude);
+    ArroundPlaceService * dataPlace = [[ArroundPlaceService alloc]init];
+    dataPlace.delegate = self;
+    [dataPlace getArroundPlaceWithLatitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.latitude] longitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.longitude] radius:radius pageSize:pageSize pageIndex:pageIndex category:catagory language:language];
+}
+
+- (void)requestDidFinish:(ArroundPlaceService *)controller withResult:(NSArray *)results
+{
+    
+    arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
+    
+    for (int i = 0; i < [arrayPosition count]; i ++) {
+        InstanceData *instanceData = (InstanceData *)[arrayPosition objectAtIndex:i];
+        NSLog(@"address : %@, lat = %f, lng = %f",instanceData.address,instanceData.latitude,instanceData.longitude);
+    }
+}
+
+- (void)requestDidFail:(ArroundPlaceService *)controller withError:(NSError *)error
+{
+    NSLog(@"error : %@",error);
+}
+
 -(int)calculeDistance:(BeNCShopEntity *)shop{
 
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
@@ -132,7 +154,6 @@
         [self sortShopByDistance];
         [self.listShopView reloadData];
     }
-    
 
 }
 
@@ -155,7 +176,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [shopsArray count];
+    return [arrayPosition count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -167,17 +188,17 @@
         cell.delegate = self;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
-    if (shop.shopCheck == 1) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark ;
-    }
-    else {
+    InstanceData *position  = [arrayPosition objectAtIndex:indexPath.row];
+//    if (shop.shopCheck == 1) {
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark ;
+//    }
+//    else {
         cell.accessoryType = UITableViewCellAccessoryNone ;
-    }
+//    }
     if (listType == MapList) {
         cell.distanceToShop.hidden = YES;
     }
-    [cell updateContentForCell:shop withLocation:userLocation];
+    [cell updateContentForCell:position withLocation:userLocation];
     return cell;
 }
 
@@ -188,28 +209,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editing) {
-        BeNCShopEntity *shop  = [shopsArray objectAtIndex:indexPath.row];
-        shop.shopCheck =! shop.shopCheck;
-        [self.listShopView reloadData];
-        
-    }
-    else {
-        
-        
-        
+//    if (editing) {
+//        InstanceData *positionEntity  = [arrayPosition objectAtIndex:indexPath.row];
+//        shop.shopCheck =! shop.shopCheck;
+//        [self.listShopView reloadData];
+//        
+//    }
+//    else {
+       InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:indexPath.row];
+
         if (listType == MainList) {
-            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
-            BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
+            ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:positionEntity];
             [self.navigationController pushViewController:detailViewController animated:YES];
             [detailViewController release];
         }
         else{
-            BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPath.row];
-            [self.delegate showDetailInMapView:shopEntity];
+            [self.delegate showDetailInMapView:positionEntity];
         }
     
-   }
+//   }
 }
 
 
@@ -260,6 +278,7 @@
 }
 - (void)dealloc
 {
+    [arrayPosition release];
     [shopsArray release];
     [arrayButtonItem release];
     [editButton release];

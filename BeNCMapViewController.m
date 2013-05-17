@@ -7,7 +7,7 @@
 //
 
 #import "BeNCMapViewController.h"
-#import "BeNCDetailViewController.h"
+#import "ARDetailViewController.h"
 #import "LocationService.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
@@ -236,7 +236,7 @@ bool firstUpdate = 1;
 }
 -(void)showDetail{
     if (selectedShops.count==1) {
-        BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:(BeNCShopEntity *)[selectedShops objectAtIndex:0]];
+        ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:(BeNCShopEntity *)[selectedShops objectAtIndex:0]];
         detailViewController.delegate = self;
         [self.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release];
@@ -280,7 +280,7 @@ bool firstUpdate = 1;
 }
 #pragma mark subView delegate;
 -(void)showDetailInMapView:(BeNCShopEntity *)shop{
-    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shop];
+    ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:shop];
     detailViewController.delegate = self;
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
@@ -296,7 +296,7 @@ bool firstUpdate = 1;
                          [self.mapView deselectAnnotation:selectedAnnotation animated:YES];
                      }];
 }
--(void)backToMap:(BeNCDetailViewController *)detailView{
+-(void)backToMap:(ARDetailViewController *)detailView{
     [self.mapView deselectAnnotation:selectedAnnotation animated:YES];
 }
 

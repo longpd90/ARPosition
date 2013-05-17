@@ -6,22 +6,23 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCCameraViewController.h"
+#import "AR2DViewController.h"
 #import "LocationService.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
 #import "BeNCDetailInCamera.h"
-#import "BeNCDetailViewController.h"
+#import "ARDetailViewController.h"
 #import "ARListViewController.h"
 #import "BeNCShopInRadar.h"
 #import "BeNCRadar.h"
 #define rotationRate 0.0174532925
 
-@interface BeNCCameraViewController ()
+@interface AR2DViewController ()
 
 @end
 
-@implementation BeNCCameraViewController
+@implementation AR2DViewController
+@synthesize arrayPosition;
 
 #pragma mark - View Cycle Life
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,6 +33,7 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         [self addVideoInput];
+        [self getDatabase];
         shopEntity1 = (BeNCShopEntity *)[shopsArray objectAtIndex:0];
         shopEntity2 = (BeNCShopEntity *)[shopsArray objectAtIndex:1];
         shopEntity3 = (BeNCShopEntity *)[shopsArray objectAtIndex:2];
@@ -74,7 +76,6 @@
     
 
     [self setTitle:@"AR"];
-    [self getDatabase];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -119,6 +120,25 @@
     [listViewController release];
 
 }
+
+- (void)getData:(float)radius withPageSize:(int)pageSize withPageIndex:(int)pageIndex withCatagory:(int)catagory  withLanguage:(NSString *)language {
+    NSLog(@"user lat = %f, user lng = %f",userLocation.coordinate.latitude, userLocation.coordinate.longitude);
+    ArroundPlaceService * dataPlace = [[ArroundPlaceService alloc]init];
+    dataPlace.delegate = self;
+    [dataPlace getArroundPlaceWithLatitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.latitude] longitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.longitude] radius:radius pageSize:pageSize pageIndex:pageIndex category:catagory language:language];
+}
+
+- (void)requestDidFinish:(ArroundPlaceService *)controller withResult:(NSArray *)results
+{
+    
+    arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
+    
+    for (int i = 0; i < [arrayPosition count]; i ++) {
+        InstanceData *instanceData = (InstanceData *)[arrayPosition objectAtIndex:i];
+        NSLog(@"address : %@, lat = %f, lng = %f",instanceData.address,instanceData.latitude,instanceData.longitude);
+    }
+}
+
 
 - (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
 {
@@ -307,7 +327,7 @@
 - (void)didSeclectView:(int)index
 {
     BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
-    BeNCDetailViewController *detailViewController = [[BeNCDetailViewController alloc] initWithShop:shopEntity];
+    ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:shopEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 }

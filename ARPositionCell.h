@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #import "EGOImageView.h"
+#import <ArroundPlaceService/ArroundPlaceService.h>
 @class ARPositionCell;
 @protocol ARPositionCellDelegate <NSObject>
 
@@ -29,6 +30,6 @@
 @property (nonatomic, retain)CLLocation *userLocation ;
 @property (nonatomic, retain) id<ARPositionCellDelegate>delegate;
 @property (nonatomic ,retain) UIButton *distanceToShop;
-- (void)updateContentForCell:(BeNCShopEntity *)shopEntity withLocation:(CLLocation *)location;
--(int)calculeDistance:(BeNCShopEntity *)shop withLocation:(CLLocation *)location;
+- (void)updateContentForCell:(InstanceData *)positionEntity withLocation:(CLLocation *)location;
+-(int)calculeDistance:(InstanceData *)positionEntity withLocation:(CLLocation *)location;
 @end

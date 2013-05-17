@@ -37,23 +37,23 @@
         [self.delegate bnShoptCellDidClickedAtCell:self];
     }
 }
-- (void)updateContentForCell:(BeNCShopEntity *)shopEntity withLocation:(CLLocation *)location
+- (void)updateContentForCell:(InstanceData *)positionEntity withLocation:(CLLocation *)location
 {    
     [distanceToShop setFrame:CGRectMake(330, 5, 90, 50)];
     [distanceToShop addTarget:self action:@selector(touchesToButtonDistance) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:distanceToShop];
     
-    self.textLabel.text = shopEntity.shop_name;
-    self.detailTextLabel.text = shopEntity.shop_address;
+    self.textLabel.text = positionEntity.label;
+    self.detailTextLabel.text = positionEntity.address;
     self.imageView.image = [UIImage imageNamed:@"blank.png"];
-    self.icon.imageURL = [NSURL URLWithString:shopEntity.shop_icon_link];
-    NSString *distanceShop = [NSString stringWithFormat:@"%d m",[self calculeDistance:shopEntity withLocation:location]];
+    self.icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
+    NSString *distanceShop = [NSString stringWithFormat:@"%d m",[self calculeDistance:positionEntity withLocation:location]];
     [self.distanceToShop setTitle:distanceShop forState:UIControlStateNormal];
 }
 
--(int)calculeDistance:(BeNCShopEntity *)shop withLocation:(CLLocation *)location
+-(int)calculeDistance:(InstanceData *)positionEntity withLocation:(CLLocation *)location
 {
-    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shop.shop_latitude longitude:shop.shop_longitute];
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation:location];
     [shoplocation release];
     return distance;

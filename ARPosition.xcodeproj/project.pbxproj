@@ -45,10 +45,10 @@
 		C320352B1675800000CA3D8C /* ARListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035291675800000CA3D8C /* ARListViewController.xib */; };
 		C320352F1675801C00CA3D8C /* BeNCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C320352D1675801C00CA3D8C /* BeNCMapViewController.m */; };
 		C32035301675801C00CA3D8C /* BeNCMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */; };
-		C32035341675803500CA3D8C /* BeNCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035321675803500CA3D8C /* BeNCCameraViewController.m */; };
-		C32035351675803500CA3D8C /* BeNCCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035331675803500CA3D8C /* BeNCCameraViewController.xib */; };
-		C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035371675804C00CA3D8C /* BeNCDetailViewController.m */; };
-		C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */; };
+		C32035341675803500CA3D8C /* AR2DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035321675803500CA3D8C /* AR2DViewController.m */; };
+		C32035351675803500CA3D8C /* AR2DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035331675803500CA3D8C /* AR2DViewController.xib */; };
+		C32035391675804C00CA3D8C /* ARDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035371675804C00CA3D8C /* ARDetailViewController.m */; };
+		C320353A1675804C00CA3D8C /* ARDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035381675804C00CA3D8C /* ARDetailViewController.xib */; };
 		C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353C167580B600CA3D8C /* BeNCShopEntity.m */; };
 		C3203540167580EA00CA3D8C /* ARPositionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353F167580EA00CA3D8C /* ARPositionCell.m */; };
 		C32035431675819800CA3D8C /* ARUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035421675819800CA3D8C /* ARUtility.m */; };
@@ -139,12 +139,12 @@
 		C320352C1675801C00CA3D8C /* BeNCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCMapViewController.h; sourceTree = "<group>"; };
 		C320352D1675801C00CA3D8C /* BeNCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCMapViewController.m; sourceTree = "<group>"; };
 		C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCMapViewController.xib; sourceTree = "<group>"; };
-		C32035311675803500CA3D8C /* BeNCCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCCameraViewController.h; sourceTree = "<group>"; };
-		C32035321675803500CA3D8C /* BeNCCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCCameraViewController.m; sourceTree = "<group>"; };
-		C32035331675803500CA3D8C /* BeNCCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCCameraViewController.xib; sourceTree = "<group>"; };
-		C32035361675804C00CA3D8C /* BeNCDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCDetailViewController.h; sourceTree = "<group>"; };
-		C32035371675804C00CA3D8C /* BeNCDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCDetailViewController.m; sourceTree = "<group>"; };
-		C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCDetailViewController.xib; sourceTree = "<group>"; };
+		C32035311675803500CA3D8C /* AR2DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR2DViewController.h; sourceTree = "<group>"; };
+		C32035321675803500CA3D8C /* AR2DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AR2DViewController.m; sourceTree = "<group>"; };
+		C32035331675803500CA3D8C /* AR2DViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AR2DViewController.xib; sourceTree = "<group>"; };
+		C32035361675804C00CA3D8C /* ARDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDetailViewController.h; sourceTree = "<group>"; };
+		C32035371675804C00CA3D8C /* ARDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDetailViewController.m; sourceTree = "<group>"; };
+		C32035381675804C00CA3D8C /* ARDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARDetailViewController.xib; sourceTree = "<group>"; };
 		C320353B167580B600CA3D8C /* BeNCShopEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopEntity.h; sourceTree = "<group>"; };
 		C320353C167580B600CA3D8C /* BeNCShopEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopEntity.m; sourceTree = "<group>"; };
 		C320353E167580EA00CA3D8C /* ARPositionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPositionCell.h; sourceTree = "<group>"; };
@@ -351,8 +351,8 @@
 				C351768016A93702009A2EAA /* BeNCAR3DViewController.xib */,
 				C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */,
 				C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */,
-				C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */,
-				C32035331675803500CA3D8C /* BeNCCameraViewController.xib */,
+				C32035381675804C00CA3D8C /* ARDetailViewController.xib */,
+				C32035331675803500CA3D8C /* AR2DViewController.xib */,
 				C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */,
 				C32035291675800000CA3D8C /* ARListViewController.xib */,
 				C320352416757E7900CA3D8C /* MenuViewController.xib */,
@@ -402,10 +402,10 @@
 				C32035281675800000CA3D8C /* ARListViewController.m */,
 				C320352C1675801C00CA3D8C /* BeNCMapViewController.h */,
 				C320352D1675801C00CA3D8C /* BeNCMapViewController.m */,
-				C32035311675803500CA3D8C /* BeNCCameraViewController.h */,
-				C32035321675803500CA3D8C /* BeNCCameraViewController.m */,
-				C32035361675804C00CA3D8C /* BeNCDetailViewController.h */,
-				C32035371675804C00CA3D8C /* BeNCDetailViewController.m */,
+				C32035311675803500CA3D8C /* AR2DViewController.h */,
+				C32035321675803500CA3D8C /* AR2DViewController.m */,
+				C32035361675804C00CA3D8C /* ARDetailViewController.h */,
+				C32035371675804C00CA3D8C /* ARDetailViewController.m */,
 				C351767E16A93702009A2EAA /* BeNCAR3DViewController.h */,
 				C351767F16A93702009A2EAA /* BeNCAR3DViewController.m */,
 				C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */,
@@ -549,8 +549,8 @@
 				C320352616757E7900CA3D8C /* MenuViewController.xib in Resources */,
 				C320352B1675800000CA3D8C /* ARListViewController.xib in Resources */,
 				C32035301675801C00CA3D8C /* BeNCMapViewController.xib in Resources */,
-				C32035351675803500CA3D8C /* BeNCCameraViewController.xib in Resources */,
-				C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */,
+				C32035351675803500CA3D8C /* AR2DViewController.xib in Resources */,
+				C320353A1675804C00CA3D8C /* ARDetailViewController.xib in Resources */,
 				C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */,
 				A77936241679BC16006603C7 /* cameraoff.png in Resources */,
 				A77936251679BC16006603C7 /* cameraon.png in Resources */,
@@ -590,8 +590,8 @@
 				C320352516757E7900CA3D8C /* MenuViewController.m in Sources */,
 				C320352A1675800000CA3D8C /* ARListViewController.m in Sources */,
 				C320352F1675801C00CA3D8C /* BeNCMapViewController.m in Sources */,
-				C32035341675803500CA3D8C /* BeNCCameraViewController.m in Sources */,
-				C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */,
+				C32035341675803500CA3D8C /* AR2DViewController.m in Sources */,
+				C32035391675804C00CA3D8C /* ARDetailViewController.m in Sources */,
 				C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */,
 				C3203540167580EA00CA3D8C /* ARPositionCell.m in Sources */,
 				C32035431675819800CA3D8C /* ARUtility.m in Sources */,

@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "ARListViewController.h"
 #import "BeNCShopAnnotation.h"
-#import "BeNCDetailViewController.h"
+#import "ARDetailViewController.h"
 @interface BeNCMapViewController : UIViewController<MKMapViewDelegate,ListViewOnMapDelegate,DetailViewDelegate>{
     
     MKMapView *mapView;

@@ -10,8 +10,9 @@
 #include <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCDetailInCamera.h"
+#import <ArroundPlaceService/ArroundPlaceService.h>
 
-@interface BeNCCameraViewController : UIViewController<CLLocationManagerDelegate,BeNCDetailInCameraDelegate>{
+@interface AR2DViewController : UIViewController<CLLocationManagerDelegate,BeNCDetailInCameraDelegate,ServiceControllerDelegate>{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     NSMutableArray *shopsArray;
@@ -33,6 +34,7 @@
     BeNCDetailInCamera *detaitlView4;
     BeNCDetailInCamera *detaitlView5;
 }
+@property (nonatomic, retain) NSMutableArray *arrayPosition;
 - (void)addVideoInput;
 - (void )getDatabase;
 -(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;

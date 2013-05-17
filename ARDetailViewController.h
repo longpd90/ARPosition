@@ -9,24 +9,26 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
-@class BeNCDetailViewController;
+#import <ArroundPlaceService/ArroundPlaceService.h>
+
+@class ARDetailViewController;
 @protocol  DetailViewDelegate
--(void)backToMap:(BeNCDetailViewController *)detailView;
+-(void)backToMap:(ARDetailViewController *)detailView;
 @end
-@interface BeNCDetailViewController : UIViewController{
+@interface ARDetailViewController : UIViewController{
     CLLocation *userLocation;
-    BeNCShopEntity *shop;
+    InstanceData *position;
     UILabel *labelDistanceToShop;
 }
 @property(nonatomic,strong) id<DetailViewDelegate> delegate;
 @property(nonatomic, retain)CLLocation *userLocation;
-@property(nonatomic, retain)BeNCShopEntity *shop;
+@property(nonatomic, retain)InstanceData *position;
 @property(nonatomic, retain)UILabel *labelDistanceToShop;
 - (IBAction)goToMenuSite:(id)sender;
 - (IBAction)goToCouponSite:(id)sender;
 - (IBAction)goToCamera:(id)sender;
-- (void)setContentDetailForView:(BeNCShopEntity *)shopEntity;
-- (id)initWithShop:(BeNCShopEntity *)shopEntity;
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
+- (void)setContentDetailForView:(InstanceData *)positionEntity;
+- (id)initWithShop:(InstanceData *)positionEntity;
+- (int)caculateDistanceToShop:(InstanceData *)positionEntity;
 
 @end

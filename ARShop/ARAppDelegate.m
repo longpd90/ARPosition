@@ -10,7 +10,7 @@
 #import "MenuViewController.h"
 #import "BeNCTabbarItem.h"
 #import "ARListViewController.h"
-#import "BeNCCameraViewController.h"
+#import "AR2DViewController.h"
 #import "BeNCMapViewController.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCAR3DViewController.h"
@@ -41,7 +41,7 @@
     
     ARListViewController *listViewController = [[ARListViewController alloc]initWithNibName:@"ARListViewController" bundle:nil];
     [listViewController setListType:0];
-    BeNCCameraViewController *cameraViewController = [[BeNCCameraViewController alloc]initWithNibName:@"BeNCCameraViewController" bundle:nil];
+    AR2DViewController *cameraViewController = [[AR2DViewController alloc]initWithNibName:@"BeNCCameraViewController" bundle:nil];
     BeNCAR3DViewController *aR3DViewController = [[BeNCAR3DViewController alloc]initWithNibName:@"BeNCAR3DViewController" bundle:nil];
     BeNCMapViewController *mapViewController = [[BeNCMapViewController alloc]initWithNibName:@"BeNCMapViewController" bundle:nil];
     

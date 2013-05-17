@@ -11,7 +11,7 @@
 #import "ARArrow.h"
 #import "BeNCWebViewController.h"
 #import "LocationService.h"
-#import "BeNCOneShopARViewController.h"
+#import "ARAPositionViewController.h"
 #import "EGOImageView.h"
 #define textSize 18
 #define max 1000000

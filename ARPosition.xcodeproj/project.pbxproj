@@ -29,8 +29,8 @@
 		A7F29C2716A008380040DA28 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C2016A008380040DA28 /* EGOImageLoader.m */; };
 		A7F29C2816A008380040DA28 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C2316A008380040DA28 /* EGOImageView.m */; };
 		A7F29C2B16A0106D0040DA28 /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F29C2A16A0106C0040DA28 /* blank.png */; };
-		C30B2CFD1695336200B56235 /* BeNCOneShopARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */; };
-		C30B2CFE1695336200B56235 /* BeNCOneShopARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */; };
+		C30B2CFD1695336200B56235 /* ARAPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30B2CFB1695336200B56235 /* ARAPositionViewController.m */; };
+		C30B2CFE1695336200B56235 /* ARAPositionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30B2CFC1695336200B56235 /* ARAPositionViewController.xib */; };
 		C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C310BDA0167886CF00DA1D55 /* ARShopDatabase.sqlite */; };
 		C318F71C16A6AE7F002185A6 /* BeNCRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = C318F71A16A6AE7E002185A6 /* BeNCRadar.m */; };
 		C32034FB16757ADB00CA3D8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32034FA16757ADB00CA3D8C /* UIKit.framework */; };
@@ -114,9 +114,9 @@
 		A7F29C2216A008380040DA28 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
 		A7F29C2316A008380040DA28 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
 		A7F29C2A16A0106C0040DA28 /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
-		C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCOneShopARViewController.h; sourceTree = "<group>"; };
-		C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCOneShopARViewController.m; sourceTree = "<group>"; };
-		C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCOneShopARViewController.xib; sourceTree = "<group>"; };
+		C30B2CFA1695336200B56235 /* ARAPositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAPositionViewController.h; sourceTree = "<group>"; };
+		C30B2CFB1695336200B56235 /* ARAPositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAPositionViewController.m; sourceTree = "<group>"; };
+		C30B2CFC1695336200B56235 /* ARAPositionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARAPositionViewController.xib; sourceTree = "<group>"; };
 		C310BDA0167886CF00DA1D55 /* ARShopDatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARShopDatabase.sqlite; sourceTree = "<group>"; };
 		C318F71916A6AE7E002185A6 /* BeNCRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCRadar.h; sourceTree = "<group>"; };
 		C318F71A16A6AE7E002185A6 /* BeNCRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCRadar.m; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				C351768016A93702009A2EAA /* AR3DViewController.xib */,
-				C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */,
+				C30B2CFC1695336200B56235 /* ARAPositionViewController.xib */,
 				C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */,
 				C32035381675804C00CA3D8C /* ARDetailViewController.xib */,
 				C32035331675803500CA3D8C /* AR2DViewController.xib */,
@@ -408,8 +408,8 @@
 				C32035371675804C00CA3D8C /* ARDetailViewController.m */,
 				C351767E16A93702009A2EAA /* AR3DViewController.h */,
 				C351767F16A93702009A2EAA /* AR3DViewController.m */,
-				C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */,
-				C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */,
+				C30B2CFA1695336200B56235 /* ARAPositionViewController.h */,
+				C30B2CFB1695336200B56235 /* ARAPositionViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -563,7 +563,7 @@
 				C3FFA3E91681AB86007B7963 /* menu.gif in Resources */,
 				C3FFA3F01681ADE5007B7963 /* coupon.png in Resources */,
 				C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */,
-				C30B2CFE1695336200B56235 /* BeNCOneShopARViewController.xib in Resources */,
+				C30B2CFE1695336200B56235 /* ARAPositionViewController.xib in Resources */,
 				A7EBB98C169AC144004924AC /* location.gpx in Resources */,
 				A706EFE4169BDE2A0057D1FE /* CurrentLocations.png in Resources */,
 				A706EFE5169BDE2A0057D1FE /* MapFrame.png in Resources */,
@@ -609,7 +609,7 @@
 				A7F08DB4167724F000D46DCF /* LocationService.m in Sources */,
 				A7F21FBF167B23EF006AE452 /* ARPositionAnnotation.m in Sources */,
 				C3FFA3FC1681B034007B7963 /* BeNCWebViewController.m in Sources */,
-				C30B2CFD1695336200B56235 /* BeNCOneShopARViewController.m in Sources */,
+				C30B2CFD1695336200B56235 /* ARAPositionViewController.m in Sources */,
 				A7EBB989169ABDF3004924AC /* ARPositionAnnotationView.m in Sources */,
 				A7F29C2416A008380040DA28 /* EGOCache.m in Sources */,
 				A7F29C2516A008380040DA28 /* EGOImageButton.m in Sources */,

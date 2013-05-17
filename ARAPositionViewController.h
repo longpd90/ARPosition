@@ -11,22 +11,22 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #import "ARDetailIn2D.h"
-@interface BeNCOneShopARViewController : UIViewController{
+#import <ArroundPlaceService/ArroundPlaceService.h>
+@interface ARAPositionViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     CLLocation *userLocation ;
     double rotationAngleArrow;
-    BeNCShopEntity *shop;
+    InstanceData *position;
     ARDetailIn2D *detailView;
     float centerX;
     float centerY;
 }
-@property(nonatomic, retain)BeNCShopEntity *shop;
+@property(nonatomic, retain)InstanceData *position;
 @property double rotationAngleArrow;
 @property(nonatomic, retain) CLLocation *userLocation;
 - (void)addVideoInput;
-- (void)setContentForView:(BeNCShopEntity *)shopEntity;
-- (id)initWithShop:(BeNCShopEntity *)shopEntity;
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
-
+- (void)setContentForView:(InstanceData *)positionEntity;
+- (id)initWithShop:(InstanceData *)positionEntity;
+-(double)caculateRotationAngle:(InstanceData * )positionEntity;
 @end

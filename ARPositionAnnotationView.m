@@ -14,16 +14,6 @@
 
 @synthesize numberlb,numberImageView,backgroudImage;
 
-
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-    }
-    return self;
-}
 -(id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier{
     if (self= [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
         backgroudImage = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"images.jpg"]];

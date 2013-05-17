@@ -13,7 +13,7 @@
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
 #import "ARPositionCell.h"
-#import "BeNCOneShopARViewController.h"
+#import "ARAPositionViewController.h"
 #import "EGOImageView.h"
 #import "BeNCShopInRadar.h"
 #define MainList 0
@@ -109,7 +109,6 @@
 }
 
 - (void)getData:(float)radius withPageSize:(int)pageSize withPageIndex:(int)pageIndex withCatagory:(int)catagory  withLanguage:(NSString *)language {
-    NSLog(@"user lat = %f, user lng = %f",userLocation.coordinate.latitude, userLocation.coordinate.longitude);
     ArroundPlaceService * dataPlace = [[ArroundPlaceService alloc]init];
     dataPlace.delegate = self;
     [dataPlace getArroundPlaceWithLatitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.latitude] longitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.longitude] radius:radius pageSize:pageSize pageIndex:pageIndex category:catagory language:language];
@@ -119,11 +118,6 @@
 {
     arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
     [[NSNotificationCenter defaultCenter]postNotificationName:@"Updata" object:results];
-
-    for (int i = 0; i < [arrayPosition count]; i ++) {
-        InstanceData *instanceData = (InstanceData *)[arrayPosition objectAtIndex:i];
-        NSLog(@"address : %@, lat = %f, lng = %f",instanceData.address,instanceData.latitude,instanceData.longitude);
-    }
 }
 
 - (void)requestDidFail:(ArroundPlaceService *)controller withError:(NSError *)error
@@ -236,7 +230,7 @@
     if (!editing) {
         NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];
         BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:indexPathCell.row];
-        BeNCOneShopARViewController *oneShopAR = [[BeNCOneShopARViewController alloc]initWithShop:shopEntity];
+        ARAPositionViewController *oneShopAR = [[ARAPositionViewController alloc]initWithShop:shopEntity];
         [self.navigationController pushViewController:oneShopAR animated:YES];
         [oneShopAR release];
     }

@@ -28,9 +28,8 @@
 @end
 
 @implementation ARMapViewController
-@synthesize mapView;
+@synthesize mapViewPosition;
 @synthesize selectedAnnotationView = _selectedAnnotationView;
-@synthesize zoomSlider,zoomLabel;
 bool firstUpdate = 1;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,11 +50,11 @@ bool firstUpdate = 1;
     self.title = @"Map";
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     
-    mapView=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
-    [mapView setDelegate:self];
-    [mapView setShowsUserLocation:YES];
+    mapViewPosition=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
+    [mapViewPosition setDelegate:self];
+    [mapViewPosition setShowsUserLocation:YES];
     
-    [self.view addSubview:mapView];
+    [self.view addSubview:mapViewPosition];
     
     UIButton *showUser = [UIButton buttonWithType:UIButtonTypeCustom];
     [showUser setBackgroundImage:[UIImage imageNamed:@"CurrentLocations.png"] forState:UIControlStateNormal];
@@ -63,8 +62,6 @@ bool firstUpdate = 1;
     showUser.alpha = 0.8;
     [showUser addTarget:self action:@selector(toUserLocation:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showUser];
-
-//    [self getShopData];
     [super viewDidLoad];
 
 
@@ -74,19 +71,13 @@ bool firstUpdate = 1;
     arrayPosition = (NSMutableArray *)[notification object];
     [self addShopAnnotation];
 }
-//-(void)getShopData{
-//    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-//    shopsArray = [[NSArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
-//    [self addShopAnnotation];
-//}
 
 -(void)addShopAnnotation{
     NSLog(@"so phat tu cua shop :%d",[arrayPosition count]);
     shopsAnnotations = [[NSMutableArray alloc]init];
     for (int i=0; i<arrayPosition.count; i++) {
-        
         InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];
-        //NSLog(@"khoi tao annotation %d la %@",i,shop.shop_name);
+        NSLog(@"khoi tao annotation %d la %@",i, positionEntity.label);
         
         CLLocationCoordinate2D placeCoord;
         
@@ -99,7 +90,7 @@ bool firstUpdate = 1;
         shopAnnotation.position = positionEntity;
         [shopAnnotation.overideAnnotation addObject:positionEntity];
         [shopsAnnotations addObject:shopAnnotation];
-        [mapView addAnnotation:shopAnnotation];
+        [mapViewPosition addAnnotation:shopAnnotation];
     }
     
 }
@@ -109,8 +100,8 @@ bool firstUpdate = 1;
     
     if (firstUpdate) {
         CLLocationCoordinate2D startCoord = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-        MKCoordinateRegion adjustedRegion = [mapView regionThatFits:MKCoordinateRegionMakeWithDistance(startCoord, 1200, 1200)];
-        [mapView setRegion:adjustedRegion animated:YES];
+        MKCoordinateRegion adjustedRegion = [mapViewPosition regionThatFits:MKCoordinateRegionMakeWithDistance(startCoord, 1200, 1200)];
+        [mapViewPosition setRegion:adjustedRegion animated:YES];
         firstUpdate=0;
     }
 }
@@ -118,8 +109,7 @@ bool firstUpdate = 1;
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    mapView = nil;
-//    shopsArray = nil;
+    mapViewPosition = nil;
     shopsAnnotations = nil;
     selectedShops = nil;
     shopsAnnotations = nil;
@@ -127,8 +117,7 @@ bool firstUpdate = 1;
 }
 -(void)dealloc{
     [super dealloc];
-    [mapView release];
-//    [shopsArray release];
+    [mapViewPosition release];
     [shopsAnnotations release];
     [selectedAnnotation release];
     [selectedShops release];
@@ -148,19 +137,11 @@ bool firstUpdate = 1;
 //    float span = self.mapView.region.span.latitudeDelta;
     
 }    
--(void)zoomMap:(float)regionRadial{
-    MKCoordinateRegion region;
-    
-    
-    NSLog(@"Region Radial : %f",regionRadial);
-    region = MKCoordinateRegionMakeWithDistance(self.mapView.centerCoordinate,regionRadial,regionRadial);
-    
-    [self.mapView setRegion:region animated:YES];
-}
+
 -  (void)mapView:(MKMapView *)mapview didSelectAnnotationView:(MKAnnotationView *)view
 {
      if ([view.annotation isKindOfClass:[ARPositionAnnotation class]]) {
-        
+
         ARPositionAnnotation *shopAnnotation = (ARPositionAnnotation *)view.annotation;
         selectedAnnotation = shopAnnotation;
         if (shopAnnotation.overideAnnotation.count > 1) {
@@ -187,12 +168,11 @@ bool firstUpdate = 1;
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
     NSLog(@"Deselect annotation");
 }
--(MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
-    
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
     static NSString *identifier = @"annotation";   
     if ([annotation isKindOfClass:[ARPositionAnnotation class]]) {
-        
-        ARPositionAnnotationView *annotationView = (ARPositionAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        ARPositionAnnotationView *annotationView = (ARPositionAnnotationView *) [mapViewPosition dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[ARPositionAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             
@@ -279,11 +259,11 @@ bool firstUpdate = 1;
                      }
                      completion:^(BOOL finished) { 
                          [listview.view removeFromSuperview]; 
-                         [self.mapView deselectAnnotation:selectedAnnotation animated:YES];
+                         [self.mapViewPosition deselectAnnotation:selectedAnnotation animated:YES];
                      }];
 }
 -(void)backToMap:(ARDetailViewController *)detailView{
-    [self.mapView deselectAnnotation:selectedAnnotation animated:YES];
+    [self.mapViewPosition deselectAnnotation:selectedAnnotation animated:YES];
 }
 
 #pragma mark utility
@@ -292,7 +272,7 @@ bool firstUpdate = 1;
         if ([annotation isKindOfClass:[ARPositionAnnotation class]]) {
             ARPositionAnnotation *shopAnnotation = (ARPositionAnnotation *)annotation;
             shopAnnotation.isChecked = 0;
-            CGPoint locationInView = [mapView convertCoordinate:shopAnnotation.coordinate toPointToView:self.view];
+            CGPoint locationInView = [mapViewPosition convertCoordinate:shopAnnotation.coordinate toPointToView:self.view];
             shopAnnotation.locationInView = locationInView;
             //NSLog(@"Shop %@ co toa do la %f %f",shopAnnotation.shop.shop_name, locationInView.x,locationInView.y);
         }
@@ -303,7 +283,7 @@ bool firstUpdate = 1;
             ARPositionAnnotation *shopAnnotation = (ARPositionAnnotation *)annotation;
             if (shopAnnotation.isChecked==0) {
                 if (shopAnnotation.isGrouped == 1) {
-                    [self.mapView addAnnotation:shopAnnotation];
+                    [self.mapViewPosition addAnnotation:shopAnnotation];
                     
                 }
                 shopAnnotation.isGrouped = 0;
@@ -320,7 +300,7 @@ bool firstUpdate = 1;
                             if ([self distanceOf:shopAnnotation.locationInView andpoint:shopcheck.locationInView]<40) {
                                 [shopAnnotation.overideAnnotation addObject:shopcheck.position];
                                 if (shopcheck.isGrouped == 0) {
-                                    [self.mapView removeAnnotation:shopcheck];
+                                    [self.mapViewPosition removeAnnotation:shopcheck];
                                 }
                                 shopcheck.isGrouped = 1;
                                 shopcheck.isChecked = 1;
@@ -334,7 +314,7 @@ bool firstUpdate = 1;
                         
                     }
                 }
-                ARPositionAnnotationView *shopView = (ARPositionAnnotationView *)[mapView viewForAnnotation:shopAnnotation];
+                ARPositionAnnotationView *shopView = (ARPositionAnnotationView *)[mapViewPosition viewForAnnotation:shopAnnotation];
                 
                 if (shopAnnotation.overideAnnotation.count>1) {
                     shopView.numberlb.text = [NSString stringWithFormat:@"%d",shopAnnotation.overideAnnotation.count];
@@ -367,12 +347,12 @@ bool firstUpdate = 1;
 -(IBAction)toUserLocation:(id)sender{
     
     MKCoordinateRegion region;
-    region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate,2000,2000);
+    region = MKCoordinateRegionMakeWithDistance(self.mapViewPosition.userLocation.coordinate,2000,2000);
     
-    [self.mapView setRegion:region animated:YES];
-    for (id<MKAnnotation> annotation in self.mapView.annotations) {
+    [self.mapViewPosition setRegion:region animated:YES];
+    for (id<MKAnnotation> annotation in self.mapViewPosition.annotations) {
         if (![annotation isKindOfClass:[ARPositionAnnotation class]]) {
-            [self.mapView selectAnnotation:annotation animated:YES];
+            [self.mapViewPosition selectAnnotation:annotation animated:YES];
             break; 
         }
     }

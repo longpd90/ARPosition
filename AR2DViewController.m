@@ -41,8 +41,6 @@
 
 - (void)viewDidLoad
 {
-    
-
     [self setTitle:@"AR"];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];

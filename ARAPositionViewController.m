@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCOneShopARViewController.h"
+#import "ARAPositionViewController.h"
 #import "BeNCShopEntity.h"
 #import "ARDetailIn2D.h"
 #import "LocationService.h"
@@ -14,23 +14,23 @@
 #define rotationRate 0.0174532925
 #define frameRadius 60
 
-@interface BeNCOneShopARViewController ()
+@interface ARAPositionViewController ()
 
 @end
 
-@implementation BeNCOneShopARViewController
-@synthesize userLocation,shop,rotationAngleArrow;
+@implementation ARAPositionViewController
+@synthesize userLocation,position,rotationAngleArrow;
 
-- (id)initWithShop:(BeNCShopEntity *)shopEntity
+- (id)initWithShop:(InstanceData *)positionEntity
 {
     self = [super init];
     if (self) {
-        shop = shopEntity;
+        position = positionEntity;
         self.userLocation = [[LocationService sharedLocation]getOldLocation]; 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-        rotationAngleArrow = [self caculateRotationAngle:shop];
-        [self setContentForView:shopEntity];
+        rotationAngleArrow = [self caculateRotationAngle:positionEntity];
+        [self setContentForView:positionEntity];
 
         // Custom initialization
     }
@@ -72,9 +72,9 @@
         [captureSession addInput:deviceInput];
     [captureSession startRunning];    
 }
-- (void)setContentForView:(BeNCShopEntity *)shopEntity
+- (void)setContentForView:(InstanceData *)positionEntity
 {
-    detailView = [[ARDetailIn2D alloc]initWithShop:shopEntity];
+    detailView = [[ARDetailIn2D alloc]initWithShop:positionEntity];
     [self.view addSubview:detailView];
 }
 - (void)setNewCenterForView:(float )angleToHeading{
@@ -145,18 +145,21 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    rotationAngleArrow = [self caculateRotationAngle:shop];
+    rotationAngleArrow = [self caculateRotationAngle:position];
 }
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
-    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
+
+-(double)caculateRotationAngle:(InstanceData * )positionEntity{
+    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
-    CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
+    [shopLocation release];
+    CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
+    [point release];
     double rotationAngle;
     
     double angle=acos(distance1/distance);
-    if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
-        if (userLocation.coordinate.longitude<=shopEntity.shop_longitute) {
+    if (userLocation.coordinate.latitude <= positionEntity.latitude) {
+        if (userLocation.coordinate.longitude <= positionEntity.longitude) {
             rotationAngle = angle;
         }
         else{
@@ -164,7 +167,7 @@
         }
     }
     else{
-        if (userLocation.coordinate.longitude<shopEntity.shop_longitute) {
+        if (userLocation.coordinate.longitude < positionEntity.longitude) {
             rotationAngle = M_PI - angle;
         }
         else{

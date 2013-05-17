@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCAR3DViewController.h"
+#import "AR3DViewController.h"
 #import "LocationService.h"
 #import "BeNCShopEntity.h"
 #import "BeNCProcessDatabase.h"
@@ -15,11 +15,11 @@
 #import "BeNCRadar.h"
 #define rotationRate 0.0174532925
 
-@interface BeNCAR3DViewController ()
+@interface AR3DViewController ()
 
 @end
 
-@implementation BeNCAR3DViewController
+@implementation AR3DViewController
 @synthesize userLocation,shopInRadius;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

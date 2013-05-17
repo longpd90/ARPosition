@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-#import "BeNCShopEntity.h"
-@interface BeNCShopAnnotation : NSObject<MKAnnotation>{
-    
-    BeNCShopEntity *_shop;
-    
+#import <ArroundPlaceService/ArroundPlaceService.h>
+@interface ARPositionAnnotation : NSObject<MKAnnotation>{
+    InstanceData *_position;
     NSString *_name;
     NSString *_address;
     CLLocationCoordinate2D _coordinate;
@@ -28,9 +26,7 @@
     NSMutableArray *overideAnnotation;
     
 }
-@property(nonatomic,retain)  BeNCShopEntity *shop;
-
-
+@property(nonatomic,retain)  InstanceData *position;
 @property(nonatomic,copy)  NSString *title;
 @property(nonatomic,copy)  NSString *subtitle;
 @property (copy) NSString *name;

@@ -15,7 +15,6 @@
 @end
 @interface ARDetailPositionInView : UIView{
     UILabel *labelShopName;
-    UILabel *labelShopAddress;
     UILabel *labelDistanceToShop;
     CLLocation *userLocation ;
     InstanceData *position;
@@ -23,11 +22,9 @@
 @property (nonatomic, retain)id<ARDetailPositionInViewDelegate>delegate;
 @property (nonatomic, retain)InstanceData *position;
 @property(nonatomic, retain)UILabel *labelShopName;
-@property(nonatomic, retain)UILabel *labelShopAddress;
 @property(nonatomic, retain)UILabel *labelDistanceToShop;
 @property(nonatomic,retain)CLLocation *userLocation ;
 - (id)initWithShop:(InstanceData *)positionEntity;
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;
-//- (float)caculateMax:(float )numberA withNumberB:(float )numberB;
 - (void)setContentDetailShop:(InstanceData *)positionEntity;
 @end

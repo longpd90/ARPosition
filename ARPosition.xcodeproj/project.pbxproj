@@ -17,12 +17,12 @@
 		A77936271679BC16006603C7 /* ListOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936211679BC16006603C7 /* ListOn.png */; };
 		A77936281679BC16006603C7 /* mapoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936221679BC16006603C7 /* mapoff.png */; };
 		A779362C1679C024006603C7 /* mapon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779362B1679C024006603C7 /* mapon.png */; };
-		A7EBB989169ABDF3004924AC /* BeNCAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EBB988169ABDF3004924AC /* BeNCAnnotationView.m */; };
+		A7EBB989169ABDF3004924AC /* ARPositionAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EBB988169ABDF3004924AC /* ARPositionAnnotationView.m */; };
 		A7EBB98C169AC144004924AC /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7EBB98B169AC144004924AC /* location.gpx */; };
 		A7EE6666169D3C0C00D172AF /* numberView.png in Resources */ = {isa = PBXBuildFile; fileRef = A7EE6665169D3C0B00D172AF /* numberView.png */; };
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
 		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
-		A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */; };
+		A7F21FBF167B23EF006AE452 /* ARPositionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* ARPositionAnnotation.m */; };
 		A7F29C2416A008380040DA28 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1816A008380040DA28 /* EGOCache.m */; };
 		A7F29C2516A008380040DA28 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1B16A008380040DA28 /* EGOImageButton.m */; };
 		A7F29C2616A008380040DA28 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1E16A008380040DA28 /* EGOImageLoadConnection.m */; };
@@ -43,8 +43,8 @@
 		C320352616757E7900CA3D8C /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320352416757E7900CA3D8C /* MenuViewController.xib */; };
 		C320352A1675800000CA3D8C /* ARListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035281675800000CA3D8C /* ARListViewController.m */; };
 		C320352B1675800000CA3D8C /* ARListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035291675800000CA3D8C /* ARListViewController.xib */; };
-		C320352F1675801C00CA3D8C /* BeNCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C320352D1675801C00CA3D8C /* BeNCMapViewController.m */; };
-		C32035301675801C00CA3D8C /* BeNCMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */; };
+		C320352F1675801C00CA3D8C /* ARMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C320352D1675801C00CA3D8C /* ARMapViewController.m */; };
+		C32035301675801C00CA3D8C /* ARMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C320352E1675801C00CA3D8C /* ARMapViewController.xib */; };
 		C32035341675803500CA3D8C /* AR2DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035321675803500CA3D8C /* AR2DViewController.m */; };
 		C32035351675803500CA3D8C /* AR2DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035331675803500CA3D8C /* AR2DViewController.xib */; };
 		C32035391675804C00CA3D8C /* ARDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035371675804C00CA3D8C /* ARDetailViewController.m */; };
@@ -70,9 +70,9 @@
 		C337DD8516AD035500C4E5CE /* AR3Doff.png in Resources */ = {isa = PBXBuildFile; fileRef = C337DD8316AD035500C4E5CE /* AR3Doff.png */; };
 		C337DD8616AD035500C4E5CE /* AR3Don.png in Resources */ = {isa = PBXBuildFile; fileRef = C337DD8416AD035500C4E5CE /* AR3Don.png */; };
 		C3435E30167ECE80004B7FD0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C3435E2F167ECE80004B7FD0 /* arrow.png */; };
-		C351768116A93702009A2EAA /* BeNCAR3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C351767F16A93702009A2EAA /* BeNCAR3DViewController.m */; };
-		C351768216A93702009A2EAA /* BeNCAR3DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C351768016A93702009A2EAA /* BeNCAR3DViewController.xib */; };
-		C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */; };
+		C351768116A93702009A2EAA /* AR3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C351767F16A93702009A2EAA /* AR3DViewController.m */; };
+		C351768216A93702009A2EAA /* AR3DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C351768016A93702009A2EAA /* AR3DViewController.xib */; };
+		C3611F4616771BF3008DBE79 /* ARTabbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3611F4516771BF3008DBE79 /* ARTabbarItem.m */; };
 		C3F4E21A16B137C0002A089C /* Radar.png in Resources */ = {isa = PBXBuildFile; fileRef = C3F4E21916B137C0002A089C /* Radar.png */; };
 		C3F50AD716AF7CD8001E4685 /* ARDetailIn3D.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F50AD616AF7CD8001E4685 /* ARDetailIn3D.m */; };
 		C3FC0D5E16A78E1B00822AD4 /* BeNCShopInRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FC0D5D16A78E1B00822AD4 /* BeNCShopInRadar.m */; };
@@ -94,15 +94,15 @@
 		A77936211679BC16006603C7 /* ListOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListOn.png; sourceTree = "<group>"; };
 		A77936221679BC16006603C7 /* mapoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapoff.png; sourceTree = "<group>"; };
 		A779362B1679C024006603C7 /* mapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapon.png; sourceTree = "<group>"; };
-		A7EBB987169ABDF3004924AC /* BeNCAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCAnnotationView.h; sourceTree = "<group>"; };
-		A7EBB988169ABDF3004924AC /* BeNCAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCAnnotationView.m; sourceTree = "<group>"; };
+		A7EBB987169ABDF3004924AC /* ARPositionAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPositionAnnotationView.h; sourceTree = "<group>"; };
+		A7EBB988169ABDF3004924AC /* ARPositionAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPositionAnnotationView.m; sourceTree = "<group>"; };
 		A7EBB98B169AC144004924AC /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = location.gpx; sourceTree = "<group>"; };
 		A7EE6665169D3C0B00D172AF /* numberView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = numberView.png; sourceTree = "<group>"; };
 		A7F08DB2167724F000D46DCF /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		A7F08DB3167724F000D46DCF /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
-		A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopAnnotation.h; sourceTree = "<group>"; };
-		A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopAnnotation.m; sourceTree = "<group>"; };
+		A7F21FBD167B23EF006AE452 /* ARPositionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPositionAnnotation.h; sourceTree = "<group>"; };
+		A7F21FBE167B23EF006AE452 /* ARPositionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPositionAnnotation.m; sourceTree = "<group>"; };
 		A7F29C1716A008380040DA28 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		A7F29C1816A008380040DA28 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		A7F29C1A16A008380040DA28 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
@@ -136,9 +136,9 @@
 		C32035271675800000CA3D8C /* ARListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARListViewController.h; sourceTree = "<group>"; };
 		C32035281675800000CA3D8C /* ARListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARListViewController.m; sourceTree = "<group>"; };
 		C32035291675800000CA3D8C /* ARListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARListViewController.xib; sourceTree = "<group>"; };
-		C320352C1675801C00CA3D8C /* BeNCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCMapViewController.h; sourceTree = "<group>"; };
-		C320352D1675801C00CA3D8C /* BeNCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCMapViewController.m; sourceTree = "<group>"; };
-		C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCMapViewController.xib; sourceTree = "<group>"; };
+		C320352C1675801C00CA3D8C /* ARMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMapViewController.h; sourceTree = "<group>"; };
+		C320352D1675801C00CA3D8C /* ARMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARMapViewController.m; sourceTree = "<group>"; };
+		C320352E1675801C00CA3D8C /* ARMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARMapViewController.xib; sourceTree = "<group>"; };
 		C32035311675803500CA3D8C /* AR2DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR2DViewController.h; sourceTree = "<group>"; };
 		C32035321675803500CA3D8C /* AR2DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AR2DViewController.m; sourceTree = "<group>"; };
 		C32035331675803500CA3D8C /* AR2DViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AR2DViewController.xib; sourceTree = "<group>"; };
@@ -179,11 +179,11 @@
 		C337DD8316AD035500C4E5CE /* AR3Doff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR3Doff.png; sourceTree = "<group>"; };
 		C337DD8416AD035500C4E5CE /* AR3Don.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR3Don.png; sourceTree = "<group>"; };
 		C3435E2F167ECE80004B7FD0 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		C351767E16A93702009A2EAA /* BeNCAR3DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCAR3DViewController.h; sourceTree = "<group>"; };
-		C351767F16A93702009A2EAA /* BeNCAR3DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCAR3DViewController.m; sourceTree = "<group>"; };
-		C351768016A93702009A2EAA /* BeNCAR3DViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCAR3DViewController.xib; sourceTree = "<group>"; };
-		C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCTabbarItem.h; sourceTree = "<group>"; };
-		C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCTabbarItem.m; sourceTree = "<group>"; };
+		C351767E16A93702009A2EAA /* AR3DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR3DViewController.h; sourceTree = "<group>"; };
+		C351767F16A93702009A2EAA /* AR3DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AR3DViewController.m; sourceTree = "<group>"; };
+		C351768016A93702009A2EAA /* AR3DViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AR3DViewController.xib; sourceTree = "<group>"; };
+		C3611F4416771BF3008DBE79 /* ARTabbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTabbarItem.h; sourceTree = "<group>"; };
+		C3611F4516771BF3008DBE79 /* ARTabbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTabbarItem.m; sourceTree = "<group>"; };
 		C3F4E21916B137C0002A089C /* Radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radar.png; sourceTree = "<group>"; };
 		C3F50AD516AF7CD8001E4685 /* ARDetailIn3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDetailIn3D.h; sourceTree = "<group>"; };
 		C3F50AD616AF7CD8001E4685 /* ARDetailIn3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDetailIn3D.m; sourceTree = "<group>"; };
@@ -322,8 +322,8 @@
 			children = (
 				C320351E16757C9400CA3D8C /* Common */,
 				C320351F16757CA000CA3D8C /* Controllers */,
-				C320352016757CB000CA3D8C /* Entities */,
-				C320352116757CC500CA3D8C /* Views */,
+				C320352016757CB000CA3D8C /* Entities Model */,
+				C320352116757CC500CA3D8C /* Views Model */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -348,12 +348,12 @@
 		C320351B16757BA000CA3D8C /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
-				C351768016A93702009A2EAA /* BeNCAR3DViewController.xib */,
+				C351768016A93702009A2EAA /* AR3DViewController.xib */,
 				C30B2CFC1695336200B56235 /* BeNCOneShopARViewController.xib */,
 				C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */,
 				C32035381675804C00CA3D8C /* ARDetailViewController.xib */,
 				C32035331675803500CA3D8C /* AR2DViewController.xib */,
-				C320352E1675801C00CA3D8C /* BeNCMapViewController.xib */,
+				C320352E1675801C00CA3D8C /* ARMapViewController.xib */,
 				C32035291675800000CA3D8C /* ARListViewController.xib */,
 				C320352416757E7900CA3D8C /* MenuViewController.xib */,
 			);
@@ -400,30 +400,32 @@
 				C320352316757E7900CA3D8C /* MenuViewController.m */,
 				C32035271675800000CA3D8C /* ARListViewController.h */,
 				C32035281675800000CA3D8C /* ARListViewController.m */,
-				C320352C1675801C00CA3D8C /* BeNCMapViewController.h */,
-				C320352D1675801C00CA3D8C /* BeNCMapViewController.m */,
+				C320352C1675801C00CA3D8C /* ARMapViewController.h */,
+				C320352D1675801C00CA3D8C /* ARMapViewController.m */,
 				C32035311675803500CA3D8C /* AR2DViewController.h */,
 				C32035321675803500CA3D8C /* AR2DViewController.m */,
 				C32035361675804C00CA3D8C /* ARDetailViewController.h */,
 				C32035371675804C00CA3D8C /* ARDetailViewController.m */,
-				C351767E16A93702009A2EAA /* BeNCAR3DViewController.h */,
-				C351767F16A93702009A2EAA /* BeNCAR3DViewController.m */,
+				C351767E16A93702009A2EAA /* AR3DViewController.h */,
+				C351767F16A93702009A2EAA /* AR3DViewController.m */,
 				C30B2CFA1695336200B56235 /* BeNCOneShopARViewController.h */,
 				C30B2CFB1695336200B56235 /* BeNCOneShopARViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		C320352016757CB000CA3D8C /* Entities */ = {
+		C320352016757CB000CA3D8C /* Entities Model */ = {
 			isa = PBXGroup;
 			children = (
+				A7F21FBD167B23EF006AE452 /* ARPositionAnnotation.h */,
+				A7F21FBE167B23EF006AE452 /* ARPositionAnnotation.m */,
 				C320353B167580B600CA3D8C /* BeNCShopEntity.h */,
 				C320353C167580B600CA3D8C /* BeNCShopEntity.m */,
 			);
-			name = Entities;
+			name = "Entities Model";
 			sourceTree = "<group>";
 		};
-		C320352116757CC500CA3D8C /* Views */ = {
+		C320352116757CC500CA3D8C /* Views Model */ = {
 			isa = PBXGroup;
 			children = (
 				C318F71916A6AE7E002185A6 /* BeNCRadar.h */,
@@ -440,16 +442,14 @@
 				C3203548167582D400CA3D8C /* ARArrow.m */,
 				C320354F1675853200CA3D8C /* ARDetailPositionInView.h */,
 				C32035501675853200CA3D8C /* ARDetailPositionInView.m */,
-				C3611F4416771BF3008DBE79 /* BeNCTabbarItem.h */,
-				C3611F4516771BF3008DBE79 /* BeNCTabbarItem.m */,
-				A7F21FBD167B23EF006AE452 /* BeNCShopAnnotation.h */,
-				A7F21FBE167B23EF006AE452 /* BeNCShopAnnotation.m */,
-				A7EBB987169ABDF3004924AC /* BeNCAnnotationView.h */,
-				A7EBB988169ABDF3004924AC /* BeNCAnnotationView.m */,
+				C3611F4416771BF3008DBE79 /* ARTabbarItem.h */,
+				C3611F4516771BF3008DBE79 /* ARTabbarItem.m */,
+				A7EBB987169ABDF3004924AC /* ARPositionAnnotationView.h */,
+				A7EBB988169ABDF3004924AC /* ARPositionAnnotationView.m */,
 				C3FC0D5C16A78E1B00822AD4 /* BeNCShopInRadar.h */,
 				C3FC0D5D16A78E1B00822AD4 /* BeNCShopInRadar.m */,
 			);
-			name = Views;
+			name = "Views Model";
 			sourceTree = "<group>";
 		};
 		C33504B516759AD200E4139A /* FMDB */ = {
@@ -548,7 +548,7 @@
 				C320350516757ADB00CA3D8C /* InfoPlist.strings in Resources */,
 				C320352616757E7900CA3D8C /* MenuViewController.xib in Resources */,
 				C320352B1675800000CA3D8C /* ARListViewController.xib in Resources */,
-				C32035301675801C00CA3D8C /* BeNCMapViewController.xib in Resources */,
+				C32035301675801C00CA3D8C /* ARMapViewController.xib in Resources */,
 				C32035351675803500CA3D8C /* AR2DViewController.xib in Resources */,
 				C320353A1675804C00CA3D8C /* ARDetailViewController.xib in Resources */,
 				C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */,
@@ -570,7 +570,7 @@
 				A7EE6666169D3C0C00D172AF /* numberView.png in Resources */,
 				A7F29C2B16A0106D0040DA28 /* blank.png in Resources */,
 				C3FC0D6E16A7AE3F00822AD4 /* ShopInRadar.png in Resources */,
-				C351768216A93702009A2EAA /* BeNCAR3DViewController.xib in Resources */,
+				C351768216A93702009A2EAA /* AR3DViewController.xib in Resources */,
 				C337DD8516AD035500C4E5CE /* AR3Doff.png in Resources */,
 				C337DD8616AD035500C4E5CE /* AR3Don.png in Resources */,
 				C3F4E21A16B137C0002A089C /* Radar.png in Resources */,
@@ -589,7 +589,7 @@
 				C320350B16757ADB00CA3D8C /* ARAppDelegate.m in Sources */,
 				C320352516757E7900CA3D8C /* MenuViewController.m in Sources */,
 				C320352A1675800000CA3D8C /* ARListViewController.m in Sources */,
-				C320352F1675801C00CA3D8C /* BeNCMapViewController.m in Sources */,
+				C320352F1675801C00CA3D8C /* ARMapViewController.m in Sources */,
 				C32035341675803500CA3D8C /* AR2DViewController.m in Sources */,
 				C32035391675804C00CA3D8C /* ARDetailViewController.m in Sources */,
 				C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */,
@@ -605,12 +605,12 @@
 				C33504C316759AEF00E4139A /* FMDatabasePool.m in Sources */,
 				C33504C416759AEF00E4139A /* FMDatabaseQueue.m in Sources */,
 				C33504C516759AEF00E4139A /* FMResultSet.m in Sources */,
-				C3611F4616771BF3008DBE79 /* BeNCTabbarItem.m in Sources */,
+				C3611F4616771BF3008DBE79 /* ARTabbarItem.m in Sources */,
 				A7F08DB4167724F000D46DCF /* LocationService.m in Sources */,
-				A7F21FBF167B23EF006AE452 /* BeNCShopAnnotation.m in Sources */,
+				A7F21FBF167B23EF006AE452 /* ARPositionAnnotation.m in Sources */,
 				C3FFA3FC1681B034007B7963 /* BeNCWebViewController.m in Sources */,
 				C30B2CFD1695336200B56235 /* BeNCOneShopARViewController.m in Sources */,
-				A7EBB989169ABDF3004924AC /* BeNCAnnotationView.m in Sources */,
+				A7EBB989169ABDF3004924AC /* ARPositionAnnotationView.m in Sources */,
 				A7F29C2416A008380040DA28 /* EGOCache.m in Sources */,
 				A7F29C2516A008380040DA28 /* EGOImageButton.m in Sources */,
 				A7F29C2616A008380040DA28 /* EGOImageLoadConnection.m in Sources */,
@@ -618,7 +618,7 @@
 				A7F29C2816A008380040DA28 /* EGOImageView.m in Sources */,
 				C318F71C16A6AE7F002185A6 /* BeNCRadar.m in Sources */,
 				C3FC0D5E16A78E1B00822AD4 /* BeNCShopInRadar.m in Sources */,
-				C351768116A93702009A2EAA /* BeNCAR3DViewController.m in Sources */,
+				C351768116A93702009A2EAA /* AR3DViewController.m in Sources */,
 				C3F50AD716AF7CD8001E4685 /* ARDetailIn3D.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

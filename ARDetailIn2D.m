@@ -9,7 +9,6 @@
 #import "ARDetailIn2D.h"
 #import "ARArrow.h"
 #import "ARDetailPositionInView.h"
-#import "ARArrow.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LocationService.h"
 #define widthFrame 30
@@ -73,12 +72,9 @@
 -(float)calculateSizeFrame:(InstanceData *)positionEntity
 {
     CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = MAX(labelShopNameSize.width, labelShopAddressSize.width);      
-    CGSize toShopSize = [distanceToShop sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float sizeWidth = originLabelDistance + toShopSize.width + 7;
+    float originLabelDistance = labelShopNameSize.width;      
+    float sizeWidth = originLabelDistance + 7;
     return sizeWidth;
-
 }
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity
@@ -98,7 +94,6 @@
 
 - (void)dealloc
 {
-    [motionManager release];
     [arrowImage release];
     [distanceToShop release];
     [detailShop release];

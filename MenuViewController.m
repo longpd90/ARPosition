@@ -123,11 +123,11 @@ bool backToRootView;
 //protocol used to communicate between the buttons and the tabbar
 #pragma mark -
 #pragma mark GTabTabItemDelegate action
-- (void)selectedItem:(BeNCTabbarItem *)button {
+- (void)selectedItem:(ARTabbarItem *)button {
 	int indexC = 0;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSUInteger tabIndex;
-	for (BeNCTabbarItem *tb in tabItemsArray) {		
+	for (ARTabbarItem *tb in tabItemsArray) {		
 		if (tb == button) {
 			[tb toggleOn:YES];
 			

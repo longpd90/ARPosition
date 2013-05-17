@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "EGOImageView.h"
-@interface BeNCAnnotationView : MKAnnotationView{
+@interface ARPositionAnnotationView : MKAnnotationView{
     EGOImageView *backgroudImage;
     UIImageView *numberImageView;
     UILabel *numberlb;

@@ -11,7 +11,7 @@
 #import "LocationService.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopInRadar.h"
-#import "BeNCAR3DViewController.h"
+#import "AR3DViewController.h"
 @interface BeNCRadar ()
 
 @end

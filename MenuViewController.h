@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BeNCTabbarItem.h"
+#import "ARTabbarItem.h"
 
 @protocol MenuViewControllerDelegate
 - (void)addController:(id)controller;
 @end
 
-@interface MenuViewController : UIViewController<BeNCTabbarItemDelegate>
+@interface MenuViewController : UIViewController<ARTabbarItemDelegate>
 {
     UIView *tabBarHolder;
 	NSMutableArray *tabViewControllers;

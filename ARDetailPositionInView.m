@@ -13,7 +13,7 @@
 #define max 100000
 
 @implementation ARDetailPositionInView
-@synthesize labelDistanceToShop,labelShopName,labelShopAddress;
+@synthesize labelDistanceToShop,labelShopName;
 @synthesize userLocation;
 @synthesize delegate,position;
 
@@ -27,43 +27,19 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         labelShopName = [[UILabel alloc]init];
         [labelShopName setBackgroundColor:[UIColor clearColor]];
-        labelShopAddress = [[UILabel alloc]init];
-        [labelShopAddress setBackgroundColor:[UIColor clearColor]];
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setBackgroundColor:[UIColor clearColor]];
+        [labelDistanceToShop setTextAlignment:NSTextAlignmentCenter];
         labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:positionEntity]];
 
         [self addSubview:labelShopName];
-        [self addSubview:labelShopAddress];
         [self addSubview:labelDistanceToShop];
         [self.layer setCornerRadius:8];
-//        self.alpha = 0.5; 
         [self setContentDetailShop:positionEntity];
-
-        // Initialization code
     }
     return self;
 }
 
-//- (void)updateContentDetailShop:(BeNCShopEntity *)shopEntity
-//{
-//    labelShopName.text = shopEntity.shop_name;
-//    [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize]];
-//    [labelShopName setTextAlignment:UITextAlignmentCenter];
-//    labelShopAddress.text = shopEntity.shop_address;
-//    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize-4]];
-//    [labelShopAddress setTextAlignment:UITextAlignmentCenter];
-//    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize] constrainedToSize:CGSizeMake(max, 40) lineBreakMode:UILineBreakModeCharacterWrap];
-//    CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 30) lineBreakMode:UILineBreakModeCharacterWrap];
-//    float originLabelDistance = [self caculateMax:labelShopNameSize.width withNumberB:labelShopAddressSize.width];
-//    
-//    labelShopName.frame = CGRectMake(50, 0,originLabelDistance,25 );
-//    labelShopAddress.frame = CGRectMake(50, 20,originLabelDistance,25);
-//    labelDistanceToShop.frame = CGRectMake(originLabelDistance + 60, 0, 65, 45);
-//    self.frame = CGRectMake(0, 0,originLabelDistance + 125 ,50 );
-//    [self setBackgroundColor:[UIColor whiteColor]];
-//    
-//}
 
 - (void)setContentDetailShop:(InstanceData *)positionEntity
 {
@@ -71,18 +47,11 @@
     labelShopName.text = positionEntity.label;
     [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize - 2]];
     [labelShopName setTextAlignment:UITextAlignmentCenter];
-    labelShopAddress.text = positionEntity.address;
-    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize-6]];
-    [labelShopAddress setTextAlignment:UITextAlignmentCenter];
     CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = MAX(labelShopNameSize.width, labelShopAddressSize.width);     
-    CGSize labelToShopSize = [labelDistanceToShop.text sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
+    float originLabelDistance = labelShopNameSize.width;     
     
     labelShopName.frame = CGRectMake(3, 0,originLabelDistance,15 );
-    labelShopAddress.frame = CGRectMake(3, 15,originLabelDistance,15);
-    labelDistanceToShop.frame = CGRectMake(originLabelDistance + 5, 12,labelToShopSize.width, 15);
-//    self.frame = CGRectMake(0, 30,originLabelDistance + labelToShopSize.width + 8 ,30 );
+    labelDistanceToShop.frame = CGRectMake(3, 15,originLabelDistance, 15);
     [self setBackgroundColor:[UIColor whiteColor]];
     
 }
@@ -111,7 +80,6 @@
 {
     [position release];
     [labelShopName release];
-    [labelShopAddress release];
     [labelDistanceToShop release];
     [userLocation release];
     [super dealloc];

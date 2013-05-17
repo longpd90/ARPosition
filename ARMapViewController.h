@@ -10,18 +10,18 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import "ARListViewController.h"
-#import "BeNCShopAnnotation.h"
+#import "ARPositionAnnotation.h"
 #import "ARDetailViewController.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
-@interface BeNCMapViewController : UIViewController<MKMapViewDelegate,ListViewOnMapDelegate,DetailViewDelegate>{
-    
+@interface ARMapViewController : UIViewController<MKMapViewDelegate,ListViewOnMapDelegate,DetailViewDelegate>{
+    NSMutableArray *arrayPosition;
     MKMapView *mapView;
     
-    NSArray *shopsArray;
+//    NSArray *shopsArray;
     NSMutableArray *shopsAnnotations;
     
     NSMutableArray *selectedShops;
-    BeNCShopAnnotation *selectedAnnotation;
+    ARPositionAnnotation *selectedAnnotation;
     
     UISlider *zoomSlider;
     UILabel *zoomlabel;
@@ -30,7 +30,7 @@
 @property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
 @property (nonatomic,retain) UISlider *zoomSlider;
 @property (nonatomic,retain) UILabel *zoomLabel;
--(void)getShopData;
+//-(void)getShopData;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)addShopAnnotation;
 -(void)showDetail;

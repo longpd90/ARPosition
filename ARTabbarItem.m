@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCTabbarItem.h"
+#import "ARTabbarItem.h"
 
-@implementation BeNCTabbarItem
+@implementation ARTabbarItem
 @synthesize delegate,_on;
 
 -(BOOL)isOn {

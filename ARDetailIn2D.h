@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#include <CoreMotion/CoreMotion.h>
 #import "ARArrow.h"
 #import "ARDetailPositionInView.h"
 #import <CoreLocation/CoreLocation.h>
@@ -17,7 +16,6 @@
 - (void)didSeclectView:(int )index;
 @end
 @interface ARDetailIn2D : UIView<ARDetailPositionInViewDelegate,UIGestureRecognizerDelegate>{
-    CMMotionManager *motionManager;
     ARArrow *arrowImage;
     ARDetailPositionInView *detailShop;
     CLLocation *userLocation;

@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class BeNCTabbarItem;
-@protocol BeNCTabbarItemDelegate <NSObject> 
-- (void)selectedItem:(BeNCTabbarItem *)button;
+@class ARTabbarItem;
+@protocol ARTabbarItemDelegate <NSObject>
+- (void)selectedItem:(ARTabbarItem *)button;
 @end
 
-@interface BeNCTabbarItem : UIButton{
+@interface ARTabbarItem : UIButton{
     BOOL _on;
 }
-@property (nonatomic, assign) id <BeNCTabbarItemDelegate> delegate;
+@property (nonatomic, assign) id <ARTabbarItemDelegate> delegate;
 @property (nonatomic) BOOL _on;
 -(id)initWithFrame:(CGRect)frame normalState:(NSString*)n toggledState:(NSString *)t;            
 -(BOOL)isOn;

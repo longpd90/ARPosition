@@ -8,12 +8,12 @@
 #import "LocationService.h"
 #import "ARAppDelegate.h"
 #import "MenuViewController.h"
-#import "BeNCTabbarItem.h"
+#import "ARTabbarItem.h"
 #import "ARListViewController.h"
 #import "AR2DViewController.h"
-#import "BeNCMapViewController.h"
+#import "ARMapViewController.h"
 #import "BeNCProcessDatabase.h"
-#import "BeNCAR3DViewController.h"
+#import "AR3DViewController.h"
 
 @implementation ARAppDelegate
 
@@ -33,24 +33,24 @@
 {
     [self checkDatabase];
     [[LocationService sharedLocation]startUpdate];
-    BeNCTabbarItem *tabItem1 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
-	BeNCTabbarItem *tabItem2 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
-	BeNCTabbarItem *tabItem3 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"AR3Doff.png" toggledState:@"AR3Don.png"];
-    BeNCTabbarItem *tabItem4 = [[BeNCTabbarItem alloc] initWithFrame:CGRectMake(278, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
+    ARTabbarItem *tabItem1 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
+	ARTabbarItem *tabItem2 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
+	ARTabbarItem *tabItem3 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"AR3Doff.png" toggledState:@"AR3Don.png"];
+    ARTabbarItem *tabItem4 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(278, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
 
     
     ARListViewController *listViewController = [[ARListViewController alloc]initWithNibName:@"ARListViewController" bundle:nil];
     [listViewController setListType:0];
     AR2DViewController *cameraViewController = [[AR2DViewController alloc]initWithNibName:@"BeNCCameraViewController" bundle:nil];
-    BeNCAR3DViewController *aR3DViewController = [[BeNCAR3DViewController alloc]initWithNibName:@"BeNCAR3DViewController" bundle:nil];
-    BeNCMapViewController *mapViewController = [[BeNCMapViewController alloc]initWithNibName:@"BeNCMapViewController" bundle:nil];
+    AR3DViewController *aR3DViewController = [[AR3DViewController alloc]initWithNibName:@"AR3DViewController" bundle:nil];
+    ARMapViewController *mapViewController = [[ARMapViewController alloc]initWithNibName:@"ARMapViewController" bundle:nil];
     
     
     NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
     UINavigationController *listNavigation = [[UINavigationController alloc]initWithRootViewController:listViewController];
     UINavigationController *cameraNavigation = [[UINavigationController alloc]initWithRootViewController:cameraViewController];
     UINavigationController *aR3DNavigation = [[UINavigationController alloc]initWithRootViewController:aR3DViewController];
-//    UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
+    UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
     [listViewController release];
     [mapViewController release];
     [aR3DViewController release];
@@ -62,18 +62,18 @@
     [cameraNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [aR3DNavigation.navigationBar setHidden:NO];
     [aR3DNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
-//    [mapNavigation.navigationBar setHidden:NO];
-//    [mapNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
+    [mapNavigation.navigationBar setHidden:NO];
+    [mapNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     
 	[viewControllersArray addObject:listNavigation];
     [viewControllersArray addObject:cameraNavigation];
     [viewControllersArray addObject:aR3DNavigation];
-//	[viewControllersArray addObject:mapNavigation];
+	[viewControllersArray addObject:mapNavigation];
     
     [listNavigation release];
     [cameraNavigation release];
     [aR3DNavigation release];
-//    [mapNavigation release];
+    [mapNavigation release];
     
 	
 	NSMutableArray *tabItemsArray = [[NSMutableArray alloc] init];

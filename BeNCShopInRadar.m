@@ -9,7 +9,7 @@
 #import "BeNCShopInRadar.h"
 #import "BeNCShopEntity.h"
 #import "LocationService.h"
-#import "BeNCAR3DViewController.h"
+#import "AR3DViewController.h"
 #import <math.h>
 #define rotationRate 0.0174532925
 

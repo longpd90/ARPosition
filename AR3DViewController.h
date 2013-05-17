@@ -13,7 +13,7 @@
 #import "ARDetailIn2D.h"
 #import "BeNCRadar.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
-@interface BeNCAR3DViewController : UIViewController{
+@interface AR3DViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
 //    NSMutableArray *shopsArray;

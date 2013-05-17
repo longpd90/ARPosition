@@ -8,7 +8,7 @@
 
 #import "ARDetailIn3D.h"
 #import "LocationService.h"
-#import "BeNCAR3DViewController.h"
+#import "AR3DViewController.h"
 #define rotationRate 0.0174532925
 
 

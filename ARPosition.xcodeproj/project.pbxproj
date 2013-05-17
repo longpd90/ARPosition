@@ -50,7 +50,7 @@
 		C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035371675804C00CA3D8C /* BeNCDetailViewController.m */; };
 		C320353A1675804C00CA3D8C /* BeNCDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */; };
 		C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353C167580B600CA3D8C /* BeNCShopEntity.m */; };
-		C3203540167580EA00CA3D8C /* BeNCShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353F167580EA00CA3D8C /* BeNCShopCell.m */; };
+		C3203540167580EA00CA3D8C /* ARPositionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C320353F167580EA00CA3D8C /* ARPositionCell.m */; };
 		C32035431675819800CA3D8C /* ARUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C32035421675819800CA3D8C /* ARUtility.m */; };
 		C3203546167581AF00CA3D8C /* ARGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = C3203545167581AF00CA3D8C /* ARGlobal.m */; };
 		C3203549167582D400CA3D8C /* BeNCArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = C3203548167582D400CA3D8C /* BeNCArrow.m */; };
@@ -147,8 +147,8 @@
 		C32035381675804C00CA3D8C /* BeNCDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCDetailViewController.xib; sourceTree = "<group>"; };
 		C320353B167580B600CA3D8C /* BeNCShopEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopEntity.h; sourceTree = "<group>"; };
 		C320353C167580B600CA3D8C /* BeNCShopEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopEntity.m; sourceTree = "<group>"; };
-		C320353E167580EA00CA3D8C /* BeNCShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeNCShopCell.h; sourceTree = "<group>"; };
-		C320353F167580EA00CA3D8C /* BeNCShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeNCShopCell.m; sourceTree = "<group>"; };
+		C320353E167580EA00CA3D8C /* ARPositionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPositionCell.h; sourceTree = "<group>"; };
+		C320353F167580EA00CA3D8C /* ARPositionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPositionCell.m; sourceTree = "<group>"; };
 		C32035411675819800CA3D8C /* ARUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARUtility.h; sourceTree = "<group>"; };
 		C32035421675819800CA3D8C /* ARUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARUtility.m; sourceTree = "<group>"; };
 		C3203544167581AF00CA3D8C /* ARGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGlobal.h; sourceTree = "<group>"; };
@@ -434,8 +434,8 @@
 				C3F50AD616AF7CD8001E4685 /* BeNCDetailInAR3D.m */,
 				C3FFA3F91681B034007B7963 /* BeNCWebViewController.h */,
 				C3FFA3FA1681B034007B7963 /* BeNCWebViewController.m */,
-				C320353E167580EA00CA3D8C /* BeNCShopCell.h */,
-				C320353F167580EA00CA3D8C /* BeNCShopCell.m */,
+				C320353E167580EA00CA3D8C /* ARPositionCell.h */,
+				C320353F167580EA00CA3D8C /* ARPositionCell.m */,
 				C3203547167582D400CA3D8C /* BeNCArrow.h */,
 				C3203548167582D400CA3D8C /* BeNCArrow.m */,
 				C320354F1675853200CA3D8C /* BeNCDetailShopInCamera.h */,
@@ -593,7 +593,7 @@
 				C32035341675803500CA3D8C /* BeNCCameraViewController.m in Sources */,
 				C32035391675804C00CA3D8C /* BeNCDetailViewController.m in Sources */,
 				C320353D167580B600CA3D8C /* BeNCShopEntity.m in Sources */,
-				C3203540167580EA00CA3D8C /* BeNCShopCell.m in Sources */,
+				C3203540167580EA00CA3D8C /* ARPositionCell.m in Sources */,
 				C32035431675819800CA3D8C /* ARUtility.m in Sources */,
 				C3203546167581AF00CA3D8C /* ARGlobal.m in Sources */,
 				C3203549167582D400CA3D8C /* BeNCArrow.m in Sources */,

@@ -12,7 +12,7 @@
 #import "ARUtility.h"
 #import "BeNCProcessDatabase.h"
 #import "BeNCShopEntity.h"
-#import "BeNCShopCell.h"
+#import "ARPositionCell.h"
 #import "BeNCOneShopARViewController.h"
 #import "EGOImageView.h"
 #import "BeNCShopInRadar.h"
@@ -161,9 +161,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    BeNCShopCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ARPositionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[BeNCShopCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[ARPositionCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.delegate = self;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -213,7 +213,7 @@
 }
 
 
-- (void)bnShoptCellDidClickedAtCell:(BeNCShopCell *)shopCell
+- (void)bnShoptCellDidClickedAtCell:(ARPositionCell *)shopCell
 {
     if (!editing) {
         NSIndexPath *indexPathCell = [self.listShopView indexPathForCell:shopCell];

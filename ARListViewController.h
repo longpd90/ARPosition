@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
-#import "BeNCShopCell.h"
+#import "ARPositionCell.h"
 
 @class ARListViewController;
 
@@ -26,7 +26,7 @@
 
 
 
-@interface ARListViewController : UIViewController<BeNCShopCellDelegate,UITableViewDelegate,UITableViewDataSource>{
+@interface ARListViewController : UIViewController<ARPositionCellDelegate,UITableViewDelegate,UITableViewDataSource>{
     int listType;
     IBOutlet UITableView *listShopView;
     NSMutableArray *shopsArray;

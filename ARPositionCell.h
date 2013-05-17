@@ -10,15 +10,15 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
 #import "EGOImageView.h"
-@class BeNCShopCell;
-@protocol BeNCShopCellDelegate <NSObject>
+@class ARPositionCell;
+@protocol ARPositionCellDelegate <NSObject>
 
 @optional
-- (void)bnShoptCellDidClickedAtCell:(BeNCShopCell *)shopCell;
-- (void)beNCShopCellDidCleckCheckButton:(BeNCShopCell *)shopCell;
+- (void)bnShoptCellDidClickedAtCell:(ARPositionCell *)shopCell;
+- (void)beNCShopCellDidCleckCheckButton:(ARPositionCell *)shopCell;
 @end
 
-@interface BeNCShopCell: UITableViewCell{
+@interface ARPositionCell: UITableViewCell{
     UIButton *checkbox ;
     UIButton *distanceToShop;
     EGOImageView *icon ;
@@ -27,7 +27,7 @@
 }
 @property (nonatomic,retain) EGOImageView *icon;
 @property (nonatomic, retain)CLLocation *userLocation ;
-@property (nonatomic, retain) id<BeNCShopCellDelegate>delegate;
+@property (nonatomic, retain) id<ARPositionCellDelegate>delegate;
 @property (nonatomic ,retain) UIButton *distanceToShop;
 - (void)updateContentForCell:(BeNCShopEntity *)shopEntity withLocation:(CLLocation *)location;
 -(int)calculeDistance:(BeNCShopEntity *)shop withLocation:(CLLocation *)location;

@@ -8,7 +8,7 @@
 
 #import "BeNCOneShopARViewController.h"
 #import "BeNCShopEntity.h"
-#import "BeNCDetailInCamera.h"
+#import "ARDetailIn2D.h"
 #import "LocationService.h"
 #import <math.h>
 #define rotationRate 0.0174532925
@@ -74,7 +74,7 @@
 }
 - (void)setContentForView:(BeNCShopEntity *)shopEntity
 {
-    detailView = [[BeNCDetailInCamera alloc]initWithShop:shopEntity];
+    detailView = [[ARDetailIn2D alloc]initWithShop:shopEntity];
     [self.view addSubview:detailView];
 }
 - (void)setNewCenterForView:(float )angleToHeading{

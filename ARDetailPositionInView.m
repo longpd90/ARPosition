@@ -6,23 +6,22 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCDetailShopInCamera.h"
-#import "BeNCShopEntity.h"
+#import "ARDetailPositionInView.h"
 #import "LocationService.h"
 #import <QuartzCore/QuartzCore.h>
 #define textSize 18
 #define max 100000
 
-@implementation BeNCDetailShopInCamera
-@synthesize labelDistanceToShop,labelShopName,labelShopAddress,shop;
+@implementation ARDetailPositionInView
+@synthesize labelDistanceToShop,labelShopName,labelShopAddress;
 @synthesize userLocation;
-@synthesize delegate;
+@synthesize delegate,position;
 
-- (id)initWithShop:(BeNCShopEntity *)shopEntity
+- (id)initWithShop:(InstanceData *)positionEntity
 {
     self = [super init];
     if (self) {
-        shop = shopEntity;
+        position = positionEntity;
         userLocation = [[LocationService sharedLocation]getOldLocation];
 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
@@ -32,14 +31,14 @@
         [labelShopAddress setBackgroundColor:[UIColor clearColor]];
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setBackgroundColor:[UIColor clearColor]];
-        labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:shop]];
+        labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:positionEntity]];
 
         [self addSubview:labelShopName];
         [self addSubview:labelShopAddress];
         [self addSubview:labelDistanceToShop];
         [self.layer setCornerRadius:8];
 //        self.alpha = 0.5; 
-        [self setContentDetailShop:shopEntity];
+        [self setContentDetailShop:positionEntity];
 
         // Initialization code
     }
@@ -66,17 +65,17 @@
 //    
 //}
 
-- (void)setContentDetailShop:(BeNCShopEntity *)shopEntity
+- (void)setContentDetailShop:(InstanceData *)positionEntity
 {
     [labelDistanceToShop setFont:[UIFont systemFontOfSize:textSize - 4]];
-    labelShopName.text = shopEntity.shop_name;
+    labelShopName.text = positionEntity.label;
     [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize - 2]];
     [labelShopName setTextAlignment:UITextAlignmentCenter];
-    labelShopAddress.text = shopEntity.shop_address;
+    labelShopAddress.text = positionEntity.address;
     [labelShopAddress setFont:[UIFont systemFontOfSize:textSize-6]];
     [labelShopAddress setTextAlignment:UITextAlignmentCenter];
-    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     float originLabelDistance = MAX(labelShopNameSize.width, labelShopAddressSize.width);     
     CGSize labelToShopSize = [labelDistanceToShop.text sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     
@@ -88,9 +87,9 @@
     
 }
 
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
+- (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
+    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
 }
@@ -99,7 +98,7 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shop]];
+    labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:position]];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -110,7 +109,7 @@
 }
 - (void)dealloc
 {
-    [shop release];
+    [position release];
     [labelShopName release];
     [labelShopAddress release];
     [labelDistanceToShop release];

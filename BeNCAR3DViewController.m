@@ -10,8 +10,8 @@
 #import "LocationService.h"
 #import "BeNCShopEntity.h"
 #import "BeNCProcessDatabase.h"
-#import "BeNCDetailInCamera.h"
-#import "BeNCDetailInAR3D.h"
+#import "ARDetailIn2D.h"
+#import "ARDetailIn3D.h"
 #import "BeNCRadar.h"
 #define rotationRate 0.0174532925
 
@@ -20,13 +20,15 @@
 @end
 
 @implementation BeNCAR3DViewController
-@synthesize shopsArray,userLocation,shopInRadius;
+@synthesize userLocation,shopInRadius;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self getDatabase];
+//        [self getDatabase];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
+
         radar = [[BeNCRadar alloc]init];
         radar.frame = CGRectMake(380, 0, 100, 100);
         [self.view addSubview:radar];
@@ -54,7 +56,7 @@
     zoomLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:zoomLabel];
     
-    [self setContentForView];
+//    [self setContentForView];
     [super viewDidLoad];
 }
 
@@ -69,10 +71,10 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
--(void)getDatabase{
-    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-    shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
-}
+//-(void)getDatabase{
+//    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
+//    shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
+//}
 
 - (void)addVideoInput {
     captureSession = [[AVCaptureSession alloc]init];
@@ -92,13 +94,18 @@
 }
 -(void)setContentForView
 {
-    for (int i = 0; i < [shopsArray count]; i ++) {
-        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-        BeNCDetailInAR3D *testView = [[BeNCDetailInAR3D alloc]initWithShop:shopEntity];
+    for (int i = 0; i < [arrayPosition count]; i ++) {
+        InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];
+        ARDetailIn3D *testView = [[ARDetailIn3D alloc]initWithShop:positionEntity];
         [self.view addSubview:testView];
         [testView release];
         
     }
+}
+
+-(void)didUpdateData:(NSNotification *)notification {
+    arrayPosition = (NSMutableArray *)[notification object];
+    [self setContentForView];
 }
 
 //- (void)deleteData
@@ -117,9 +124,9 @@
 //    
 //}
 
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
+- (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
+    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
 }

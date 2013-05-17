@@ -10,25 +10,27 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BeNCShopEntity.h"
-#import "BeNCDetailInCamera.h"
+#import "ARDetailIn2D.h"
 #import "BeNCRadar.h"
+#import <ArroundPlaceService/ArroundPlaceService.h>
 @interface BeNCAR3DViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
-    NSMutableArray *shopsArray;
+//    NSMutableArray *shopsArray;
     NSMutableArray *shopInRadius;
     CLLocation *userLocation ;
     UISlider *sliderDistance;
     UILabel *zoomLabel;
     int radiusSearch;
     BeNCRadar *radar;
+    NSMutableArray *arrayPosition;
 }
 @property (nonatomic, retain)CLLocation *userLocation;
-@property(nonatomic, retain) NSMutableArray *shopsArray;
+//@property(nonatomic, retain) NSMutableArray *shopsArray;
 @property(nonatomic, retain) NSMutableArray *shopInRadius;
 - (void)addVideoInput;
--(void)getDatabase;
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
+//-(void)getDatabase;
+- (int)caculateDistanceToShop:(InstanceData *)positionEntity;
 - (IBAction)changeValueSlider:(id)sender;
 -(void)setContentForView;
 

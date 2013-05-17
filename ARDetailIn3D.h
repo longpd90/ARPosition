@@ -6,19 +6,21 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCDetailInCamera.h"
-@interface BeNCDetailInAR3D : BeNCDetailInCamera{
+#import "ARDetailIn2D.h"
+#import <ArroundPlaceService/ArroundPlaceService.h>
+@interface ARDetailIn3D : ARDetailIn2D{
     double angleRotation;
     CGRect frame;
     float distanceShop;
     int radiusSearching;
+    
 }
 @property int radiusSearching;
-- (id)initWithShop:(BeNCShopEntity *)shopEntity;
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
+- (id)initWithShop:(InstanceData *)positionEntity;
+-(double)caculateRotationAngle:(InstanceData * )positionEntity;
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
 -(void)setFrameForView:(float )angleToHeading;
-- (float)caculateDistanceShop:(BeNCShopEntity *)shopEntity;
+- (float)caculateDistanceShop:(InstanceData *)positionEntity;
 - (void)scaleViewWithDistace;
 
 @end

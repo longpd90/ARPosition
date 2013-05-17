@@ -8,7 +8,7 @@
 
 #import "ARDetailViewController.h"
 #import "BeNCShopEntity.h"
-#import "BeNCArrow.h"
+#import "ARArrow.h"
 #import "BeNCWebViewController.h"
 #import "LocationService.h"
 #import "BeNCOneShopARViewController.h"
@@ -150,11 +150,11 @@
 //    [buttonToCouponSite addTarget:self action:@selector(goToCouponSite:) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:buttonToCouponSite];
     
-//    BeNCArrow *arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
-//    arrowImage.frame = CGRectMake(430,10,20, 30);
-//    [self.view addSubview:arrowImage];
-//    [arrowImage release];
-//    
+    ARArrow *arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
+    arrowImage.frame = CGRectMake(430,10,20, 30);
+    [self.view addSubview:arrowImage];
+    [arrowImage release];
+//
 //    UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonItemStyleBordered target:self action:@selector(goToCamera:)];//[[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
 //    self.navigationItem.rightBarButtonItem = cameraButtonItem;
 //    [cameraButtonItem release];

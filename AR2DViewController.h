@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #include <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCDetailInCamera.h"
+#import "ARDetailIn2D.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 
-@interface AR2DViewController : UIViewController<CLLocationManagerDelegate,BeNCDetailInCameraDelegate,ServiceControllerDelegate>{
+@interface AR2DViewController : UIViewController<CLLocationManagerDelegate,ARDetailIn2DDelegate>{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     NSMutableArray *shopsArray;
@@ -23,21 +23,22 @@
     double rotationAngleArrow3;
     double rotationAngleArrow4;
     double rotationAngleArrow5;
-    BeNCShopEntity *shopEntity1;
-    BeNCShopEntity *shopEntity2;
-    BeNCShopEntity *shopEntity3;
-    BeNCShopEntity *shopEntity4;
-    BeNCShopEntity *shopEntity5;
-    BeNCDetailInCamera *detaitlView1;
-    BeNCDetailInCamera *detaitlView2;
-    BeNCDetailInCamera *detaitlView3;
-    BeNCDetailInCamera *detaitlView4;
-    BeNCDetailInCamera *detaitlView5;
+    InstanceData *positionEntity1;
+    InstanceData *positionEntity2;
+    InstanceData *positionEntity3;
+    InstanceData *positionEntity4;
+    InstanceData *positionEntity5;
+
+    ARDetailIn2D *detaitlView1;
+    ARDetailIn2D *detaitlView2;
+    ARDetailIn2D *detaitlView3;
+    ARDetailIn2D *detaitlView4;
+    ARDetailIn2D *detaitlView5;
 }
 @property (nonatomic, retain) NSMutableArray *arrayPosition;
 - (void)addVideoInput;
-- (void )getDatabase;
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
-- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCamera *)detailViewInCamera;
+//- (void )getDatabase;
+-(double)caculateRotationAngle:(InstanceData * )positionEntity;
+- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(ARDetailIn2D *)detailViewInCamera;
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
 @end

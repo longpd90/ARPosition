@@ -24,9 +24,9 @@
 @property(nonatomic, retain)CLLocation *userLocation;
 @property(nonatomic, retain)InstanceData *position;
 @property(nonatomic, retain)UILabel *labelDistanceToShop;
-- (IBAction)goToMenuSite:(id)sender;
-- (IBAction)goToCouponSite:(id)sender;
-- (IBAction)goToCamera:(id)sender;
+//- (IBAction)goToMenuSite:(id)sender;
+//- (IBAction)goToCouponSite:(id)sender;
+//- (IBAction)goToCamera:(id)sender;
 - (void)setContentDetailForView:(InstanceData *)positionEntity;
 - (id)initWithShop:(InstanceData *)positionEntity;
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;

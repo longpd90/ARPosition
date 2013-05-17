@@ -193,7 +193,7 @@ bool firstUpdate = 1;
         NSLog(@"- Select annotation %@",shop.shop_name);
         NSLog(@"  Number of shop : %d",selectedShops.count);
         NSLog(@"  Shop link icon : %@",shop.shop_icon_link);
-        [self showDetail];
+//        [self showDetail];
         
     }
     
@@ -279,8 +279,8 @@ bool firstUpdate = 1;
                      }];
 }
 #pragma mark subView delegate;
--(void)showDetailInMapView:(BeNCShopEntity *)shop{
-    ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:shop];
+-(void)showDetailInMapView:(InstanceData *)positionEntity{
+    ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:positionEntity];
     detailViewController.delegate = self;
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];

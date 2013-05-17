@@ -6,30 +6,30 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCDetailInAR3D.h"
+#import "ARDetailIn3D.h"
 #import "LocationService.h"
 #import "BeNCAR3DViewController.h"
 #define rotationRate 0.0174532925
 
 
-@implementation BeNCDetailInAR3D
+@implementation ARDetailIn3D
 @synthesize radiusSearching;
 
-- (id)initWithShop:(BeNCShopEntity *)shopEntity
+- (id)initWithShop:(InstanceData *)positionEntity
 {
     self = [super init];
     if (self) {
         radiusSearching = 2000;
-        shop = shopEntity;
+        position = positionEntity;
          [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
-        distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shopEntity]];
-        distanceShop = [self caculateDistanceShop:shopEntity];
-        angleRotation = [self caculateRotationAngle:shopEntity];
+        distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:positionEntity]];
+        distanceShop = [self caculateDistanceShop:positionEntity];
+        angleRotation = [self caculateRotationAngle:positionEntity];
         [self scaleViewWithDistace];
-        [self setContentForView:shopEntity];
+        [self setContentForView:positionEntity];
         UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchesToView)];
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
@@ -39,15 +39,15 @@
 }
 -(void)didUpdateRadius:(NSNotification *)notification{
     self.radiusSearching = ([[notification object]intValue] *  1000);
-    distanceShop = [self caculateDistanceShop:shop];
+    distanceShop = [self caculateDistanceShop:position];
 
 }
-- (void)setContentForView:(BeNCShopEntity *)shopEntity
+- (void)setContentForView:(InstanceData *)positionEntity
 {
-    float sizeWith = [self calculateSizeFrame:shopEntity];
+    float sizeWith = [self calculateSizeFrame:positionEntity];
     self.frame = CGRectMake(0, 0, sizeWith, 30);
     
-    detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
+    detailShop = [[ARDetailPositionInView alloc]initWithShop:positionEntity];
     detailShop.delegate = self;
     detailShop.frame = CGRectMake(0, 0, sizeWith, 30);
     [self addSubview:detailShop];
@@ -78,18 +78,18 @@
 
 }
 
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
-    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
+-(double)caculateRotationAngle:(InstanceData * )positionEntity{
+    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
-    CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
-    CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    double rotationAngle = 0;
     [shopLocation release];
+    CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
+    CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
     [point release];
+    double rotationAngle;
     
     double angle=acos(distance1/distance);
-    if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
-        if (userLocation.coordinate.longitude<=shopEntity.shop_longitute) {
+    if (userLocation.coordinate.latitude <= positionEntity.latitude) {
+        if (userLocation.coordinate.longitude <= positionEntity.longitude) {
             rotationAngle = angle;
         }
         else{
@@ -97,7 +97,7 @@
         }
     }
     else{
-        if (userLocation.coordinate.longitude<shopEntity.shop_longitute) {
+        if (userLocation.coordinate.longitude < positionEntity.longitude) {
             rotationAngle = M_PI - angle;
         }
         else{
@@ -106,6 +106,7 @@
     }
     return rotationAngle;
 }
+
 
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth
 {
@@ -125,9 +126,9 @@
     }
     return angleToHeading;
 }
-- (float)caculateDistanceShop:(BeNCShopEntity *)shopEntity
+- (float)caculateDistanceShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
+    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
     float distance = (float)[shoplocation distanceFromLocation: self.userLocation];
     float tiLe = 250.0/radiusSearching;
     return distance * tiLe;
@@ -145,9 +146,9 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shop]];
-    distanceShop = [self caculateDistanceShop:shop];
-    angleRotation = [self caculateRotationAngle:shop];
+    distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:position]];
+    distanceShop = [self caculateDistanceShop:position];
+    angleRotation = [self caculateRotationAngle:position];
     [self scaleViewWithDistace];
 
 }

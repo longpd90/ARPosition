@@ -117,9 +117,9 @@
 
 - (void)requestDidFinish:(ArroundPlaceService *)controller withResult:(NSArray *)results
 {
-    
     arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"Updata" object:results];
+
     for (int i = 0; i < [arrayPosition count]; i ++) {
         InstanceData *instanceData = (InstanceData *)[arrayPosition objectAtIndex:i];
         NSLog(@"address : %@, lat = %f, lng = %f",instanceData.address,instanceData.latitude,instanceData.longitude);

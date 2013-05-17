@@ -9,8 +9,7 @@
 #import "AR2DViewController.h"
 #import "LocationService.h"
 #import "BeNCProcessDatabase.h"
-#import "BeNCShopEntity.h"
-#import "BeNCDetailInCamera.h"
+#import "ARDetailIn2D.h"
 #import "ARDetailViewController.h"
 #import "ARListViewController.h"
 #import "BeNCShopInRadar.h"
@@ -32,41 +31,10 @@
         userLocation = [[LocationService sharedLocation] getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-        [self addVideoInput];
-        [self getDatabase];
-        shopEntity1 = (BeNCShopEntity *)[shopsArray objectAtIndex:0];
-        shopEntity2 = (BeNCShopEntity *)[shopsArray objectAtIndex:1];
-        shopEntity3 = (BeNCShopEntity *)[shopsArray objectAtIndex:2];
-        shopEntity4 = (BeNCShopEntity *)[shopsArray objectAtIndex:3];
-        shopEntity5 = (BeNCShopEntity *)[shopsArray objectAtIndex:4];
-        
-        detaitlView1 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity1];
-        detaitlView1.delegate = self;
-        [detaitlView1 setIndex:0];
-        detaitlView2 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity2];
-        detaitlView2.delegate = self;
-        [detaitlView2 setIndex:1];
-        detaitlView3 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity3];
-        detaitlView3.delegate = self;
-        [detaitlView3 setIndex:2];
-        detaitlView4 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity4];
-        detaitlView4.delegate = self;
-        [detaitlView4 setIndex:3];
-        detaitlView5 = [[BeNCDetailInCamera alloc]initWithShop:shopEntity5];
-        detaitlView5.delegate = self;
-        [detaitlView5 setIndex:4];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
-        
-        
-        [self.view addSubview:detaitlView5];
-        [self.view addSubview:detaitlView4];
-        [self.view addSubview:detaitlView3];
-        [self.view addSubview:detaitlView2];
-        [self.view addSubview:detaitlView1];
-        BeNCRadar *radar = [[BeNCRadar alloc]init];
-        radar.frame = CGRectMake(380, 0, 100, 100);
-        [self.view addSubview:radar];
-        [radar  release];
+        [self addVideoInput];
+//        [self getDatabase];
     }
     return self;
 }
@@ -93,7 +61,44 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-
+- (void) setupContentView
+{
+    positionEntity1 = (InstanceData *)[arrayPosition objectAtIndex:0];
+    positionEntity2 = (InstanceData *)[arrayPosition objectAtIndex:1];
+    positionEntity3 = (InstanceData *)[arrayPosition objectAtIndex:2];
+    positionEntity4 = (InstanceData *)[arrayPosition objectAtIndex:3];
+    positionEntity5 = (InstanceData *)[arrayPosition objectAtIndex:4];
+    
+    
+    
+    detaitlView1 = [[ARDetailIn2D alloc]initWithShop:positionEntity1];
+    detaitlView1.delegate = self;
+    [detaitlView1 setIndex:0];
+    detaitlView2 = [[ARDetailIn2D alloc]initWithShop:positionEntity2];
+    detaitlView2.delegate = self;
+    [detaitlView2 setIndex:1];
+    detaitlView3 = [[ARDetailIn2D alloc]initWithShop:positionEntity3];
+    detaitlView3.delegate = self;
+    [detaitlView3 setIndex:2];
+    detaitlView4 = [[ARDetailIn2D alloc]initWithShop:positionEntity4];
+    detaitlView4.delegate = self;
+    [detaitlView4 setIndex:3];
+    detaitlView5 = [[ARDetailIn2D alloc]initWithShop:positionEntity5];
+    detaitlView5.delegate = self;
+    [detaitlView5 setIndex:4];
+    
+    
+    
+    [self.view addSubview:detaitlView5];
+    [self.view addSubview:detaitlView4];
+    [self.view addSubview:detaitlView3];
+    [self.view addSubview:detaitlView2];
+    [self.view addSubview:detaitlView1];
+    BeNCRadar *radar = [[BeNCRadar alloc]init];
+    radar.frame = CGRectMake(380, 0, 100, 100);
+    [self.view addSubview:radar];
+    [radar  release];
+}
 # pragma mark - add Video to App
 - (void)addVideoInput {
     captureSession = [[AVCaptureSession alloc]init];
@@ -113,40 +118,14 @@
 
 
 # pragma mark - get Database
-- (void )getDatabase
-{
-    ARListViewController *listViewController = [[ARListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
-    shopsArray = [[[NSMutableArray alloc]initWithArray:listViewController.shopsArray]retain];
-    [listViewController release];
+//- (void )getDatabase
+//{
+//    ARListViewController *listViewController = [[ARListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
+//    shopsArray = [[[NSMutableArray alloc]initWithArray:listViewController.shopsArray]retain];
+//    [listViewController release];
+//
+//}
 
-}
-
-- (void)getData:(float)radius withPageSize:(int)pageSize withPageIndex:(int)pageIndex withCatagory:(int)catagory  withLanguage:(NSString *)language {
-    NSLog(@"user lat = %f, user lng = %f",userLocation.coordinate.latitude, userLocation.coordinate.longitude);
-    ArroundPlaceService * dataPlace = [[ArroundPlaceService alloc]init];
-    dataPlace.delegate = self;
-    [dataPlace getArroundPlaceWithLatitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.latitude] longitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.longitude] radius:radius pageSize:pageSize pageIndex:pageIndex category:catagory language:language];
-}
-
-- (void)requestDidFinish:(ArroundPlaceService *)controller withResult:(NSArray *)results
-{
-    
-    arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
-    
-    for (int i = 0; i < [arrayPosition count]; i ++) {
-        InstanceData *instanceData = (InstanceData *)[arrayPosition objectAtIndex:i];
-        NSLog(@"address : %@, lat = %f, lng = %f",instanceData.address,instanceData.latitude,instanceData.longitude);
-    }
-}
-
-
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
-{
-    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
-    int distance = (int)[shoplocation distanceFromLocation: userLocation];
-    [shoplocation release];
-    return distance;
-}
 
 
 #pragma mark - set Content For View
@@ -207,11 +186,11 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    rotationAngleArrow1 = [self caculateRotationAngle:shopEntity1];
-    rotationAngleArrow2 = [self caculateRotationAngle:shopEntity2];
-    rotationAngleArrow3 = [self caculateRotationAngle:shopEntity3];
-    rotationAngleArrow4 = [self caculateRotationAngle:shopEntity4];
-    rotationAngleArrow5 = [self caculateRotationAngle:shopEntity5];
+    rotationAngleArrow1 = [self caculateRotationAngle:positionEntity1];
+    rotationAngleArrow2 = [self caculateRotationAngle:positionEntity2];
+    rotationAngleArrow3 = [self caculateRotationAngle:positionEntity3];
+    rotationAngleArrow4 = [self caculateRotationAngle:positionEntity4];
+    rotationAngleArrow5 = [self caculateRotationAngle:positionEntity5];
 }
 
 -(void)didUpdateHeading:(NSNotification *)notification{
@@ -233,7 +212,12 @@
 
 }
 
-- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(BeNCDetailInCamera *)detailViewInCamera{
+-(void)didUpdateData:(NSNotification *)notification {
+    arrayPosition = (NSMutableArray *)[notification object];
+    [self setupContentView];
+}
+
+- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(ARDetailIn2D *)detailViewInCamera{
     float originX = detailViewInCamera.frame.size.width/2;
     float originY = detailViewInCamera.frame.size.height/2;
     float angle1 = atanf(125.0/240.0);
@@ -275,18 +259,18 @@
     
 }
 
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
-    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
+-(double)caculateRotationAngle:(InstanceData * )positionEntity{
+    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
-    CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
-    CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    double rotationAngle = 0;
     [shopLocation release];
+    CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
+    CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
     [point release];
+    double rotationAngle;
     
     double angle=acos(distance1/distance);
-    if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
-        if (userLocation.coordinate.longitude<=shopEntity.shop_longitute) {
+    if (userLocation.coordinate.latitude <= positionEntity.latitude) {
+        if (userLocation.coordinate.longitude <= positionEntity.longitude) {
             rotationAngle = angle;
         }
         else{
@@ -294,7 +278,7 @@
         }
     }
     else{
-        if (userLocation.coordinate.longitude<shopEntity.shop_longitute) {
+        if (userLocation.coordinate.longitude < positionEntity.longitude) {
             rotationAngle = M_PI - angle;
         }
         else{
@@ -326,8 +310,8 @@
 
 - (void)didSeclectView:(int)index
 {
-    BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:index];
-    ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:shopEntity];
+    InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:index];
+    ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:positionEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 }

@@ -6,11 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCDetailInCamera.h"
-#import "BeNCShopEntity.h"
-#import "BeNCArrow.h"
-#import "BeNCDetailShopInCamera.h"
-#import "BeNCArrow.h"
+#import "ARDetailIn2D.h"
+#import "ARArrow.h"
+#import "ARDetailPositionInView.h"
+#import "ARArrow.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LocationService.h"
 #define widthFrame 30
@@ -19,22 +18,22 @@
 #define max 100000
 
 
-@interface BeNCDetailInCamera ()
+@interface ARDetailIn2D ()
 
 @end
 
-@implementation BeNCDetailInCamera
-@synthesize shop,delegate,index,userLocation;
+@implementation ARDetailIn2D
+@synthesize delegate,index,userLocation;
 
-- (id)initWithShop:(BeNCShopEntity *)shopEntity
+- (id)initWithShop:(InstanceData *)positionEntity
 {
     self = [super init];
     if (self) {
-        shop = shopEntity;
+        position = positionEntity;
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-        distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shopEntity]];
-        [self setContentForView:shopEntity];
+        distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:positionEntity]];
+        [self setContentForView:positionEntity];
         UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchesToView)];
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
@@ -43,17 +42,17 @@
 }
 
 
-- (void)setContentForView:(BeNCShopEntity *)shopEntity
+- (void)setContentForView:(InstanceData *)positionEntity
 {
-    float sizeWith = [self calculateSizeFrame:shopEntity];
+    float sizeWith = [self calculateSizeFrame:positionEntity];
     self.frame = CGRectMake(0, 0, sizeWith, 110);
     
-    detailShop = [[BeNCDetailShopInCamera alloc]initWithShop:shopEntity];
+    detailShop = [[ARDetailPositionInView alloc]initWithShop:positionEntity];
     detailShop.delegate = self;
     detailShop.frame = CGRectMake(0, 30, sizeWith, 30);
     [self addSubview:detailShop];
     
-    arrowImage = [[BeNCArrow alloc]initWithShop:shopEntity];
+    arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
     float tdoX = sizeWith/2 - 15;
     arrowImage.frame = CGRectMake(tdoX , 0 , 20, 30);
     [self addSubview:arrowImage];
@@ -71,10 +70,10 @@
         [self.delegate didSeclectView:self.index];
     }
 }
--(float)calculateSizeFrame:(BeNCShopEntity *)shopEntity
+-(float)calculateSizeFrame:(InstanceData *)positionEntity
 {
-    CGSize labelShopNameSize = [shopEntity.shop_name sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    CGSize labelShopAddressSize = [shopEntity.shop_address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 6] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     float originLabelDistance = MAX(labelShopNameSize.width, labelShopAddressSize.width);      
     CGSize toShopSize = [distanceToShop sizeWithFont:[UIFont systemFontOfSize:textSize - 4] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
     float sizeWidth = originLabelDistance + toShopSize.width + 7;
@@ -82,9 +81,9 @@
 
 }
 
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
+- (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
+    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
     int distance = (int)[shoplocation distanceFromLocation: userLocation];
     return distance;
 }
@@ -93,14 +92,13 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:shop]];
+    distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:position]];
 }
 
 
 - (void)dealloc
 {
     [motionManager release];
-    [shop release];
     [arrowImage release];
     [distanceToShop release];
     [detailShop release];

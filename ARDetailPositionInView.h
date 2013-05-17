@@ -7,27 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BeNCShopEntity.h"
 #import <CoreLocation/CoreLocation.h>
-@class BeNCDetailShopInCamera;
-@protocol BeNCDetailShopDelegate <NSObject>
+#import <ArroundPlaceService/ArroundPlaceService.h>
+@class ARDetailPositionInView;
+@protocol ARDetailPositionInViewDelegate <NSObject>
 - (void)didTouchesToView;
 @end
-@interface BeNCDetailShopInCamera : UIView{
+@interface ARDetailPositionInView : UIView{
     UILabel *labelShopName;
     UILabel *labelShopAddress;
     UILabel *labelDistanceToShop;
     CLLocation *userLocation ;
-    BeNCShopEntity *shop;
+    InstanceData *position;
 }
-@property (nonatomic, retain)id<BeNCDetailShopDelegate>delegate;
-@property(nonatomic, retain)BeNCShopEntity *shop;
+@property (nonatomic, retain)id<ARDetailPositionInViewDelegate>delegate;
+@property (nonatomic, retain)InstanceData *position;
 @property(nonatomic, retain)UILabel *labelShopName;
 @property(nonatomic, retain)UILabel *labelShopAddress;
 @property(nonatomic, retain)UILabel *labelDistanceToShop;
 @property(nonatomic,retain)CLLocation *userLocation ;
-- (id)initWithShop:(BeNCShopEntity *)shopEntity;
-- (int)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
+- (id)initWithShop:(InstanceData *)positionEntity;
+- (int)caculateDistanceToShop:(InstanceData *)positionEntity;
 //- (float)caculateMax:(float )numberA withNumberB:(float )numberB;
-- (void)setContentDetailShop:(BeNCShopEntity *)shopEntity;
+- (void)setContentDetailShop:(InstanceData *)positionEntity;
 @end

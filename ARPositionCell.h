@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCShopEntity.h"
 #import "EGOImageView.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 @class ARPositionCell;
@@ -16,7 +15,6 @@
 
 @optional
 - (void)bnShoptCellDidClickedAtCell:(ARPositionCell *)shopCell;
-- (void)beNCShopCellDidCleckCheckButton:(ARPositionCell *)shopCell;
 @end
 
 @interface ARPositionCell: UITableViewCell{
@@ -24,8 +22,12 @@
     UIButton *distanceToShop;
     EGOImageView *icon ;
     CLLocation *userLocation ;
+    UILabel *labelAddress;
+    UILabel *labelName;
 
 }
+@property (nonatomic, retain) UILabel *labelName;
+@property (nonatomic, retain) UILabel *labelAddress;
 @property (nonatomic,retain) EGOImageView *icon;
 @property (nonatomic, retain)CLLocation *userLocation ;
 @property (nonatomic, retain) id<ARPositionCellDelegate>delegate;

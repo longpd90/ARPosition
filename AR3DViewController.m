@@ -8,11 +8,9 @@
 
 #import "AR3DViewController.h"
 #import "LocationService.h"
-#import "BeNCShopEntity.h"
-#import "BeNCProcessDatabase.h"
 #import "ARDetailIn2D.h"
 #import "ARDetailIn3D.h"
-#import "BeNCRadar.h"
+#import "ARRadar.h"
 #define rotationRate 0.0174532925
 
 @interface AR3DViewController ()
@@ -29,7 +27,7 @@
 //        [self getDatabase];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
-        radar = [[BeNCRadar alloc]init];
+        radar = [[ARRadar alloc]init];
         radar.frame = CGRectMake(380, 0, 100, 100);
         [self.view addSubview:radar];
 
@@ -59,7 +57,10 @@
 //    [self setContentForView];
     [super viewDidLoad];
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:YES];
+    
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -71,10 +72,7 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
-//-(void)getDatabase{
-//    [[BeNCProcessDatabase sharedMyDatabase]getDatebase];
-//    shopsArray = [[NSMutableArray alloc]initWithArray:[[BeNCProcessDatabase sharedMyDatabase] arrayShop]];
-//}
+
 
 - (void)addVideoInput {
     captureSession = [[AVCaptureSession alloc]init];

@@ -7,9 +7,7 @@
 //
 
 #import "ARDetailViewController.h"
-#import "BeNCShopEntity.h"
 #import "ARArrow.h"
-#import "BeNCWebViewController.h"
 #import "LocationService.h"
 #import "ARAPositionViewController.h"
 #import "EGOImageView.h"
@@ -44,7 +42,7 @@
 
 - (void)viewDidLoad
 {
-
+    self.navigationController.navigationBar.hidden = NO;
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -151,7 +149,7 @@
 //    [self.view addSubview:buttonToCouponSite];
     
     ARArrow *arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
-    arrowImage.frame = CGRectMake(430,10,20, 30);
+    arrowImage.frame = CGRectMake(410,0,20, 30);
     [self.view addSubview:arrowImage];
     [arrowImage release];
 //
@@ -205,6 +203,8 @@
 //    [oneShopAR release];
 //        
 //}
+
+    
 -(void)viewWillDisappear:(BOOL)animated{
     [delegate backToMap:self];
 }

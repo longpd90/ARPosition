@@ -19,7 +19,7 @@
 {
     self = [super init];
     if (self) {
-        radiusSearching = 2000;
+        radiusSearching = 10000;
         position = positionEntity;
          [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
         userLocation = [[LocationService sharedLocation]getOldLocation];

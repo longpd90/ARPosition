@@ -14,11 +14,13 @@
 #import "ARDetailViewController.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 @interface ARMapViewController : UIViewController<MKMapViewDelegate,ListViewOnMapDelegate,DetailViewDelegate>{
+    
     NSMutableArray *arrayPosition;
     MKMapView *mapViewPosition;
     NSMutableArray *shopsAnnotations;
     NSMutableArray *selectedShops;
     ARPositionAnnotation *selectedAnnotation;
+    CLLocation *userLocation;
 }
 @property (nonatomic,retain) MKMapView *mapViewPosition;
 @property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;

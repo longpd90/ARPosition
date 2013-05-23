@@ -9,7 +9,6 @@
 #import "ARMapViewController.h"
 #import "ARDetailViewController.h"
 #import "LocationService.h"
-#import "BeNCProcessDatabase.h"
 #import "ARPositionAnnotation.h"
 #import "ARListViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -73,11 +72,9 @@ bool firstUpdate = 1;
 }
 
 -(void)addShopAnnotation{
-    NSLog(@"so phat tu cua shop :%d",[arrayPosition count]);
     shopsAnnotations = [[NSMutableArray alloc]init];
     for (int i=0; i<arrayPosition.count; i++) {
         InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];
-        NSLog(@"khoi tao annotation %d la %@",i, positionEntity.label);
         
         CLLocationCoordinate2D placeCoord;
         
@@ -172,7 +169,7 @@ bool firstUpdate = 1;
 {
     static NSString *identifier = @"annotation";   
     if ([annotation isKindOfClass:[ARPositionAnnotation class]]) {
-        ARPositionAnnotationView *annotationView = (ARPositionAnnotationView *) [mapViewPosition dequeueReusableAnnotationViewWithIdentifier:identifier];
+        ARPositionAnnotationView *annotationView = (ARPositionAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[ARPositionAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             

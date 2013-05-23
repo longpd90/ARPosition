@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCShopEntity.h"
 #import "ARDetailIn2D.h"
-#import "BeNCRadar.h"
+#import "ARRadar.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 @interface AR3DViewController : UIViewController{
     AVCaptureSession *captureSession;
@@ -22,7 +21,7 @@
     UISlider *sliderDistance;
     UILabel *zoomLabel;
     int radiusSearch;
-    BeNCRadar *radar;
+    ARRadar *radar;
     NSMutableArray *arrayPosition;
 }
 @property (nonatomic, retain)CLLocation *userLocation;

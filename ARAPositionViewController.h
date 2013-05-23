@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCShopEntity.h"
 #import "ARDetailIn2D.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 @interface ARAPositionViewController : UIViewController{

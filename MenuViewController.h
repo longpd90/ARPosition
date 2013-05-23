@@ -20,9 +20,11 @@
 	NSMutableArray *tabItemsArray;
 	int initTab; 
     int selectedTab;
+
 }
 
 @property int initTab;
+
 @property (nonatomic, retain) UIView *tabBarHolder;
 @property (nonatomic, assign) id <MenuViewControllerDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray *tabViewControllers;

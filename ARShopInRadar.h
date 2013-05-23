@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCShopEntity.h"
-@interface BeNCShopInRadar : UIImageView{
+#import <ArroundPlaceService/ArroundPlaceService.h>
+@interface ARShopInRadar : UIImageView{
     CLLocation *userLocation;
-    BeNCShopEntity *shop;
+    InstanceData *position;
     float distanceToShop;
     double angleRotation;
     CGRect frame;
@@ -19,10 +19,10 @@
 }
 @property int radiusSearching;
 @property(nonatomic, retain)CLLocation *userLocation;
-@property(nonatomic, retain)BeNCShopEntity *shop;
-- (id)initWithShop:(BeNCShopEntity *)shopEntity withRadius:(int )radius;
-- (float)caculateDistanceToShop:(BeNCShopEntity *)shopEntity;
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity;
+@property(nonatomic, retain)InstanceData *position;
+- (id)initWithShop:(InstanceData *)positionEntity withRadius:(int )radius;
+- (float)caculateDistanceToShop:(InstanceData *)positionEntity;
+-(double)caculateRotationAngle:(InstanceData * )positionEntity;
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
 - (float)giaiPhuongTrinhB2:(float )a withIndexB:(float)b withIndexC:(float )c withAngle:(float)angle;
 //-(void)setFrameForView:(float )angleToHeading;

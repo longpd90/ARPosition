@@ -33,9 +33,6 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:positionEntity]];
         [self setContentForView:positionEntity];
-        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchesToView)];
-        recognizer.delegate = self;
-        [self addGestureRecognizer:recognizer];
     }
     return self;
 }
@@ -44,17 +41,17 @@
 - (void)setContentForView:(InstanceData *)positionEntity
 {
     float sizeWith = [self calculateSizeFrame:positionEntity];
-    self.frame = CGRectMake(0, 0, sizeWith, 110);
+    self.frame = CGRectMake(0, 0, sizeWith, 80);
     
     detailShop = [[ARDetailPositionInView alloc]initWithShop:positionEntity];
     detailShop.delegate = self;
-    detailShop.frame = CGRectMake(0, 30, sizeWith, 30);
+    detailShop.frame = CGRectMake(0, 0, sizeWith, 30);
     [self addSubview:detailShop];
     
-    arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
-    float tdoX = sizeWith/2 - 15;
-    arrowImage.frame = CGRectMake(tdoX , 0 , 20, 30);
-    [self addSubview:arrowImage];
+//    arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
+//    float tdoX = sizeWith/2 - 15;
+//    arrowImage.frame = CGRectMake(tdoX , 0 , 60, 60);
+//    [self addSubview:arrowImage];
     
     [self setBackgroundColor:[UIColor clearColor]];
 }
@@ -69,6 +66,7 @@
         [self.delegate didSeclectView:self.index];
     }
 }
+
 -(float)calculateSizeFrame:(InstanceData *)positionEntity
 {
     CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];

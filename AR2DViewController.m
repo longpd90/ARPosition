@@ -8,12 +8,11 @@
 
 #import "AR2DViewController.h"
 #import "LocationService.h"
-#import "BeNCProcessDatabase.h"
 #import "ARDetailIn2D.h"
 #import "ARDetailViewController.h"
 #import "ARListViewController.h"
-#import "BeNCShopInRadar.h"
-#import "BeNCRadar.h"
+#import "ARShopInRadar.h"
+#import "ARRadar.h"
 #define rotationRate 0.0174532925
 
 @interface AR2DViewController ()
@@ -38,7 +37,10 @@
     }
     return self;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setHidden:YES];
+    
+}
 - (void)viewDidLoad
 {
     [self setTitle:@"AR"];
@@ -92,7 +94,7 @@
     [self.view addSubview:detaitlView3];
     [self.view addSubview:detaitlView2];
     [self.view addSubview:detaitlView1];
-    BeNCRadar *radar = [[BeNCRadar alloc]init];
+    ARRadar *radar = [[ARRadar alloc]init];
     radar.frame = CGRectMake(380, 0, 100, 100);
     [self.view addSubview:radar];
     [radar  release];
@@ -211,7 +213,7 @@
 }
 
 -(void)didUpdateData:(NSNotification *)notification {
-    arrayPosition = (NSMutableArray *)[notification object];
+    arrayPosition = [(NSMutableArray *)[notification object]retain];
     [self setupContentView];
 }
 

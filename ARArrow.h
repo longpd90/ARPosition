@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCShopEntity.h"
 #include <CoreLocation/CoreLocation.h>
 #import <ArroundPlaceService/ArroundPlaceService.h>
-@interface ARArrow : UIImageView<CLLocationManagerDelegate>{
+@interface ARArrow : UIView<CLLocationManagerDelegate>{
     CLLocation *userLocation;
-//    BeNCShopEntity *shop ;
     InstanceData *position;
     double rotationAngleArrow;
+    UIImageView *arrowImageView;
 }
-//@property(nonatomic, retain)BeNCShopEntity *shop;
 @property (nonatomic, retain)InstanceData *postion;
 - (id)initWithShop:(InstanceData *)positionEntity;
 -(double)caculateRotationAngle:(InstanceData * )positionEntity;

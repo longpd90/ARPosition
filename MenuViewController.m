@@ -7,7 +7,6 @@
 //
 
 #import "MenuViewController.h"
-#import "BeNCProcessDatabase.h"
 #define kSelectedTab	@"SelectedTAB"
 
 @interface MenuViewController ()
@@ -41,6 +40,7 @@ bool backToRootView;
 {
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
+   ;
 }
 
 - (void)viewDidUnload

@@ -11,7 +11,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCShopEntity.h"
 #import "ARPositionCell.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 
@@ -30,7 +29,7 @@
 @interface ARListViewController : UIViewController<ARPositionCellDelegate,UITableViewDelegate,UITableViewDataSource,ServiceControllerDelegate>{
     int listType;
     IBOutlet UITableView *listShopView;
-    NSMutableArray *shopsArray;
+//    NSMutableArray *shopsArray;
     CLLocation *userLocation ;
     float distanceToShop;
     BOOL editing;
@@ -48,13 +47,12 @@
 @property(nonatomic) int listType;
 @property (nonatomic, retain) NSMutableArray *arrayPosition;
 -(void)didUpdateLocation:(NSNotification *)notifi;
--(void)getShopData;
--(int)calculeDistance:(BeNCShopEntity *)shop;
-- (void)refreshData;
-- (IBAction)editList:(id)sender;
--(void)getShopDataFromMap:(NSArray *)shopArray;
+-(int)calculeDistance:(InstanceData *)positionEntity;
+//- (void)refreshData;
+//- (IBAction)editList:(id)sender;
 -(void)sortShopByDistance;
 -(IBAction)closeListViewInMap:(id)sender;
 -(void)addDoneButton;
+-(void)getShopDataFromMap:(NSArray *)shopArray;
 
 @end

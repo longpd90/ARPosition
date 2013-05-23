@@ -12,7 +12,6 @@
 #import "ARListViewController.h"
 #import "AR2DViewController.h"
 #import "ARMapViewController.h"
-#import "BeNCProcessDatabase.h"
 #import "AR3DViewController.h"
 
 @implementation ARAppDelegate
@@ -87,7 +86,6 @@
     [tabItem3 release];
     [tabItem4 release];
 //    
-    [[BeNCProcessDatabase sharedMyDatabase] getDatebase ];
     
   
 

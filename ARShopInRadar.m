@@ -6,42 +6,33 @@
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
-#import "BeNCShopInRadar.h"
-#import "BeNCShopEntity.h"
+#import "ARShopInRadar.h"
 #import "LocationService.h"
 #import "AR3DViewController.h"
 #import <math.h>
 #define rotationRate 0.0174532925
 
 
-@implementation BeNCShopInRadar
-@synthesize userLocation,shop,radiusSearching;
-- (id)initWithShop:(BeNCShopEntity *)shopEntity withRadius:(int )radius
+@implementation ARShopInRadar
+@synthesize userLocation,position,radiusSearching;
+- (id)initWithShop:(InstanceData *)positionEntity withRadius:(int )radius
 {
     self = [super init];
     if (self) {
-        shop = shopEntity;
+        position = positionEntity;
         radiusSearching = radius;
         frame.size.width = 5;
         frame.size.height = 5;
-        shop = shopEntity;
-//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-        distanceToShop = [self caculateDistanceToShop:shopEntity];
-        angleRotation = [self caculateRotationAngle:shopEntity];
+        distanceToShop = [self caculateDistanceToShop:positionEntity];
+        angleRotation = [self caculateRotationAngle:positionEntity];
         UIImage *arrowImage = [UIImage imageNamed:@"ShopInRadar.png"];
         self.image = arrowImage;
            }
     return self;
 }
-
-//-(void)didUpdateRadius:(NSNotification *)notification{
-//    self.radiusSearching = ([[notification object]intValue] *  1000);
-//    distanceToShop = [self caculateDistanceToShop:shop];
-//
-//}
  
 -(void)didUpdateHeading:(NSNotification *)notification{
     CLHeading *newHeading = [notification object];
@@ -53,13 +44,12 @@
     CLLocation *newLocation = (CLLocation *)[notification object];
     [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    distanceToShop = [self caculateDistanceToShop:shop];
-    angleRotation = [self caculateRotationAngle:shop];
+    distanceToShop = [self caculateDistanceToShop:position];
+    angleRotation = [self caculateRotationAngle:position];
 }
 
 -(void)setFrameForView:(float )angleToHeading withScaleDistance:(float)scaleDistace
 {
-//    NSLog(@"khoang cach den shop %d la %f",shop.shop_id ,scaleDistace);
     float a = tanf(angleToHeading);
     float b = 50 - 50 * a;
     float indexA = (1 + a * a);
@@ -89,26 +79,26 @@
     return x;
 
 }
-- (float)caculateDistanceToShop:(BeNCShopEntity *)shopEntity
+- (float)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute]autorelease];
+    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
     float distance = (float)[shoplocation distanceFromLocation:self.userLocation];
     float tiLe = 50.0/radiusSearching;
     return distance * tiLe;
 }
 
--(double)caculateRotationAngle:(BeNCShopEntity * )shopEntity{
-    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:shopEntity.shop_longitute];
+-(double)caculateRotationAngle:(InstanceData * )positionEntity{
+    CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
     [shopLocation release];
-    CLLocation *point =  [[CLLocation alloc]initWithLatitude:shopEntity.shop_latitude longitude:userLocation.coordinate.longitude];
+    CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
     [point release];
     double rotationAngle;
     
     double angle=acos(distance1/distance);
-    if (userLocation.coordinate.latitude<=shopEntity.shop_latitude) {
-        if (userLocation.coordinate.longitude<=shopEntity.shop_longitute) {
+    if (userLocation.coordinate.latitude <= positionEntity.latitude) {
+        if (userLocation.coordinate.longitude <= positionEntity.longitude) {
             rotationAngle = angle;
         }
         else{
@@ -116,7 +106,7 @@
         }
     }
     else{
-        if (userLocation.coordinate.longitude<shopEntity.shop_longitute) {
+        if (userLocation.coordinate.longitude < positionEntity.longitude) {
             rotationAngle = M_PI - angle;
         }
         else{
@@ -125,7 +115,6 @@
     }
     return rotationAngle;
 }
-
 
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth
 {

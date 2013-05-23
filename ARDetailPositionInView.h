@@ -19,6 +19,7 @@
     CLLocation *userLocation ;
     InstanceData *position;
 }
+@property (nonatomic, retain) UIImageView *imageViewBackground;
 @property (nonatomic, retain)id<ARDetailPositionInViewDelegate>delegate;
 @property (nonatomic, retain)InstanceData *position;
 @property(nonatomic, retain)UILabel *labelShopName;

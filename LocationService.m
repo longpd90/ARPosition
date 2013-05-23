@@ -20,7 +20,6 @@
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];        
         userLocation = [[CLLocation alloc]init];        
         [[NSNotificationCenter defaultCenter]postNotificationName:@"init" object:nil];
-
     }
     return self;
 }

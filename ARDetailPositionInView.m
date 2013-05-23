@@ -15,22 +15,29 @@
 @implementation ARDetailPositionInView
 @synthesize labelDistanceToShop,labelShopName;
 @synthesize userLocation;
-@synthesize delegate,position;
+@synthesize delegate,position,imageViewBackground;
 
 - (id)initWithShop:(InstanceData *)positionEntity
 {
     self = [super init];
     if (self) {
+        UIImage *imageBackground = [UIImage imageNamed:@"Background.png"];
+        imageViewBackground = [[UIImageView alloc]init];
+        imageViewBackground.image = imageBackground;
+        [self addSubview:imageViewBackground];
+        
         position = positionEntity;
         userLocation = [[LocationService sharedLocation]getOldLocation];
 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         labelShopName = [[UILabel alloc]init];
         [labelShopName setBackgroundColor:[UIColor clearColor]];
+        labelShopName.textColor = [UIColor whiteColor];
         labelDistanceToShop = [[UILabel alloc]init];
         [labelDistanceToShop setBackgroundColor:[UIColor clearColor]];
         [labelDistanceToShop setTextAlignment:NSTextAlignmentCenter];
         labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:positionEntity]];
+        labelDistanceToShop.textColor = [UIColor whiteColor];
 
         [self addSubview:labelShopName];
         [self addSubview:labelDistanceToShop];
@@ -52,7 +59,7 @@
     
     labelShopName.frame = CGRectMake(3, 0,originLabelDistance,15 );
     labelDistanceToShop.frame = CGRectMake(3, 15,originLabelDistance, 15);
-    [self setBackgroundColor:[UIColor whiteColor]];
+    imageViewBackground.frame = CGRectMake(0, 0, originLabelDistance + 7, 30);
     
 }
 
@@ -76,6 +83,7 @@
         [self.delegate didTouchesToView];
     }
 }
+
 - (void)dealloc
 {
     [position release];

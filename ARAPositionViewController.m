@@ -7,7 +7,6 @@
 //
 
 #import "ARAPositionViewController.h"
-#import "BeNCShopEntity.h"
 #import "ARDetailIn2D.h"
 #import "LocationService.h"
 #import <math.h>

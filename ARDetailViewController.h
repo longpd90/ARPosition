@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BeNCShopEntity.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 
 @class ARDetailViewController;

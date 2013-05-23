@@ -7,19 +7,32 @@
 //
 
 #import "ARPositionCell.h"
-#import "BeNCShopEntity.h"
 
 @implementation ARPositionCell
-@synthesize distanceToShop,delegate,userLocation;
+@synthesize distanceToShop,delegate,userLocation,labelAddress,labelName;
 @synthesize icon;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         distanceToShop = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [distanceToShop setFrame:CGRectMake(365, 5, 90, 50)];
+        [distanceToShop addTarget:self action:@selector(touchesToButtonDistance) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:distanceToShop];
         icon = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"images.png"]];
         icon.frame = CGRectMake(5, 5, 50, 50);
         [self addSubview:self.icon];
+        
+        labelAddress = [[UILabel alloc]init];
+        [labelAddress setFont:[UIFont systemFontOfSize:14]];
+        labelAddress.backgroundColor = [UIColor clearColor];
+        [self addSubview:labelAddress];
+        
+        labelName = [[UILabel alloc]init];
+        [labelName setFont:[UIFont boldSystemFontOfSize:16]];
+        [labelName setBackgroundColor:[UIColor clearColor]];
+        [labelName setTextAlignment:NSTextAlignmentCenter];
+        [self addSubview:labelName];
             }
     return self;
 }
@@ -39,14 +52,19 @@
 }
 - (void)updateContentForCell:(InstanceData *)positionEntity withLocation:(CLLocation *)location
 {    
-    [distanceToShop setFrame:CGRectMake(330, 5, 90, 50)];
-    [distanceToShop addTarget:self action:@selector(touchesToButtonDistance) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:distanceToShop];
-    
-    self.textLabel.text = positionEntity.label;
-    self.detailTextLabel.text = positionEntity.address;
+    labelName.text = positionEntity.label;
+    CGSize labelShopNameSize = [positionEntity.address sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
+    labelName.frame = CGRectMake(65, 0, 300, labelShopNameSize.height);
+    labelName.numberOfLines = 0;
+    labelAddress.text = positionEntity.address;
+    CGSize labelShopAddresSize = [positionEntity.address sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
+    labelAddress.frame = CGRectMake(65, labelShopNameSize.height, 300, labelShopAddresSize.height) ;
+    labelAddress.numberOfLines = 0;
+
+//    self.textLabel.text = positionEntity.label;
+//    self.detailTextLabel.text = positionEntity.address;
     self.imageView.image = [UIImage imageNamed:@"blank.png"];
-    self.icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
+    icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
     NSString *distanceShop = [NSString stringWithFormat:@"%d m",[self calculeDistance:positionEntity withLocation:location]];
     [self.distanceToShop setTitle:distanceShop forState:UIControlStateNormal];
 }
@@ -71,6 +89,7 @@
 //}
 - (void)dealloc
 {
+    [labelAddress release];
     [icon release];
     [distanceToShop release];
     [super dealloc];

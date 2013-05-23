@@ -7,7 +7,6 @@
 //
 
 #import "ARArrow.h"
-#import "BeNCShopEntity.h"
 #import "LocationService.h"
 #import <math.h>
 #define rotationRate 0.0174532925
@@ -26,9 +25,16 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
+        UIImage *imageBackgroud = [UIImage imageNamed:@"cricle.png"];
+        UIImageView *imageViewBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+        imageViewBackground.image = imageBackgroud;
+        [self addSubview:imageViewBackground];
+
         UIImage *arrowImage = [UIImage imageNamed:@"arrow.png"];
-        self.image = arrowImage;
-        self.frame = CGRectMake(10,0,30, 45);
+        arrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 8, 20, 45)];
+        arrowImageView.image = arrowImage;
+        [self addSubview:arrowImageView];
+        self.frame = CGRectMake(0,0,60, 60);
     }
     return self;
 }
@@ -64,7 +70,7 @@
 
 -(void)didUpdateHeading:(NSNotification *)notification{
     CLHeading *newHeading = [notification object];
-    self.transform = CGAffineTransformMakeRotation( - newHeading.magneticHeading * rotationRate - M_PI_2 +rotationAngleArrow);
+    arrowImageView.transform = CGAffineTransformMakeRotation( - newHeading.magneticHeading * rotationRate - M_PI_2 +rotationAngleArrow);
 }
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];

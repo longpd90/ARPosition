@@ -27,9 +27,9 @@
 //        [self getDatabase];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
-        radar = [[ARRadar alloc]init];
-        radar.frame = CGRectMake(380, 0, 100, 100);
-        [self.view addSubview:radar];
+//        radar = [[ARRadar alloc]init];
+//        radar.frame = CGRectMake(380, 0, 100, 100);
+//        [self.view addSubview:radar];
 
     }
     return self;
@@ -38,21 +38,20 @@
 - (void)viewDidLoad
 {
     shopInRadius = [[NSMutableArray alloc]init];
-    [self setTitle:@"AR 3D"];
     self.view.bounds = CGRectMake(0, 0, 480, 320);        
     [self addVideoInput];
-    sliderDistance = [[UISlider alloc]initWithFrame:CGRectMake(-40, 120, 150, 20)];
-    sliderDistance.maximumValue = 10;
-    sliderDistance.value = 2;
-    sliderDistance.minimumValue = 1;
-    [sliderDistance addTarget:self action:@selector(changeValueSlider:) forControlEvents:UIControlEventValueChanged];
-    sliderDistance.transform = CGAffineTransformMakeRotation(- M_PI_2);
-    [self.view addSubview:sliderDistance];
-    zoomLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 40, 60, 20)];
-    zoomLabel.text = [NSString stringWithFormat:@"2km"];
-    zoomLabel.textColor = [UIColor whiteColor];
-    zoomLabel.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:zoomLabel];
+//    sliderDistance = [[UISlider alloc]initWithFrame:CGRectMake(-40, 120, 150, 20)];
+//    sliderDistance.maximumValue = 10;
+//    sliderDistance.value = 2;
+//    sliderDistance.minimumValue = 1;
+//    [sliderDistance addTarget:self action:@selector(changeValueSlider:) forControlEvents:UIControlEventValueChanged];
+//    sliderDistance.transform = CGAffineTransformMakeRotation(- M_PI_2);
+//    [self.view addSubview:sliderDistance];
+//    zoomLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 40, 60, 20)];
+//    zoomLabel.text = [NSString stringWithFormat:@"2km"];
+//    zoomLabel.textColor = [UIColor whiteColor];
+//    zoomLabel.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:zoomLabel];
     
 //    [self setContentForView];
     [super viewDidLoad];
@@ -129,14 +128,14 @@
     return distance;
 }
 
-- (IBAction)changeValueSlider:(id)sender
-{
-    UISlider *slider = (UISlider *)sender;
-    int valueInt = (int)slider.value;
-    zoomLabel.text = [NSString stringWithFormat:@"%dkm",valueInt];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateRadius" object:[NSNumber numberWithInt:valueInt]];
-
-}
+//- (IBAction)changeValueSlider:(id)sender
+//{
+//    UISlider *slider = (UISlider *)sender;
+//    int valueInt = (int)slider.value;
+//    zoomLabel.text = [NSString stringWithFormat:@"%dkm",valueInt];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateRadius" object:[NSNumber numberWithInt:valueInt]];
+//
+//}
 
 - (void)dealloc
 {

@@ -73,16 +73,24 @@
 }
 - (void)setContentForView:(InstanceData *)positionEntity
 {
-    detailView = [[ARDetailIn2D alloc]initWithShop:positionEntity];
-    [self.view addSubview:detailView];
+//    detailView = [[ARDetailIn2D alloc]initWithShop:positionEntity];
+//    [self.view addSubview:detailView];
+    arrowView = [[ARArrow alloc]initWithShop:positionEntity];
+    [self.view addSubview:arrowView];
+    PositonDetailInAR *detailViewInAR = [[PositonDetailInAR alloc]initWithShop:positionEntity];
+    [self.view addSubview:detailViewInAR];
+    CGPoint pointCenter;
+    pointCenter.x = 240;
+    pointCenter.y = 150;
+    detailViewInAR.center = pointCenter;
 }
 - (void)setNewCenterForView:(float )angleToHeading{
-    float originX = detailView.frame.size.width/2;
-    float originY = detailView.frame.size.height/2;
-    float angle1 = atanf(125.0/240.0);
+    float originX = arrowView.frame.size.width/2;
+    float originY = arrowView.frame.size.height/2;
+    float angle1 = atanf(150.0/240.0);
     float angle2 = M_PI - angle1;
     float a = tan(angleToHeading);
-    float b = 125 - 240 * a ;
+    float b = 150 - 240 * a ;
     float valueX = 0;
     float valueY = 0;
     if ((0 <= angleToHeading && angleToHeading < angle1 )||( angleToHeading < 0 &&   -angle1 < angleToHeading)) {
@@ -99,7 +107,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
             valueX = ( 250 -b )/a;
-            valueY = 288 - originY;
+            valueY = 300 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -110,11 +118,11 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 288 - originY ) {
-        valueY = 288 - originY;
+    if (valueY > 300 - originY ) {
+        valueY = 300 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
-    detailView.center = newCenter;
+    arrowView.center = newCenter;
 
 }
 

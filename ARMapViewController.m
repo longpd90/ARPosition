@@ -46,7 +46,6 @@ bool firstUpdate = 1;
 }
 - (void)viewDidLoad
 {
-    self.title = @"Map";
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     
     mapViewPosition=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];

@@ -1,22 +1,20 @@
 //
-//  BeNCDetailShopInCamera.h
-//  ARShop
+//  PositonDetailInAR.h
+//  ARPosition
 //
-//  Created by Administrator on 12/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Duc Long on 5/23/13.
+//
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+#import "ARDetailPositionInView.h"
+#import "LocationService.h"
+#import <QuartzCore/QuartzCore.h>
 #import <ArroundPlaceService/ArroundPlaceService.h>
-#import "EGOImageView.h"
-@class ARDetailPositionInView;
-@protocol ARDetailPositionInViewDelegate <NSObject>
-- (void)didTouchesToView;
-@end
-@interface ARDetailPositionInView : UIView{
+@interface PositonDetailInAR : UIView{
     UILabel *labelShopName;
     UILabel *labelDistanceToShop;
+    
     CLLocation *userLocation ;
     InstanceData *position;
     EGOImageView *icon;

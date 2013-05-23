@@ -1,22 +1,19 @@
 //
-//  BeNCDetailShopInCamera.m
-//  ARShop
+//  PositonDetailInAR.m
+//  ARPosition
 //
-//  Created by Administrator on 12/10/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Duc Long on 5/23/13.
+//
 //
 
-#import "ARDetailPositionInView.h"
-#import "LocationService.h"
-#import <QuartzCore/QuartzCore.h>
+#import "PositonDetailInAR.h"
 #define textSize 18
 #define max 100000
+@implementation PositonDetailInAR
 
-@implementation ARDetailPositionInView
 @synthesize labelDistanceToShop,labelShopName;
 @synthesize userLocation;
 @synthesize delegate,position,imageViewBackground;
-
 - (id)initWithShop:(InstanceData *)positionEntity
 {
     self = [super init];
@@ -32,7 +29,7 @@
         
         position = positionEntity;
         userLocation = [[LocationService sharedLocation]getOldLocation];
-
+        
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         labelShopName = [[UILabel alloc]init];
         [labelShopName setBackgroundColor:[UIColor clearColor]];
@@ -40,11 +37,12 @@
         [labelDistanceToShop setBackgroundColor:[UIColor clearColor]];
         [labelDistanceToShop setTextAlignment:NSTextAlignmentCenter];
         labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:positionEntity]];
-
+        
         [self addSubview:labelShopName];
         [self addSubview:labelDistanceToShop];
         [self.layer setCornerRadius:8];
         [self setContentDetailShop:positionEntity];
+        
     }
     return self;
 }
@@ -56,14 +54,39 @@
     labelShopName.text = positionEntity.label;
     [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize - 2]];
     [labelShopName setTextAlignment:UITextAlignmentCenter];
-    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = labelShopNameSize.width;     
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(240, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    float originLabelDistance = labelShopNameSize.width;
+    
+
+    
+    
+    UILabel *labelShopAddress = [[UILabel alloc]init];
+    labelShopAddress.numberOfLines = 0;
+    [labelShopAddress setBackgroundColor:[UIColor clearColor]];
+    [labelShopAddress setTextColor:[UIColor blackColor]];
+    labelShopAddress.text = positionEntity.address;
+    [labelShopAddress setTextAlignment:UITextAlignmentCenter];
+    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize - 2 ]];
+    CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 2 ] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
+    labelShopAddress.frame = CGRectMake(80, labelShopNameSize.height + 5, 320 ,labelShopAddressSize.height);
+    [self addSubview:labelShopAddress];
+    [labelShopAddress release];
     
     labelShopName.frame = CGRectMake(53, 0,originLabelDistance,25 );
     labelDistanceToShop.frame = CGRectMake(53, 15,originLabelDistance, 25);
     imageViewBackground.frame = CGRectMake(0, 0, originLabelDistance + 57, 50);
     icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
-
+    self.frame = CGRectMake(0, 0, originLabelDistance + 57, 50);
+//
+//    UILabel *labelShopDescription = [[UILabel alloc]init];
+//    [labelShopDescription setBackgroundColor:[UIColor clearColor]];
+//    labelShopDescription.text = [NSString stringWithFormat:@"%@",positionEntity.abstract];
+//    [labelShopDescription setFont:[UIFont systemFontOfSize:textSize ]];
+//    CGSize labelShopDescriptionSize = [positionEntity.abstract sizeWithFont:[UIFont systemFontOfSize:textSize] constrainedToSize:CGSizeMake(300, max) lineBreakMode:UILineBreakModeCharacterWrap];
+//    labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height , 300, labelShopDescriptionSize.height);
+//    labelShopDescription.numberOfLines = 0;
+//    [self.view addSubview:labelShopDescription];
+//    [labelShopDescription release];
     
 }
 
@@ -96,4 +119,15 @@
     [userLocation release];
     [super dealloc];
 }
+
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
 @end

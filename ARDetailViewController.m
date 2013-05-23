@@ -151,8 +151,6 @@
     ARArrow *arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
     arrowImage.frame = CGRectMake(410,0,20, 30);
     [self.view addSubview:arrowImage];
-    [arrowImage release];
-//
 //    UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonItemStyleBordered target:self action:@selector(goToCamera:)];//[[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
 //    self.navigationItem.rightBarButtonItem = cameraButtonItem;
 //    [cameraButtonItem release];
@@ -163,13 +161,7 @@
 }
 
 
-- (int)caculateDistanceToShop:(InstanceData *)positionEntity
-{
-    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
-    int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
-    [shoplocation release];
-    return distance;
-}
+
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
@@ -177,7 +169,13 @@
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:position]];
 }
-
+- (int)caculateDistanceToShop:(InstanceData *)positionEntity
+{
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
+    int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
+    [shoplocation release];
+    return distance;
+}
 
 //- (IBAction)goToMenuSite:(id)sender
 //{

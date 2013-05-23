@@ -43,7 +43,6 @@
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editList:)];
     arrayButtonItem =  [[NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil]retain];
-    [self setTitle:@"List Position"];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
@@ -54,7 +53,6 @@
     if (listType == MainList) {
         self.navigationItem.rightBarButtonItem = refreshButtonItem;
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton,refreshButtonItem, nil];
-        NSLog(@"main list");
     }
     else if(listType == MapList){
         //self.navigationItem.rightBarButtonItem = done;
@@ -211,7 +209,7 @@
        InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:indexPath.row];
 
         if (listType == MainList) {
-            ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:positionEntity];
+            ARAPositionViewController *detailViewController = [[ARAPositionViewController alloc] initWithShop:positionEntity];
             [self.navigationController pushViewController:detailViewController animated:YES];
             [detailViewController release];
         }

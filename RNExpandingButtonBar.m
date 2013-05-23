@@ -65,14 +65,14 @@
         UIButton *defaultButton = [[UIButton alloc] initWithFrame:buttonFrame];
         [defaultButton setCenter:buttonCenter];
         [defaultButton setImage:image forState:UIControlStateNormal];
-        [defaultButton setImage:selectedImage forState:UIControlEventTouchDown];
+        [defaultButton setImage:selectedImage forState:UIControlStateSelected];
         [defaultButton addTarget:self action:@selector(onButton:) forControlEvents:UIControlEventTouchUpInside];
         [self setButton:defaultButton];
         
         UIButton *toggledButton = [[UIButton alloc] initWithFrame:buttonFrame];
         [toggledButton setCenter:buttonCenter];
         [toggledButton setImage:toggledImage forState:UIControlStateNormal];
-        [toggledButton setImage:toggledSelectedImage forState:UIControlEventTouchDown];
+        [toggledButton setImage:toggledSelectedImage forState:UIControlStateSelected];
         [toggledButton addTarget:self action:@selector(onToggledButton:) forControlEvents:UIControlEventTouchUpInside];
         // Init invisible
         [toggledButton setAlpha:0.0f];

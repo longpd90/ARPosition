@@ -10,6 +10,7 @@
 #include <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ARDetailIn2D.h"
+#import "ARAPositionViewController.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 
 @interface AR2DViewController : UIViewController<CLLocationManagerDelegate,ARDetailIn2DDelegate>{

@@ -11,13 +11,17 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ARDetailIn2D.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
+#import "ARArrow.h"
+#import "PositonDetailInAR.h"
 @interface ARAPositionViewController : UIViewController{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     CLLocation *userLocation ;
     double rotationAngleArrow;
     InstanceData *position;
-    ARDetailIn2D *detailView;
+//    ARDetailIn2D *detailView;
+    ARArrow *arrowView;
+    
     float centerX;
     float centerY;
 }

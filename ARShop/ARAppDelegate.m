@@ -32,10 +32,10 @@
 {
     [self checkDatabase];
     [[LocationService sharedLocation]startUpdate];
-    ARTabbarItem *tabItem1 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(2, 2, 90, 30) normalState:@"listoff.png" toggledState:@"ListOn.png"];
-	ARTabbarItem *tabItem2 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(94, 2, 90, 30) normalState:@"cameraoff.png" toggledState:@"cameraon.png"];
-	ARTabbarItem *tabItem3 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(186, 2, 90, 30) normalState:@"AR3Doff.png" toggledState:@"AR3Don.png"];
-    ARTabbarItem *tabItem4 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(278, 2, 90, 30) normalState:@"mapoff.png" toggledState:@"mapon.png"];
+    ARTabbarItem *tabItem1 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(2, 0, 50, 50) normalState:@"listIcon.png" toggledState:@"ROSTER_icon_list1"];
+	ARTabbarItem *tabItem2 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(54, 0, 50, 50) normalState:@"camera.png" toggledState:@"cameraon.png"];
+	ARTabbarItem *tabItem3 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(106, 0, 50, 50) normalState:@"AR3Doff.png" toggledState:@"AR3Don.png"];
+    ARTabbarItem *tabItem4 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(158, 0, 50, 50) normalState:@"System-Map-icon.png" toggledState:@"mapon.png"];
 
     
     ARListViewController *listViewController = [[ARListViewController alloc]initWithNibName:@"ARListViewController" bundle:nil];
@@ -55,13 +55,9 @@
     [aR3DViewController release];
     [cameraViewController release];
     
-    [listNavigation.navigationBar setHidden:NO];
     [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
-    [cameraNavigation.navigationBar setHidden:NO];
     [cameraNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
-    [aR3DNavigation.navigationBar setHidden:NO];
     [aR3DNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
-    [mapNavigation.navigationBar setHidden:NO];
     [mapNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     
 	[viewControllersArray addObject:listNavigation];

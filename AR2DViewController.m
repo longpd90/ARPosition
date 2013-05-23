@@ -43,7 +43,6 @@
 }
 - (void)viewDidLoad
 {
-    [self setTitle:@"AR"];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -94,10 +93,10 @@
     [self.view addSubview:detaitlView3];
     [self.view addSubview:detaitlView2];
     [self.view addSubview:detaitlView1];
-    ARRadar *radar = [[ARRadar alloc]init];
-    radar.frame = CGRectMake(380, 0, 100, 100);
-    [self.view addSubview:radar];
-    [radar  release];
+//    ARRadar *radar = [[ARRadar alloc]init];
+//    radar.frame = CGRectMake(380, 0, 100, 100);
+//    [self.view addSubview:radar];
+//    [radar  release];
 }
 # pragma mark - add Video to App
 - (void)addVideoInput {
@@ -240,7 +239,7 @@
     }
     else if (- angle2 <= angleToHeading && angleToHeading <  - angle1) {
         valueX = ( 250 -b )/a;
-        valueY = 288 - originY;
+        valueY = 300 - originY;
     }
     if (valueX <= originX) {
         valueX = originX;
@@ -251,8 +250,8 @@
     if (valueY <= originY) {
         valueY = originY;
     }
-    if (valueY > 288 - originY ) {
-        valueY = 288 - originY;
+    if (valueY > 300 - originY ) {
+        valueY = 300 - originY;
     }
     CGPoint newCenter = CGPointMake(valueX, valueY);
     detailViewInCamera.center = newCenter;
@@ -311,7 +310,7 @@
 - (void)didSeclectView:(int)index
 {
     InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:index];
-    ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:positionEntity];
+     ARAPositionViewController *detailViewController = [[ARAPositionViewController alloc] initWithShop:positionEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 }

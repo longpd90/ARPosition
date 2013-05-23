@@ -18,8 +18,8 @@
 //    NSMutableArray *shopsArray;
     NSMutableArray *shopInRadius;
     CLLocation *userLocation ;
-    UISlider *sliderDistance;
-    UILabel *zoomLabel;
+//    UISlider *sliderDistance;
+//    UILabel *zoomLabel;
     int radiusSearch;
     ARRadar *radar;
     NSMutableArray *arrayPosition;
@@ -30,7 +30,7 @@
 - (void)addVideoInput;
 //-(void)getDatabase;
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;
-- (IBAction)changeValueSlider:(id)sender;
+//- (IBAction)changeValueSlider:(id)sender;
 -(void)setContentForView;
 
 @end

@@ -40,7 +40,6 @@ bool backToRootView;
 {
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
-   ;
 }
 
 - (void)viewDidUnload
@@ -62,9 +61,17 @@ bool backToRootView;
 }
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+    hiddenMenu = NO;
+    UIButton *buttonShowMenu = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonShowMenu.frame = CGRectMake(440, 270, 30, 30);
+    [buttonShowMenu setBackgroundImage:[UIImage imageNamed:@"red_plus_up.png"] forState:UIControlStateNormal];
+    [buttonShowMenu addTarget:self action:@selector(showHiddenMenu:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:buttonShowMenu];
+
 	//Create a view holder to store the tabbar items
-	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(110, 270, 370, 30)];
-	tabBarHolder.backgroundColor = [UIColor grayColor];
+	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(230, 245, 210, 50)];
+	tabBarHolder.backgroundColor = [UIColor clearColor];
     
 	//add it as a subview
 	[self.view addSubview:tabBarHolder];
@@ -85,6 +92,8 @@ bool backToRootView;
 		}
 	}
 	[self.view bringSubviewToFront:tabBarHolder];
+    [self.view bringSubviewToFront:buttonShowMenu];
+
 	//show/hide tabbars and controllers with a particular index
 	[self initialTab:initTab];
 }
@@ -104,9 +113,7 @@ bool backToRootView;
 -(void)activateController:(int)index {
 	for (int i = 0; i < [tabViewControllers count]; i++) {
 		if (i == index) {
-			[[tabViewControllers objectAtIndex:i] view].hidden = NO;
-            
-            
+			[[tabViewControllers objectAtIndex:i] view].hidden = NO;            
             if (backToRootView) {
                 UINavigationController *navigation = (UINavigationController *)[tabViewControllers objectAtIndex:i];
                 if (navigation.viewControllers.count>1) {
@@ -121,6 +128,8 @@ bool backToRootView;
 	}
 }
 //protocol used to communicate between the buttons and the tabbar
+
+
 #pragma mark -
 #pragma mark GTabTabItemDelegate action
 - (void)selectedItem:(ARTabbarItem *)button {
@@ -145,6 +154,17 @@ bool backToRootView;
 	}	 
 }
 
+- (IBAction)showHiddenMenu:(id)sender
+{
+    if (hiddenMenu == NO) {
+        tabBarHolder.hidden = YES;
+        hiddenMenu = YES;
+    }
+    else {
+        tabBarHolder.hidden = NO;
+        hiddenMenu = NO;
+    }
+}
 - (void)dealloc
 {
     [tabBarHolder release];

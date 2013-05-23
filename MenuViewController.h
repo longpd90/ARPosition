@@ -20,6 +20,7 @@
 	NSMutableArray *tabItemsArray;
 	int initTab; 
     int selectedTab;
+    BOOL hiddenMenu;
 
 }
 
@@ -35,4 +36,5 @@
 -(void)initialTab:(int)tabIndex;
 -(void)activateController:(int)index;
 -(void)activateTabItem:(int)index;
+- (IBAction)showHiddenMenu:(id)sender;
 @end

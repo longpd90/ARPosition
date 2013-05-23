@@ -19,11 +19,12 @@
 
 @interface ARPositionCell: UITableViewCell{
     UIButton *checkbox ;
-    UIButton *distanceToShop;
+    UILabel *distanceToShop;
     EGOImageView *icon ;
     CLLocation *userLocation ;
     UILabel *labelAddress;
     UILabel *labelName;
+    UIImageView *imageViewBackground;
 
 }
 @property (nonatomic, retain) UILabel *labelName;
@@ -31,7 +32,7 @@
 @property (nonatomic,retain) EGOImageView *icon;
 @property (nonatomic, retain)CLLocation *userLocation ;
 @property (nonatomic, retain) id<ARPositionCellDelegate>delegate;
-@property (nonatomic ,retain) UIButton *distanceToShop;
+@property (nonatomic ,retain) UILabel *distanceToShop;
 - (void)updateContentForCell:(InstanceData *)positionEntity withLocation:(CLLocation *)location;
 -(int)calculeDistance:(InstanceData *)positionEntity withLocation:(CLLocation *)location;
 @end

@@ -12,6 +12,7 @@
 #import "ARListViewController.h"
 #import "ARPositionAnnotation.h"
 #import "ARDetailViewController.h"
+#import "PositonDetailInAR.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
 @interface ARMapViewController : UIViewController<MKMapViewDelegate,ListViewOnMapDelegate,DetailViewDelegate>{
     

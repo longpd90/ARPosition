@@ -28,6 +28,7 @@
 {
     self = [super init];
     if (self) {
+
         position = positionEntity;
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
@@ -41,11 +42,11 @@
 - (void)setContentForView:(InstanceData *)positionEntity
 {
     float sizeWith = [self calculateSizeFrame:positionEntity];
-    self.frame = CGRectMake(0, 0, sizeWith, 80);
+    self.frame = CGRectMake(0, 0, sizeWith + 50, 50);
     
     detailShop = [[ARDetailPositionInView alloc]initWithShop:positionEntity];
     detailShop.delegate = self;
-    detailShop.frame = CGRectMake(0, 0, sizeWith, 30);
+    detailShop.frame = CGRectMake(0, 0, sizeWith, 50);
     [self addSubview:detailShop];
     
 //    arrowImage = [[ARArrow alloc]initWithShop:positionEntity];

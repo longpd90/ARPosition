@@ -133,7 +133,7 @@ static EGOCache* __instance;
 	NSInvocation* deleteInvocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(deleteDataAtPath:)]];
 	[deleteInvocation setTarget:self];
 	[deleteInvocation setSelector:@selector(deleteDataAtPath:)];
-	[deleteInvocation setArgument:&cachePath atIndex:2];
+	[deleteInvocation setArgument:( void *)(cachePath) atIndex:2];
 	
 	[self performDiskWriteOperation:deleteInvocation];
 	[cacheDictionary removeObjectForKey:key];
@@ -173,8 +173,8 @@ static EGOCache* __instance;
 	NSInvocation* writeInvocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:@selector(writeData:toPath:)]];
 	[writeInvocation setTarget:self];
 	[writeInvocation setSelector:@selector(writeData:toPath:)];
-	[writeInvocation setArgument:&data atIndex:2];
-	[writeInvocation setArgument:&cachePath atIndex:3];
+	[writeInvocation setArgument:( void *)(data) atIndex:2];
+	[writeInvocation setArgument:( void *)(cachePath) atIndex:3];
 	
 	[self performDiskWriteOperation:writeInvocation];
 	[cacheDictionary setObject:[NSDate dateWithTimeIntervalSinceNow:timeoutInterval] forKey:key];

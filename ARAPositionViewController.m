@@ -26,8 +26,7 @@
     if (self) {
         position = positionEntity;
         self.userLocation = [[LocationService sharedLocation]getOldLocation]; 
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+
         rotationAngleArrow = [self caculateRotationAngle:positionEntity];
         [self setContentForView:positionEntity];
 
@@ -38,15 +37,20 @@
 
 - (void)viewDidLoad
 {
-    self.view.bounds = CGRectMake(0, 0, 480, 320);
-    [self addVideoInput];
+
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    self.view.bounds = CGRectMake(0, 0, 480, 320);
+//    [self addVideoInput];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateLocation" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateHeading" object:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -183,6 +187,16 @@
         }
     }
     return rotationAngle;
+}
+- (void)dealloc
+{
+    [userLocation release];
+//    [captureSession stopRunning];
+//    [captureSession release];
+//    [deviceInput release];
+    [position release];
+    [arrowView release];
+    [super dealloc];
 }
 
 

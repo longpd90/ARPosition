@@ -110,7 +110,8 @@
 
 - (void)dealloc
 {
-    [position release];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateLocation" object:nil];
+//    [position release];
     [labelShopName release];
     [labelDistanceToShop release];
     [userLocation release];

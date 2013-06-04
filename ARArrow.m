@@ -81,8 +81,11 @@
 
 - (void)dealloc
 {
-    [postion release];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateLocation" object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateHeading" object:nil];
+
     [userLocation release];
+    [postion release];
     [super dealloc];
 }
 @end

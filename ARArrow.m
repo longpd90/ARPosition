@@ -29,7 +29,7 @@
         UIImageView *imageViewBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
         imageViewBackground.image = imageBackgroud;
         [self addSubview:imageViewBackground];
-
+        [imageViewBackground release];
         UIImage *arrowImage = [UIImage imageNamed:@"arrow.png"];
         arrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 8, 20, 45)];
         arrowImageView.image = arrowImage;

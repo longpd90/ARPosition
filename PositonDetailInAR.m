@@ -34,8 +34,8 @@
         labelShopName = [[UILabel alloc]init];
         [labelShopName setBackgroundColor:[UIColor clearColor]];
         labelDistanceToShop = [[UILabel alloc]init];
+        [labelDistanceToShop setTextAlignment:NSTextAlignmentRight];
         [labelDistanceToShop setBackgroundColor:[UIColor clearColor]];
-        [labelDistanceToShop setTextAlignment:NSTextAlignmentCenter];
         labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:positionEntity]];
         
         [self addSubview:labelShopName];
@@ -52,31 +52,28 @@
 {
     [labelDistanceToShop setFont:[UIFont systemFontOfSize:textSize - 4]];
     labelShopName.text = positionEntity.label;
+    labelShopName.numberOfLines = 0;
     [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize - 2]];
-    [labelShopName setTextAlignment:UITextAlignmentCenter];
-    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(240, max) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = labelShopNameSize.width;
-    
-
-    
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(237, max) lineBreakMode:UILineBreakModeCharacterWrap];
     
     UILabel *labelShopAddress = [[UILabel alloc]init];
     labelShopAddress.numberOfLines = 0;
     [labelShopAddress setBackgroundColor:[UIColor clearColor]];
     [labelShopAddress setTextColor:[UIColor blackColor]];
     labelShopAddress.text = positionEntity.address;
-    [labelShopAddress setTextAlignment:UITextAlignmentCenter];
-    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize - 2 ]];
-    CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 2 ] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
-    labelShopAddress.frame = CGRectMake(80, labelShopNameSize.height + 5, 320 ,labelShopAddressSize.height);
+    [labelShopAddress setFont:[UIFont systemFontOfSize:textSize - 4 ]];
+    CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 4 ] constrainedToSize:CGSizeMake(285, max) lineBreakMode:UILineBreakModeCharacterWrap];
     [self addSubview:labelShopAddress];
     [labelShopAddress release];
     
-    labelShopName.frame = CGRectMake(53, 0,originLabelDistance,25 );
-    labelDistanceToShop.frame = CGRectMake(53, 15,originLabelDistance, 25);
-    imageViewBackground.frame = CGRectMake(0, 0, originLabelDistance + 57, 50);
+    labelShopName.frame = CGRectMake(53, 0,240,labelShopNameSize.height );
+    labelDistanceToShop.frame = CGRectMake(50, labelShopNameSize.height,190, 25);
+    labelShopAddress.frame = CGRectMake(5, labelShopNameSize.height + 30, 285 ,labelShopAddressSize.height);
+
+    imageViewBackground.frame = CGRectMake(0, 0,  290, 30 + labelShopNameSize.height + labelShopAddressSize.height);
     icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
-    self.frame = CGRectMake(0, 0, originLabelDistance + 57, 50);
+    self.frame = CGRectMake(0, 0, 290 , 30 + labelShopNameSize.height + labelShopAddressSize.height);
+
 //
 //    UILabel *labelShopDescription = [[UILabel alloc]init];
 //    [labelShopDescription setBackgroundColor:[UIColor clearColor]];

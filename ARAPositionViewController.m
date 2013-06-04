@@ -83,6 +83,7 @@
     pointCenter.x = 240;
     pointCenter.y = 150;
     detailViewInAR.center = pointCenter;
+    [detailViewInAR release];
 }
 - (void)setNewCenterForView:(float )angleToHeading{
     float originX = arrowView.frame.size.width/2;

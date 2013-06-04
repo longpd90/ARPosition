@@ -16,23 +16,19 @@
 		3217A6B8174DD6B3007EA0F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3217A6B7174DD6B2007EA0F4 /* QuartzCore.framework */; };
 		3217A6BC174E0639007EA0F4 /* BackgroudCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BB174E0638007EA0F4 /* BackgroudCell.png */; };
 		3217A6BE174E085A007EA0F4 /* EgoImageCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BD174E085A007EA0F4 /* EgoImageCell.png */; };
-		3217A6C0174E1101007EA0F4 /* listIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BF174E1101007EA0F4 /* listIcon.png */; };
-		3217A6C2174E110F007EA0F4 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6C1174E110F007EA0F4 /* camera.png */; };
-		3217A6C4174E1125007EA0F4 /* System-Map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6C3174E1125007EA0F4 /* System-Map-icon.png */; };
-		3217A6C6174E130B007EA0F4 /* list-view-xxl.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6C5174E130B007EA0F4 /* list-view-xxl.png */; };
-		3217A6C8174E13C3007EA0F4 /* ROSTER_icon_list1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6C7174E13C2007EA0F4 /* ROSTER_icon_list1.png */; };
 		3217A6CB174E1DF1007EA0F4 /* PositonDetailInAR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */; };
 		3258072E16DB678B00559A2E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3258072D16DB678B00559A2E /* Default-568h@2x.png */; };
-		3291002817470B020041D8A6 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3291002717470B020041D8A6 /* Background.png */; };
 		3291002A17470E420041D8A6 /* cricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3291002917470E420041D8A6 /* cricle.png */; };
+		32FFE253175DCADF008055BC /* SettingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE252175DCADF008055BC /* SettingIcon.png */; };
+		32FFE255175DCAED008055BC /* AR3DIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE254175DCAEC008055BC /* AR3DIcon.png */; };
+		32FFE257175DCAFA008055BC /* AR2DIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE256175DCAFA008055BC /* AR2DIcon.png */; };
+		32FFE25B175DCB25008055BC /* MapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE25A175DCB25008055BC /* MapButton.png */; };
+		32FFE25D175DD2E9008055BC /* CameraButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE25C175DD2E8008055BC /* CameraButton.png */; };
+		32FFE25F175DD2EF008055BC /* ListButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE25E175DD2EF008055BC /* ListButton.png */; };
+		32FFE263175DEC7B008055BC /* ARSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FFE261175DEC7A008055BC /* ARSettingViewController.m */; };
+		32FFE264175DEC7B008055BC /* ARSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE262175DEC7B008055BC /* ARSettingViewController.xib */; };
 		A706EFE4169BDE2A0057D1FE /* CurrentLocations.png in Resources */ = {isa = PBXBuildFile; fileRef = A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */; };
 		A706EFE5169BDE2A0057D1FE /* MapFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = A706EFE3169BDE2A0057D1FE /* MapFrame.png */; };
-		A77936241679BC16006603C7 /* cameraoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A779361E1679BC16006603C7 /* cameraoff.png */; };
-		A77936251679BC16006603C7 /* cameraon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779361F1679BC16006603C7 /* cameraon.png */; };
-		A77936261679BC16006603C7 /* listoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936201679BC16006603C7 /* listoff.png */; };
-		A77936271679BC16006603C7 /* ListOn.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936211679BC16006603C7 /* ListOn.png */; };
-		A77936281679BC16006603C7 /* mapoff.png in Resources */ = {isa = PBXBuildFile; fileRef = A77936221679BC16006603C7 /* mapoff.png */; };
-		A779362C1679C024006603C7 /* mapon.png in Resources */ = {isa = PBXBuildFile; fileRef = A779362B1679C024006603C7 /* mapon.png */; };
 		A7EBB989169ABDF3004924AC /* ARPositionAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EBB988169ABDF3004924AC /* ARPositionAnnotationView.m */; };
 		A7EBB98C169AC144004924AC /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7EBB98B169AC144004924AC /* location.gpx */; };
 		A7EE6666169D3C0C00D172AF /* numberView.png in Resources */ = {isa = PBXBuildFile; fileRef = A7EE6665169D3C0B00D172AF /* numberView.png */; };
@@ -76,8 +72,6 @@
 		C33504D816759CD500E4139A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D716759CD500E4139A /* CoreMotion.framework */; };
 		C33504DA16759D2200E4139A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504D916759D2200E4139A /* MapKit.framework */; };
 		C33504DC16759D3700E4139A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33504DB16759D3700E4139A /* AVFoundation.framework */; };
-		C337DD8516AD035500C4E5CE /* AR3Doff.png in Resources */ = {isa = PBXBuildFile; fileRef = C337DD8316AD035500C4E5CE /* AR3Doff.png */; };
-		C337DD8616AD035500C4E5CE /* AR3Don.png in Resources */ = {isa = PBXBuildFile; fileRef = C337DD8416AD035500C4E5CE /* AR3Don.png */; };
 		C3435E30167ECE80004B7FD0 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C3435E2F167ECE80004B7FD0 /* arrow.png */; };
 		C351768116A93702009A2EAA /* AR3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C351767F16A93702009A2EAA /* AR3DViewController.m */; };
 		C351768216A93702009A2EAA /* AR3DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C351768016A93702009A2EAA /* AR3DViewController.xib */; };
@@ -86,8 +80,6 @@
 		C3F50AD716AF7CD8001E4685 /* ARDetailIn3D.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F50AD616AF7CD8001E4685 /* ARDetailIn3D.m */; };
 		C3FC0D5E16A78E1B00822AD4 /* ARShopInRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FC0D5D16A78E1B00822AD4 /* ARShopInRadar.m */; };
 		C3FC0D6E16A7AE3F00822AD4 /* ShopInRadar.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FC0D6C16A7AE3F00822AD4 /* ShopInRadar.png */; };
-		C3FFA3E91681AB86007B7963 /* menu.gif in Resources */ = {isa = PBXBuildFile; fileRef = C3FFA3E81681AB86007B7963 /* menu.gif */; };
-		C3FFA3F01681ADE5007B7963 /* coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FFA3EF1681ADE5007B7963 /* coupon.png */; };
 		C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -102,24 +94,21 @@
 		3217A6B7174DD6B2007EA0F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3217A6BB174E0638007EA0F4 /* BackgroudCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroudCell.png; sourceTree = "<group>"; };
 		3217A6BD174E085A007EA0F4 /* EgoImageCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EgoImageCell.png; sourceTree = "<group>"; };
-		3217A6BF174E1101007EA0F4 /* listIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listIcon.png; sourceTree = "<group>"; };
-		3217A6C1174E110F007EA0F4 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
-		3217A6C3174E1125007EA0F4 /* System-Map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "System-Map-icon.png"; sourceTree = "<group>"; };
-		3217A6C5174E130B007EA0F4 /* list-view-xxl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-view-xxl.png"; sourceTree = "<group>"; };
-		3217A6C7174E13C2007EA0F4 /* ROSTER_icon_list1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ROSTER_icon_list1.png; sourceTree = "<group>"; };
 		3217A6C9174E1DF0007EA0F4 /* PositonDetailInAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositonDetailInAR.h; sourceTree = "<group>"; };
 		3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositonDetailInAR.m; sourceTree = "<group>"; };
 		3258072D16DB678B00559A2E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3291002717470B020041D8A6 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		3291002917470E420041D8A6 /* cricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cricle.png; sourceTree = "<group>"; };
+		32FFE252175DCADF008055BC /* SettingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingIcon.png; sourceTree = "<group>"; };
+		32FFE254175DCAEC008055BC /* AR3DIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR3DIcon.png; sourceTree = "<group>"; };
+		32FFE256175DCAFA008055BC /* AR2DIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR2DIcon.png; sourceTree = "<group>"; };
+		32FFE25A175DCB25008055BC /* MapButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapButton.png; sourceTree = "<group>"; };
+		32FFE25C175DD2E8008055BC /* CameraButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraButton.png; sourceTree = "<group>"; };
+		32FFE25E175DD2EF008055BC /* ListButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListButton.png; sourceTree = "<group>"; };
+		32FFE260175DEC7A008055BC /* ARSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSettingViewController.h; sourceTree = "<group>"; };
+		32FFE261175DEC7A008055BC /* ARSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSettingViewController.m; sourceTree = "<group>"; };
+		32FFE262175DEC7B008055BC /* ARSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARSettingViewController.xib; sourceTree = "<group>"; };
 		A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CurrentLocations.png; sourceTree = "<group>"; };
 		A706EFE3169BDE2A0057D1FE /* MapFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapFrame.png; sourceTree = "<group>"; };
-		A779361E1679BC16006603C7 /* cameraoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraoff.png; sourceTree = "<group>"; };
-		A779361F1679BC16006603C7 /* cameraon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraon.png; sourceTree = "<group>"; };
-		A77936201679BC16006603C7 /* listoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listoff.png; sourceTree = "<group>"; };
-		A77936211679BC16006603C7 /* ListOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListOn.png; sourceTree = "<group>"; };
-		A77936221679BC16006603C7 /* mapoff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapoff.png; sourceTree = "<group>"; };
-		A779362B1679C024006603C7 /* mapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapon.png; sourceTree = "<group>"; };
 		A7EBB987169ABDF3004924AC /* ARPositionAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPositionAnnotationView.h; sourceTree = "<group>"; };
 		A7EBB988169ABDF3004924AC /* ARPositionAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPositionAnnotationView.m; sourceTree = "<group>"; };
 		A7EBB98B169AC144004924AC /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = location.gpx; sourceTree = "<group>"; };
@@ -188,8 +177,6 @@
 		C33504D716759CD500E4139A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		C33504D916759D2200E4139A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C33504DB16759D3700E4139A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		C337DD8316AD035500C4E5CE /* AR3Doff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR3Doff.png; sourceTree = "<group>"; };
-		C337DD8416AD035500C4E5CE /* AR3Don.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR3Don.png; sourceTree = "<group>"; };
 		C3435E2F167ECE80004B7FD0 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		C351767E16A93702009A2EAA /* AR3DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AR3DViewController.h; sourceTree = "<group>"; };
 		C351767F16A93702009A2EAA /* AR3DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AR3DViewController.m; sourceTree = "<group>"; };
@@ -202,8 +189,6 @@
 		C3FC0D5C16A78E1B00822AD4 /* ARShopInRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARShopInRadar.h; sourceTree = "<group>"; };
 		C3FC0D5D16A78E1B00822AD4 /* ARShopInRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARShopInRadar.m; sourceTree = "<group>"; };
 		C3FC0D6C16A7AE3F00822AD4 /* ShopInRadar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShopInRadar.png; sourceTree = "<group>"; };
-		C3FFA3E81681AB86007B7963 /* menu.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = menu.gif; sourceTree = "<group>"; };
-		C3FFA3EF1681ADE5007B7963 /* coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon.png; sourceTree = "<group>"; };
 		C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeNCWebViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,6 +353,7 @@
 		C320351B16757BA000CA3D8C /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				32FFE262175DEC7B008055BC /* ARSettingViewController.xib */,
 				C351768016A93702009A2EAA /* AR3DViewController.xib */,
 				C30B2CFC1695336200B56235 /* ARAPositionViewController.xib */,
 				C3FFA3FB1681B034007B7963 /* BeNCWebViewController.xib */,
@@ -428,6 +414,8 @@
 				C351767F16A93702009A2EAA /* AR3DViewController.m */,
 				C30B2CFA1695336200B56235 /* ARAPositionViewController.h */,
 				C30B2CFB1695336200B56235 /* ARAPositionViewController.m */,
+				32FFE260175DEC7A008055BC /* ARSettingViewController.h */,
+				32FFE261175DEC7A008055BC /* ARSettingViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -471,11 +459,12 @@
 		C3611F4716771E81008DBE79 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				3217A6C7174E13C2007EA0F4 /* ROSTER_icon_list1.png */,
-				3217A6C5174E130B007EA0F4 /* list-view-xxl.png */,
-				3217A6C3174E1125007EA0F4 /* System-Map-icon.png */,
-				3217A6C1174E110F007EA0F4 /* camera.png */,
-				3217A6BF174E1101007EA0F4 /* listIcon.png */,
+				32FFE25E175DD2EF008055BC /* ListButton.png */,
+				32FFE25C175DD2E8008055BC /* CameraButton.png */,
+				32FFE25A175DCB25008055BC /* MapButton.png */,
+				32FFE256175DCAFA008055BC /* AR2DIcon.png */,
+				32FFE254175DCAEC008055BC /* AR3DIcon.png */,
+				32FFE252175DCADF008055BC /* SettingIcon.png */,
 				3217A6BD174E085A007EA0F4 /* EgoImageCell.png */,
 				3217A6BB174E0638007EA0F4 /* BackgroudCell.png */,
 				3258072D16DB678B00559A2E /* Default-568h@2x.png */,
@@ -484,25 +473,14 @@
 				3217A6AE174DCA6C007EA0F4 /* red_x_down.png */,
 				3217A6AC174DCA65007EA0F4 /* red_x_up.png */,
 				3291002917470E420041D8A6 /* cricle.png */,
-				3291002717470B020041D8A6 /* Background.png */,
 				A7EE6665169D3C0B00D172AF /* numberView.png */,
 				C3F4E21916B137C0002A089C /* Radar.png */,
 				A7F29C2A16A0106C0040DA28 /* blank.png */,
-				C337DD8316AD035500C4E5CE /* AR3Doff.png */,
-				C337DD8416AD035500C4E5CE /* AR3Don.png */,
 				C3FC0D6C16A7AE3F00822AD4 /* ShopInRadar.png */,
 				A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */,
 				A706EFE3169BDE2A0057D1FE /* MapFrame.png */,
-				C3FFA3EF1681ADE5007B7963 /* coupon.png */,
-				C3FFA3E81681AB86007B7963 /* menu.gif */,
 				C3435E2F167ECE80004B7FD0 /* arrow.png */,
 				A7F21FB6167B0C9E006AE452 /* images.jpg */,
-				A779362B1679C024006603C7 /* mapon.png */,
-				A779361E1679BC16006603C7 /* cameraoff.png */,
-				A779361F1679BC16006603C7 /* cameraon.png */,
-				A77936201679BC16006603C7 /* listoff.png */,
-				A77936211679BC16006603C7 /* ListOn.png */,
-				A77936221679BC16006603C7 /* mapoff.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -565,16 +543,8 @@
 				C32035351675803500CA3D8C /* AR2DViewController.xib in Resources */,
 				C320353A1675804C00CA3D8C /* ARDetailViewController.xib in Resources */,
 				C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */,
-				A77936241679BC16006603C7 /* cameraoff.png in Resources */,
-				A77936251679BC16006603C7 /* cameraon.png in Resources */,
-				A77936261679BC16006603C7 /* listoff.png in Resources */,
-				A77936271679BC16006603C7 /* ListOn.png in Resources */,
-				A77936281679BC16006603C7 /* mapoff.png in Resources */,
-				A779362C1679C024006603C7 /* mapon.png in Resources */,
 				A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */,
 				C3435E30167ECE80004B7FD0 /* arrow.png in Resources */,
-				C3FFA3E91681AB86007B7963 /* menu.gif in Resources */,
-				C3FFA3F01681ADE5007B7963 /* coupon.png in Resources */,
 				C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */,
 				C30B2CFE1695336200B56235 /* ARAPositionViewController.xib in Resources */,
 				A7EBB98C169AC144004924AC /* location.gpx in Resources */,
@@ -584,11 +554,8 @@
 				A7F29C2B16A0106D0040DA28 /* blank.png in Resources */,
 				C3FC0D6E16A7AE3F00822AD4 /* ShopInRadar.png in Resources */,
 				C351768216A93702009A2EAA /* AR3DViewController.xib in Resources */,
-				C337DD8516AD035500C4E5CE /* AR3Doff.png in Resources */,
-				C337DD8616AD035500C4E5CE /* AR3Don.png in Resources */,
 				C3F4E21A16B137C0002A089C /* Radar.png in Resources */,
 				3258072E16DB678B00559A2E /* Default-568h@2x.png in Resources */,
-				3291002817470B020041D8A6 /* Background.png in Resources */,
 				3291002A17470E420041D8A6 /* cricle.png in Resources */,
 				3217A6AD174DCA65007EA0F4 /* red_x_up.png in Resources */,
 				3217A6AF174DCA6C007EA0F4 /* red_x_down.png in Resources */,
@@ -596,11 +563,13 @@
 				3217A6B3174DCA83007EA0F4 /* red_plus_down.png in Resources */,
 				3217A6BC174E0639007EA0F4 /* BackgroudCell.png in Resources */,
 				3217A6BE174E085A007EA0F4 /* EgoImageCell.png in Resources */,
-				3217A6C0174E1101007EA0F4 /* listIcon.png in Resources */,
-				3217A6C2174E110F007EA0F4 /* camera.png in Resources */,
-				3217A6C4174E1125007EA0F4 /* System-Map-icon.png in Resources */,
-				3217A6C6174E130B007EA0F4 /* list-view-xxl.png in Resources */,
-				3217A6C8174E13C3007EA0F4 /* ROSTER_icon_list1.png in Resources */,
+				32FFE253175DCADF008055BC /* SettingIcon.png in Resources */,
+				32FFE255175DCAED008055BC /* AR3DIcon.png in Resources */,
+				32FFE257175DCAFA008055BC /* AR2DIcon.png in Resources */,
+				32FFE25B175DCB25008055BC /* MapButton.png in Resources */,
+				32FFE25D175DD2E9008055BC /* CameraButton.png in Resources */,
+				32FFE25F175DD2EF008055BC /* ListButton.png in Resources */,
+				32FFE264175DEC7B008055BC /* ARSettingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +609,7 @@
 				C3F50AD716AF7CD8001E4685 /* ARDetailIn3D.m in Sources */,
 				3217A6B6174DD695007EA0F4 /* RNExpandingButtonBar.m in Sources */,
 				3217A6CB174E1DF1007EA0F4 /* PositonDetailInAR.m in Sources */,
+				32FFE263175DEC7B008055BC /* ARSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

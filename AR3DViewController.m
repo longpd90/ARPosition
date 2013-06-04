@@ -25,7 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 //        [self getDatabase];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
 //        radar = [[ARRadar alloc]init];
 //        radar.frame = CGRectMake(380, 0, 100, 100);
@@ -100,8 +100,8 @@
     }
 }
 
--(void)didUpdateData:(NSNotification *)notification {
-    arrayPosition = (NSMutableArray *)[notification object];
+-(void)didUpdateData:(NSMutableArray *)arrayData {
+    arrayPosition = arrayData;
     [self setContentForView];
 }
 

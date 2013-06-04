@@ -63,14 +63,15 @@ bool backToRootView;
 	[super viewDidAppear:animated];
     hiddenMenu = NO;
     UIButton *buttonShowMenu = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonShowMenu.frame = CGRectMake(440, 270, 30, 30);
+    buttonShowMenu.frame = CGRectMake(440, 260, 30, 30);
     [buttonShowMenu setBackgroundImage:[UIImage imageNamed:@"red_plus_up.png"] forState:UIControlStateNormal];
     [buttonShowMenu addTarget:self action:@selector(showHiddenMenu:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:buttonShowMenu];
+    [buttonShowMenu release];
 
 	//Create a view holder to store the tabbar items
-	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(230, 245, 210, 50)];
+	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(180, 245, 260, 50)];
 	tabBarHolder.backgroundColor = [UIColor clearColor];
     
 	//add it as a subview
@@ -93,6 +94,7 @@ bool backToRootView;
 	}
 	[self.view bringSubviewToFront:tabBarHolder];
     [self.view bringSubviewToFront:buttonShowMenu];
+    tabBarHolder.hidden = YES;
 
 	//show/hide tabbars and controllers with a particular index
 	[self initialTab:initTab];

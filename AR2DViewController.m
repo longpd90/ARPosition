@@ -30,7 +30,7 @@
         userLocation = [[LocationService sharedLocation] getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
         [self addVideoInput];
 //        [self getDatabase];
@@ -196,23 +196,23 @@
 
     
     CLHeading *newHeading = [notification object];
-    double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;
-    float angleToHeading1 = [self caculateRotationAngleToHeading:rotationAngleArrow1 withAngleTonorth:newAngleToNorth];
-    float angleToHeading2 = [self caculateRotationAngleToHeading:rotationAngleArrow2 withAngleTonorth:newAngleToNorth];
-    float angleToHeading3 = [self caculateRotationAngleToHeading:rotationAngleArrow3 withAngleTonorth:newAngleToNorth];
-    float angleToHeading4 = [self caculateRotationAngleToHeading:rotationAngleArrow4 withAngleTonorth:newAngleToNorth];
-    float angleToHeading5 = [self caculateRotationAngleToHeading:rotationAngleArrow5 withAngleTonorth:newAngleToNorth];
-
-    [self setNewCenterForView:angleToHeading1 withDetailView:detaitlView1];
-    [self setNewCenterForView:angleToHeading2 withDetailView:detaitlView2];
-    [self setNewCenterForView:angleToHeading3 withDetailView:detaitlView3];
-    [self setNewCenterForView:angleToHeading4 withDetailView:detaitlView4];
-    [self setNewCenterForView:angleToHeading5 withDetailView:detaitlView5];
+//    double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;
+//    float angleToHeading1 = [self caculateRotationAngleToHeading:rotationAngleArrow1 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading2 = [self caculateRotationAngleToHeading:rotationAngleArrow2 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading3 = [self caculateRotationAngleToHeading:rotationAngleArrow3 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading4 = [self caculateRotationAngleToHeading:rotationAngleArrow4 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading5 = [self caculateRotationAngleToHeading:rotationAngleArrow5 withAngleTonorth:newAngleToNorth];
+//
+//    [self setNewCenterForView:angleToHeading1 withDetailView:detaitlView1];
+//    [self setNewCenterForView:angleToHeading2 withDetailView:detaitlView2];
+//    [self setNewCenterForView:angleToHeading3 withDetailView:detaitlView3];
+//    [self setNewCenterForView:angleToHeading4 withDetailView:detaitlView4];
+//    [self setNewCenterForView:angleToHeading5 withDetailView:detaitlView5];
 
 }
 
--(void)didUpdateData:(NSNotification *)notification {
-    arrayPosition = [(NSMutableArray *)[notification object]retain];
+-(void)didUpdateData:(NSMutableArray *)arrayData {
+    arrayPosition = arrayData;
     [self setupContentView];
 }
 

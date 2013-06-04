@@ -26,7 +26,7 @@
 
 
 
-@interface ARListViewController : UIViewController<ARPositionCellDelegate,UITableViewDelegate,UITableViewDataSource,ServiceControllerDelegate>{
+@interface ARListViewController : UIViewController<ARPositionCellDelegate,UITableViewDelegate,UITableViewDataSource>{
     int listType;
     IBOutlet UITableView *listShopView;
 //    NSMutableArray *shopsArray;
@@ -50,9 +50,10 @@
 -(int)calculeDistance:(InstanceData *)positionEntity;
 //- (void)refreshData;
 //- (IBAction)editList:(id)sender;
--(void)sortShopByDistance;
+//-(void)sortShopByDistance;
 -(IBAction)closeListViewInMap:(id)sender;
 -(void)addDoneButton;
 -(void)getShopDataFromMap:(NSArray *)shopArray;
+-(void)didUpdateData:(NSMutableArray *)arrayData ;
 
 @end

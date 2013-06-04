@@ -34,7 +34,7 @@ bool firstUpdate = 1;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
     }
@@ -65,8 +65,8 @@ bool firstUpdate = 1;
 
 }
 
--(void)didUpdateData:(NSNotification *)notification {
-    arrayPosition = (NSMutableArray *)[notification object];
+-(void)didUpdateData:(NSMutableArray *)arrayData {
+    arrayPosition = arrayData;
     [self addShopAnnotation];
 }
 
@@ -87,6 +87,7 @@ bool firstUpdate = 1;
         [shopAnnotation.overideAnnotation addObject:positionEntity];
         [shopsAnnotations addObject:shopAnnotation];
         [mapViewPosition addAnnotation:shopAnnotation];
+        [shopAnnotation release];
     }
     
 }
@@ -170,7 +171,7 @@ bool firstUpdate = 1;
     if ([annotation isKindOfClass:[ARPositionAnnotation class]]) {
         ARPositionAnnotationView *annotationView = (ARPositionAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
-            annotationView = [[ARPositionAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationView = [[[ARPositionAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier]autorelease];
             
         } else {
             annotationView.annotation = annotation;
@@ -221,6 +222,7 @@ bool firstUpdate = 1;
         navigation.view.transform = scaleBegin;
         [self.view addSubview:navigation.view];
         [self animationScaleOn:navigation];
+        [navigation release];
         [listShopViewController release];
         
         

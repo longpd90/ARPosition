@@ -29,8 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
-        [self getData:10 withPageSize:8 withPageIndex:1 withCatagory:2 withLanguage:@"vn"];
-
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"UpdateData" object:nil];
     }
     return self;
 }
@@ -60,6 +59,12 @@
     }
     [super viewDidLoad];
 }
+
+-(void)didUpdateData:(NSMutableArray *)arrayData {
+    arrayPosition = arrayData;
+    [self.listShopView reloadData];
+}
+
 -(void)addDoneButton{
     done = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [done setTitle:@"X" forState:UIControlStateNormal];
@@ -101,25 +106,6 @@
 }
 
 
-- (void)getData:(float)radius withPageSize:(int)pageSize withPageIndex:(int)pageIndex withCatagory:(int)catagory  withLanguage:(NSString *)language {
-    ArroundPlaceService * dataPlace = [[ArroundPlaceService alloc]init];
-    dataPlace.delegate = self;
-    [dataPlace getArroundPlaceWithLatitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.latitude] longitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.longitude] radius:radius pageSize:pageSize pageIndex:pageIndex category:catagory language:language];
-}
-
-- (void)requestDidFinish:(ArroundPlaceService *)controller withResult:(NSArray *)results
-{
-    arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
-    [self sortShopByDistance];
-    [self.listShopView reloadData];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"Updata" object:results];
-}
-
-- (void)requestDidFail:(ArroundPlaceService *)controller withError:(NSError *)error
-{
-    NSLog(@"error : %@",error);
-}
-
 -(int)calculeDistance:(InstanceData *)positionEntity{
 
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
@@ -146,15 +132,6 @@
 //
 //}
 
-- (void)sortShopByDistance
-{
-    for (int i = 0; i < [arrayPosition count]; i ++) {
-        for (int j = i + 1; j < [arrayPosition count]; j ++) {
-            if ([self calculeDistance:[arrayPosition objectAtIndex:i]] > [self calculeDistance:[arrayPosition objectAtIndex:j]])
-                [arrayPosition exchangeObjectAtIndex:i withObjectAtIndex:j];
-        }
-    }
-}
 
 #pragma mark - Table view delegate
 

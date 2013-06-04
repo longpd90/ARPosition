@@ -32,5 +32,6 @@
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;
 //- (IBAction)changeValueSlider:(id)sender;
 -(void)setContentForView;
+-(void)didUpdateData:(NSMutableArray *)arrayData ;
 
 @end

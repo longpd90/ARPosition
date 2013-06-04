@@ -15,7 +15,7 @@
     if (self = [super init]) {
         self.locationManager = [[CLLocationManager alloc]init];
         self.locationManager.delegate=self;
-        self.locationManager.headingFilter = kCLHeadingFilterNone;
+        [self.locationManager setHeadingFilter:3];
         [self.locationManager setDistanceFilter:3];
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];        
         userLocation = [[CLLocation alloc]init];        
@@ -70,7 +70,8 @@
 
 
 -(void)dealloc{
-    
+    [locationManager release];
+    [userLocation release];
     [super dealloc];
 }
 @end

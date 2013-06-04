@@ -42,4 +42,6 @@
 -(double)caculateRotationAngle:(InstanceData * )positionEntity;
 - (void)setNewCenterForView:(float )angleToHeading  withDetailView:(ARDetailIn2D *)detailViewInCamera;
 -(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;
+-(void)didUpdateData:(NSMutableArray *)arrayData ;
+
 @end

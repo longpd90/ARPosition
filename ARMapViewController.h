@@ -33,5 +33,6 @@
 -(IBAction)toUserLocation:(id)sender;
 -(IBAction)sliderChange:(id)sender;
 -(void)animationScaleOn:(UINavigationController *)navigation;
+-(void)didUpdateData:(NSMutableArray *)arrayData ;
 
 @end

@@ -13,36 +13,53 @@
 #import "AR2DViewController.h"
 #import "ARMapViewController.h"
 #import "AR3DViewController.h"
+#import "ARSettingViewController.h"
 
 @implementation ARAppDelegate
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
-@synthesize databasePath;
+@synthesize arrayPosition;
 
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
     [databasePath release];
+    [arrayPosition release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self checkDatabase];
     [[LocationService sharedLocation]startUpdate];
-    ARTabbarItem *tabItem1 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(2, 0, 50, 50) normalState:@"listIcon.png" toggledState:@"ROSTER_icon_list1"];
-	ARTabbarItem *tabItem2 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(54, 0, 50, 50) normalState:@"camera.png" toggledState:@"cameraon.png"];
-	ARTabbarItem *tabItem3 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(106, 0, 50, 50) normalState:@"AR3Doff.png" toggledState:@"AR3Don.png"];
-    ARTabbarItem *tabItem4 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(158, 0, 50, 50) normalState:@"System-Map-icon.png" toggledState:@"mapon.png"];
 
+    userLocation = [[LocationService sharedLocation]getOldLocation];
+    [self getData:10 withPageSize:8 withPageIndex:1 withCatagory:2 withLanguage:@"vn"];
+
+    return YES;
+}
+
+- (void) setViewConnectSuccess
+{
+    
+    ARTabbarItem *tabItem1 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(2, 0, 50, 50) normalState:@"ListButton.png" toggledState:@"ListButton.png"];
+	ARTabbarItem *tabItem2 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(54, 0, 50, 50) normalState:@"CameraButton.png" toggledState:@"CameraButton.png"];
+	ARTabbarItem *tabItem3 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(106, 0, 50, 50) normalState:@"AR3DIcon.png" toggledState:@"AR3DIcon.png"];
+    ARTabbarItem *tabItem4 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(158, 0, 50, 50) normalState:@"MapButton.png" toggledState:@"MapButton.png"];
+    ARTabbarItem *tabItem5 = [[ARTabbarItem alloc] initWithFrame:CGRectMake(210, 0, 50, 50) normalState:@"SettingIcon.png" toggledState:@"SettingIcon.png"];
+    
     
     ARListViewController *listViewController = [[ARListViewController alloc]initWithNibName:@"ARListViewController" bundle:nil];
+    [listViewController didUpdateData:arrayPosition];
     [listViewController setListType:0];
-    AR2DViewController *cameraViewController = [[AR2DViewController alloc]initWithNibName:@"BeNCCameraViewController" bundle:nil];
+    AR2DViewController *cameraViewController = [[AR2DViewController alloc]initWithNibName:@"AR2DViewController" bundle:nil];
+    [cameraViewController didUpdateData:arrayPosition];
     AR3DViewController *aR3DViewController = [[AR3DViewController alloc]initWithNibName:@"AR3DViewController" bundle:nil];
+    [aR3DViewController didUpdateData:arrayPosition];
     ARMapViewController *mapViewController = [[ARMapViewController alloc]initWithNibName:@"ARMapViewController" bundle:nil];
+    [mapViewController didUpdateData:arrayPosition];
+    ARSettingViewController *aRSettingViewController = [[ARSettingViewController alloc]initWithNibName:@"ARSettingViewController" bundle:nil];
     
     
     NSMutableArray *viewControllersArray = [[NSMutableArray alloc] init];
@@ -50,25 +67,31 @@
     UINavigationController *cameraNavigation = [[UINavigationController alloc]initWithRootViewController:cameraViewController];
     UINavigationController *aR3DNavigation = [[UINavigationController alloc]initWithRootViewController:aR3DViewController];
     UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
+    UINavigationController *settingNavigation = [[UINavigationController alloc]initWithRootViewController:aRSettingViewController];
+
     [listViewController release];
     [mapViewController release];
     [aR3DViewController release];
     [cameraViewController release];
+    [aRSettingViewController release];
     
     [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [cameraNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [aR3DNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [mapNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
+    [settingNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     
 	[viewControllersArray addObject:listNavigation];
     [viewControllersArray addObject:cameraNavigation];
     [viewControllersArray addObject:aR3DNavigation];
 	[viewControllersArray addObject:mapNavigation];
+    [viewControllersArray addObject:settingNavigation];
     
     [listNavigation release];
     [cameraNavigation release];
     [aR3DNavigation release];
     [mapNavigation release];
+    [settingNavigation release];
     
 	
 	NSMutableArray *tabItemsArray = [[NSMutableArray alloc] init];
@@ -76,37 +99,71 @@
 	[tabItemsArray addObject:tabItem2];
 	[tabItemsArray addObject:tabItem3];
     [tabItemsArray addObject:tabItem4];
-//
+    [tabItemsArray addObject:tabItem5];
+    //
     [tabItem1 release];
     [tabItem2 release];
     [tabItem3 release];
     [tabItem4 release];
-//    
+    [tabItem5 release];
+    //
     
-  
-
-    
+        
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.viewController = [[MenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
-    return YES;
 }
 
-- (void)checkDatabase 
+- (void)setViewConnectFail
 {
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    UIViewController *viewctrl = [[UIViewController alloc]init];
+    [viewctrl.view setBackgroundColor:[UIColor blueColor]];
+    self.window.rootViewController = viewctrl;
+    [viewctrl release];
+    [self.window makeKeyAndVisible];
+}
 
-    BOOL success;
-    NSString *databaseName = @"ARShopDatabase.sqlite";
-    NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDir = [documentPath objectAtIndex:0];
-    databasePath = [documentDir stringByAppendingPathComponent:databaseName];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    success = [fileManager fileExistsAtPath:databasePath];
-    if (success) return;
-    NSString *databasePathFromApp = [[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:databaseName];
-    [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
+- (void)getData:(float)radius withPageSize:(int)pageSize withPageIndex:(int)pageIndex withCatagory:(int)catagory  withLanguage:(NSString *)language {
+    ArroundPlaceService * dataPlace = [[ArroundPlaceService alloc]init];
+    dataPlace.delegate = self;
+    [dataPlace getArroundPlaceWithLatitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.latitude] longitude:[NSString stringWithFormat:@"%f",userLocation.coordinate.longitude] radius:radius pageSize:pageSize pageIndex:pageIndex category:catagory language:language];
+}
+
+
+- (void)requestDidFinish:(ArroundPlaceService *)controller withResult:(NSArray *)results
+{
+//    NSLog(@"mang ket qua : %@",results);
+    arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
+    [self sortShopByDistance];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateData" object:results];
+    [self setViewConnectSuccess];
+}
+
+- (void)requestDidFail:(ArroundPlaceService *)controller withError:(NSError *)error
+{
+    NSLog(@"error : %@",error);
+    [self setViewConnectFail];
+    
+}
+
+- (void)sortShopByDistance
+{
+    for (int i = 0; i < [arrayPosition count]; i ++) {
+        for (int j = i + 1; j < [arrayPosition count]; j ++) {
+            if ([self calculeDistance:[arrayPosition objectAtIndex:i]] > [self calculeDistance:[arrayPosition objectAtIndex:j]])
+                [arrayPosition exchangeObjectAtIndex:i withObjectAtIndex:j];
+        }
+    }
+}
+- (float)calculeDistance:(InstanceData *)positionEntity{
+    
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
+    float distance = [shoplocation distanceFromLocation: userLocation];
+    [shoplocation release];
+    return distance;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -135,6 +192,5 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 
 @end

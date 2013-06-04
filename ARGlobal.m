@@ -29,6 +29,7 @@
     CLLocation *pointTemp =  [[CLLocation alloc]initWithLatitude:lat longitude:userLocation.coordinate.longitude];
     CLLocationDistance distanceToTemp = [userLocation distanceFromLocation:pointTemp];
     [pointTemp release];
+    [positionLocation release];
     double rotationAngle;
     
     double angle=acos(distanceToTemp/distance);

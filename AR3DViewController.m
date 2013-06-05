@@ -24,13 +24,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        [self getDatabase];
 //        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
-
 //        radar = [[ARRadar alloc]init];
 //        radar.frame = CGRectMake(380, 0, 100, 100);
 //        [self.view addSubview:radar];
-
     }
     return self;
 }
@@ -46,20 +43,16 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:YES];
-    
 }
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
-
 
 - (void)addVideoInput {
     captureSession = [[AVCaptureSession alloc]init];
@@ -77,6 +70,32 @@
     [captureSession startRunning];    
 
 }
+
+
+
+-(void)didUpdateData:(NSMutableArray *)arrayData {
+    arrayPosition = arrayData;
+    [self deleteData];
+}
+
+-(void)didUpdateNewData:(NSNotification *)notification {
+    [arrayPosition removeAllObjects];
+    arrayPosition = nil;
+    arrayPosition = (NSMutableArray *)[notification object];
+    [self deleteData];
+}
+- (void)deleteData
+{
+    for (int i = 0; i < [arrayShopDistance count]; i ++) {
+        ARDetailIn3D *detailView = (ARDetailIn3D *)[arrayShopDistance objectAtIndex:i];
+        [detailView removeFromSuperview];
+        detailView = nil;
+    }
+    [arrayShopDistance removeAllObjects];
+    arrayShopDistance = nil;
+    [self setContentForView];
+}
+
 -(void)setContentForView
 {
     arrayShopDistance = nil;
@@ -85,39 +104,13 @@
         
         ARDetailIn3D *testView = [[ARDetailIn3D alloc]initWithShop:positionEntity];
         [arrayShopDistance addObject:testView];
-
+        
         testView.delegate = self;
         [testView setIndex:i];
         [self.view addSubview:testView];
         
     }
 }
-
--(void)didUpdateData:(NSMutableArray *)arrayData {
-    arrayPosition = arrayData;
-    [self setContentForView];
-}
--(void)didUpdateNewData:(NSNotification *)notification {
-    [arrayPosition removeAllObjects];
-    arrayPosition = nil;
-    arrayPosition = (NSMutableArray *)[notification object];
-    [self setContentForView];
-}
-//- (void)deleteData
-//{
-//    for (int i = 0; i < [shopInRadius count]; i ++) {
-//        BeNCDetailInAR3D *detailView = (BeNCDetailInAR3D *)[shopInRadius objectAtIndex:i];
-//        [detailView removeFromSuperview];
-//        [detailView release];
-//    }
-////    [self setContentForView];
-//}
-//
-//
-//-(void)setContentForView
-//{
-//    
-//}
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
@@ -134,15 +127,5 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
-- (void)deleteData
-{
-    for (int i = 0; i < [arrayShopDistance count]; i ++) {
-        ARDetailIn3D *detailView = (ARDetailIn3D *)[arrayShopDistance objectAtIndex:i];
-        [detailView removeFromSuperview];
-        detailView = nil;
-    }
-    [arrayShopDistance removeAllObjects];
 
-    [self setContentForView];
-}
 @end

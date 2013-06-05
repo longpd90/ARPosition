@@ -18,8 +18,8 @@
     int radiusSearching;
 }
 @property int radiusSearching;
-@property(nonatomic, retain)CLLocation *userLocation;
-@property(nonatomic, retain)InstanceData *position;
+@property(nonatomic, strong)CLLocation *userLocation;
+@property(nonatomic, strong)InstanceData *position;
 - (id)initWithShop:(InstanceData *)positionEntity withRadius:(int )radius;
 - (float)caculateDistanceToShop:(InstanceData *)positionEntity;
 -(double)caculateRotationAngle:(InstanceData * )positionEntity;

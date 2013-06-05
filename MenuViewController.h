@@ -26,10 +26,10 @@
 
 @property int initTab;
 
-@property (nonatomic, retain) UIView *tabBarHolder;
-@property (nonatomic, assign) id <MenuViewControllerDelegate> delegate;
-@property (nonatomic, retain) NSMutableArray *tabViewControllers;
-@property (nonatomic, retain) NSMutableArray *tabItemsArray;
+@property (nonatomic, strong) UIView *tabBarHolder;
+@property (nonatomic, strong) id <MenuViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSMutableArray *tabViewControllers;
+@property (nonatomic, strong) NSMutableArray *tabItemsArray;
 @property (nonatomic) int selectedTab;
 //actions
 - (id)initWithTabViewControllers:(NSMutableArray *)tbControllers tabItems:(NSMutableArray *)tbItems initialTab:(int)iTab;

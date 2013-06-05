@@ -42,7 +42,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
-//    [self addVideoInput];
+    [self addVideoInput];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -87,7 +87,6 @@
     pointCenter.x = 240;
     pointCenter.y = 150;
     detailViewInAR.center = pointCenter;
-    [detailViewInAR release];
 }
 - (void)setNewCenterForView:(float )angleToHeading{
     float originX = arrowView.frame.size.width/2;
@@ -155,7 +154,6 @@
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     rotationAngleArrow = [self caculateRotationAngle:position];
 }
@@ -163,10 +161,8 @@
 -(double)caculateRotationAngle:(InstanceData * )positionEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
-    [shopLocation release];
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    [point release];
     double rotationAngle;
     
     double angle=acos(distance1/distance);
@@ -187,16 +183,6 @@
         }
     }
     return rotationAngle;
-}
-- (void)dealloc
-{
-    [userLocation release];
-//    [captureSession stopRunning];
-//    [captureSession release];
-//    [deviceInput release];
-    [position release];
-    [arrowView release];
-    [super dealloc];
 }
 
 

@@ -40,12 +40,12 @@
     
 }
 @property(nonatomic,strong) id<ListViewOnMapDelegate> delegate;
-@property(nonatomic, retain) NSMutableArray *shopsArray;
+@property(nonatomic, strong) NSMutableArray *shopsArray;
 @property float distanceToShop;
-@property(nonatomic,retain)IBOutlet UITableView *listShopView;
-@property(nonatomic,retain)CLLocation *userLocation ;
+@property(nonatomic,strong)IBOutlet UITableView *listShopView;
+@property(nonatomic,strong)CLLocation *userLocation ;
 @property(nonatomic) int listType;
-@property (nonatomic, retain) NSMutableArray *arrayPosition;
+@property (nonatomic, strong) NSMutableArray *arrayPosition;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(int)calculeDistance:(InstanceData *)positionEntity;
 //- (void)refreshData;

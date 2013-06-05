@@ -60,6 +60,104 @@
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
+
+# pragma mark - add Video to App
+- (void)addVideoInput {
+    captureSession = [[AVCaptureSession alloc]init];
+    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+    previewLayer.frame = CGRectMake(0, 0, 480, 320);
+    [previewLayer setOrientation:AVCaptureVideoOrientationLandscapeRight];
+    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+	[self.view.layer addSublayer:previewLayer];
+    NSError *error = nil;
+    AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
+    if ([captureSession canAddInput:deviceInput])
+        [captureSession addInput:deviceInput];
+    [captureSession startRunning];    
+}
+
+
+
+#pragma mark - set Content For View
+
+-(void)didUpdateData:(NSMutableArray *)arrayData {
+    arrayPosition = arrayData;
+    [self setContentForView];
+}
+
+- (void)setContentForView
+{
+    arrayShopDistance = nil;
+    for (int i = 0; i < 5; i ++) {
+
+        InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];
+        ARDetailIn2D *detailView = [[ARDetailIn2D alloc]initWithShop:positionEntity];
+        detailView.delegate = self;
+        [detailView setIndex:i];
+        [arrayShopDistance addObject:detailView];
+
+        if (i < 3) {
+            CGRect frame = detailView.frame;
+            frame.origin.x =  5;
+            frame.origin.y = 85 * (i % 3) + 5;
+            detailView.frame = frame;
+        }
+        
+        else if (i >=3 && i < 5 ) {
+            NSLog(@"x = %f, y = %f",detailView.frame.size.width,detailView.frame.size.height);
+            CGRect frame = detailView.frame;
+            frame.origin.x =  480 - frame.size.width - 2;
+            frame.origin.y = 103 * (i % 3) + 35;
+            detailView.frame = frame;
+        }
+        [self.view addSubview:detailView];
+        
+    }
+}
+- (void)deleteData
+{
+    for (int i = 0; i < [arrayShopDistance count]; i ++) {
+        AR2DViewController *detailView = (AR2DViewController *)[arrayShopDistance objectAtIndex:i];
+        [detailView.view removeFromSuperview];
+        detailView = nil;
+        [arrayShopDistance removeAllObjects];
+    }
+    [self setContentForView];
+}
+
+
+-(void)didUpdateLocation:(NSNotification *)notification {
+    CLLocation *newLocation = (CLLocation *)[notification object];
+    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+    
+//    rotationAngleArrow1 = [self caculateRotationAngle:positionEntity1];
+//    rotationAngleArrow2 = [self caculateRotationAngle:positionEntity2];
+//    rotationAngleArrow3 = [self caculateRotationAngle:positionEntity3];
+//    rotationAngleArrow4 = [self caculateRotationAngle:positionEntity4];
+//    rotationAngleArrow5 = [self caculateRotationAngle:positionEntity5];
+}
+
+-(void)didUpdateHeading:(NSNotification *)notification{
+
+    
+    CLHeading *newHeading = [notification object];
+//    double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;
+//    float angleToHeading1 = [self caculateRotationAngleToHeading:rotationAngleArrow1 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading2 = [self caculateRotationAngleToHeading:rotationAngleArrow2 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading3 = [self caculateRotationAngleToHeading:rotationAngleArrow3 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading4 = [self caculateRotationAngleToHeading:rotationAngleArrow4 withAngleTonorth:newAngleToNorth];
+//    float angleToHeading5 = [self caculateRotationAngleToHeading:rotationAngleArrow5 withAngleTonorth:newAngleToNorth];
+//
+//    [self setNewCenterForView:angleToHeading1 withDetailView:detaitlView1];
+//    [self setNewCenterForView:angleToHeading2 withDetailView:detaitlView2];
+//    [self setNewCenterForView:angleToHeading3 withDetailView:detaitlView3];
+//    [self setNewCenterForView:angleToHeading4 withDetailView:detaitlView4];
+//    [self setNewCenterForView:angleToHeading5 withDetailView:detaitlView5];
+
+}
+
 - (void) setupContentView
 {
     positionEntity1 = (InstanceData *)[arrayPosition objectAtIndex:0];
@@ -93,129 +191,11 @@
     [self.view addSubview:detaitlView3];
     [self.view addSubview:detaitlView2];
     [self.view addSubview:detaitlView1];
-//    ARRadar *radar = [[ARRadar alloc]init];
-//    radar.frame = CGRectMake(380, 0, 100, 100);
-//    [self.view addSubview:radar];
-//    [radar  release];
+    //    ARRadar *radar = [[ARRadar alloc]init];
+    //    radar.frame = CGRectMake(380, 0, 100, 100);
+    //    [self.view addSubview:radar];
+    //    [radar  release];
 }
-# pragma mark - add Video to App
-- (void)addVideoInput {
-    captureSession = [[AVCaptureSession alloc]init];
-    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    previewLayer.frame = CGRectMake(0, 0, 480, 320);
-    [previewLayer setOrientation:AVCaptureVideoOrientationLandscapeRight];
-    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.view.layer addSublayer:previewLayer];
-    NSError *error = nil;
-    AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
-    if ([captureSession canAddInput:deviceInput])
-        [captureSession addInput:deviceInput];
-    [captureSession startRunning];    
-}
-
-
-# pragma mark - get Database
-//- (void )getDatabase
-//{
-//    ARListViewController *listViewController = [[ARListViewController alloc]initWithNibName:@"BeNCListViewController" bundle:nil];
-//    shopsArray = [[[NSMutableArray alloc]initWithArray:listViewController.shopsArray]retain];
-//    [listViewController release];
-//
-//}
-
-
-
-#pragma mark - set Content For View
-
-
-//- (void)setContentForView
-//{
-//    [arrayShopDistance release];
-//    arrayShopDistance = [[NSMutableArray alloc]init];
-//    for (int i = 0; i < 5; i ++) {
-//
-//        BeNCShopEntity *shopEntity = (BeNCShopEntity *)[shopsArray objectAtIndex:i];
-//        BeNCDetailInCameraViewController *detailView = [[BeNCDetailInCameraViewController alloc]initWithShop:shopEntity];
-//        detailView.delegate = self;
-//        [detailView setIndex:i];
-//        [arrayShopDistance addObject:detailView];
-//
-//        if (i < 3) {
-//            CGRect frame = detailView.view.frame;
-//            frame.origin.x =  5;
-//            frame.origin.y = 85 * (i % 3) + 5;
-//            detailView.view.frame = frame;
-//            
-//        }
-//        
-//        else if (i >=3 && i < 5 ) {
-//            CGRect frame = detailView.view.frame;
-//            frame.origin.x =  480 - frame.size.width -5;
-//            frame.origin.y = 103 * (i % 3) + 35;
-//            detailView.view.frame = frame;
-//        }
-//        [self.view addSubview:detailView.view];
-//        
-//    }
-//}
-//- (void)deleteData
-//{
-//    for (int i = 0; i < [arrayShopDistance count]; i ++) {
-//        BeNCDetailInCameraViewController *detailView = (BeNCDetailInCameraViewController *)[arrayShopDistance objectAtIndex:i];
-//        [detailView.view removeFromSuperview];
-//        [detailView release];
-//    }
-//    [self setContentForView];
-//}
-//- (void)sortShopByDistance
-//{
-//    for (int i = 0; i < [shopsArray count]; i ++) {
-//        for (int j = i + 1; j < [shopsArray count]; j ++) {
-//            if ([self caculateDistanceToShop:[shopsArray objectAtIndex:i]] > [self caculateDistanceToShop:[shopsArray objectAtIndex:j]]) 
-//                [shopsArray exchangeObjectAtIndex:i withObjectAtIndex:j];
-//        }
-//    }
-//    [self deleteData];
-//}
-
-
--(void)didUpdateLocation:(NSNotification *)notification {
-    CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
-    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    rotationAngleArrow1 = [self caculateRotationAngle:positionEntity1];
-    rotationAngleArrow2 = [self caculateRotationAngle:positionEntity2];
-    rotationAngleArrow3 = [self caculateRotationAngle:positionEntity3];
-    rotationAngleArrow4 = [self caculateRotationAngle:positionEntity4];
-    rotationAngleArrow5 = [self caculateRotationAngle:positionEntity5];
-}
-
--(void)didUpdateHeading:(NSNotification *)notification{
-
-    
-    CLHeading *newHeading = [notification object];
-//    double newAngleToNorth =   newHeading.magneticHeading * rotationRate ;
-//    float angleToHeading1 = [self caculateRotationAngleToHeading:rotationAngleArrow1 withAngleTonorth:newAngleToNorth];
-//    float angleToHeading2 = [self caculateRotationAngleToHeading:rotationAngleArrow2 withAngleTonorth:newAngleToNorth];
-//    float angleToHeading3 = [self caculateRotationAngleToHeading:rotationAngleArrow3 withAngleTonorth:newAngleToNorth];
-//    float angleToHeading4 = [self caculateRotationAngleToHeading:rotationAngleArrow4 withAngleTonorth:newAngleToNorth];
-//    float angleToHeading5 = [self caculateRotationAngleToHeading:rotationAngleArrow5 withAngleTonorth:newAngleToNorth];
-//
-//    [self setNewCenterForView:angleToHeading1 withDetailView:detaitlView1];
-//    [self setNewCenterForView:angleToHeading2 withDetailView:detaitlView2];
-//    [self setNewCenterForView:angleToHeading3 withDetailView:detaitlView3];
-//    [self setNewCenterForView:angleToHeading4 withDetailView:detaitlView4];
-//    [self setNewCenterForView:angleToHeading5 withDetailView:detaitlView5];
-
-}
-
--(void)didUpdateData:(NSMutableArray *)arrayData {
-    arrayPosition = arrayData;
-    [self setupContentView];
-}
-
 - (void)setNewCenterForView:(float )angleToHeading  withDetailView:(ARDetailIn2D *)detailViewInCamera{
     float originX = detailViewInCamera.frame.size.width/2;
     float originY = detailViewInCamera.frame.size.height/2;
@@ -261,10 +241,8 @@
 -(double)caculateRotationAngle:(InstanceData * )positionEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
-    [shopLocation release];
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    [point release];
     double rotationAngle;
     
     double angle=acos(distance1/distance);
@@ -312,15 +290,8 @@
     InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:index];
      ARAPositionViewController *detailViewController = [[ARAPositionViewController alloc] initWithShop:positionEntity];
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
 }
 
-- (void)dealloc
-{
-    [captureSession stopRunning];
-    [captureSession release];
-    [deviceInput release];
-    [super dealloc];
-}
+
 
 @end

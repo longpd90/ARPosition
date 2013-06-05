@@ -25,7 +25,7 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
-        shopInRadarArray = [[[NSMutableArray alloc]init]retain];
+        shopInRadarArray = [[NSMutableArray alloc]init];
         self.radiusSearching = 2000;
         
         UIImageView *imageViewRadar = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
@@ -34,7 +34,6 @@
         [self addSubview:imageViewRadar];
         [self setBackgroundColor:[UIColor clearColor]];
         [self removeShopInRadar];
-        [imageViewRadar release];
 
             }
     return self;
@@ -58,7 +57,6 @@
             ARShopInRadar *shopTest = [[ARShopInRadar alloc]initWithShop:positionEntity withRadius:self.radiusSearching];
             [self addSubview:shopTest];
             [shopInRadarArray addObject:shopTest];
-            [shopTest release];
         }
     }
 }
@@ -83,21 +81,15 @@
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
 }
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     [self removeShopInRadar];
-}
-- (void)dealloc
-{
-    [arrayPosition release];
-    [super dealloc];
 }
 
 @end

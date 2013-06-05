@@ -40,9 +40,6 @@
 	//send notification of the button that was currently pressed
 	[self.delegate selectedItem:target];
 }
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

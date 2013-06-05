@@ -16,7 +16,7 @@
     double rotationAngleArrow;
     UIImageView *arrowImageView;
 }
-@property (nonatomic, retain)InstanceData *postion;
+@property (nonatomic, strong)InstanceData *postion;
 - (id)initWithShop:(InstanceData *)positionEntity;
 -(double)caculateRotationAngle:(InstanceData * )positionEntity;
 @end

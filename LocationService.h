@@ -16,8 +16,8 @@
     
     
 }
-@property(nonatomic,retain) CLLocation *userLocation ;
-@property(nonatomic,retain) CLLocationManager *locationManager;
+@property(nonatomic,strong) CLLocation *userLocation ;
+@property(nonatomic,strong) CLLocationManager *locationManager;
 
 +(id)sharedLocation;
 +(id)userLocation;

@@ -24,8 +24,8 @@
     InstanceData *position;
 }
 @property int index;
-@property(nonatomic, retain)CLLocation *userLocation;
-@property(nonatomic, retain)id<ARDetailIn2DDelegate>delegate;
+@property(nonatomic, strong)CLLocation *userLocation;
+@property(nonatomic, strong)id<ARDetailIn2DDelegate>delegate;
 - (id)initWithShop:(InstanceData *)positionEntity;
 - (void)setContentForView:(InstanceData *)positionEntity;
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;

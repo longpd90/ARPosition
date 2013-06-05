@@ -13,7 +13,7 @@
 
 @synthesize labelDistanceToShop,labelShopName;
 @synthesize userLocation;
-@synthesize delegate,position,imageViewBackground;
+@synthesize delegate,position,imageViewBackground,starView;
 - (id)initWithShop:(InstanceData *)positionEntity
 {
     self = [super init];
@@ -34,6 +34,7 @@
         labelShopName = [[UILabel alloc]init];
         [labelShopName setBackgroundColor:[UIColor clearColor]];
         labelDistanceToShop = [[UILabel alloc]init];
+        [labelDistanceToShop setFont:[UIFont boldSystemFontOfSize:18]];
         [labelDistanceToShop setTextAlignment:NSTextAlignmentRight];
         [labelDistanceToShop setBackgroundColor:[UIColor clearColor]];
         labelDistanceToShop.text = [NSString stringWithFormat:@"%d m",[self caculateDistanceToShop:positionEntity]];
@@ -47,9 +48,14 @@
     return self;
 }
 
-
+- (void)ratingChanged:(float)newRating
+{
+    
+}
 - (void)setContentDetailShop:(InstanceData *)positionEntity
 {
+    NSLog(@"gia tri rating : %d",positionEntity.rating);
+    
     [labelDistanceToShop setFont:[UIFont systemFontOfSize:textSize - 4]];
     labelShopName.text = positionEntity.label;
     labelShopName.numberOfLines = 0;
@@ -64,16 +70,19 @@
     [labelShopAddress setFont:[UIFont systemFontOfSize:textSize - 4 ]];
     CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize - 4 ] constrainedToSize:CGSizeMake(285, max) lineBreakMode:UILineBreakModeCharacterWrap];
     [self addSubview:labelShopAddress];
-    [labelShopAddress release];
     
     labelShopName.frame = CGRectMake(53, 0,240,labelShopNameSize.height );
-    labelDistanceToShop.frame = CGRectMake(50, labelShopNameSize.height,190, 25);
+    labelDistanceToShop.frame = CGRectMake(200, labelShopNameSize.height,60, 25);
+    starView = [[RatingView alloc]init];
+    starView.frame = CGRectMake(65, labelShopNameSize.height, 130, 25);
+    [self addSubview:starView];
     labelShopAddress.frame = CGRectMake(5, labelShopNameSize.height + 30, 285 ,labelShopAddressSize.height);
 
     imageViewBackground.frame = CGRectMake(0, 0,  290, 30 + labelShopNameSize.height + labelShopAddressSize.height);
     icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
     self.frame = CGRectMake(0, 0, 290 , 30 + labelShopNameSize.height + labelShopAddressSize.height);
-
+	[starView setImagesDeselected:@"StarNoRate.png" partlySelected:@"StarNoRate.png" fullSelected:@"StarRated.png" andDelegate:self];
+	[starView displayRating:positionEntity.rating];
 //
 //    UILabel *labelShopDescription = [[UILabel alloc]init];
 //    [labelShopDescription setBackgroundColor:[UIColor clearColor]];
@@ -89,14 +98,13 @@
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
 }
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:position]];
 }
@@ -108,15 +116,6 @@
     }
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateLocation" object:nil];
-//    [position release];
-    [labelShopName release];
-    [labelDistanceToShop release];
-    [userLocation release];
-    [super dealloc];
-}
 
 
 /*
@@ -127,5 +126,10 @@
     // Drawing code
 }
 */
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateLocation" object:nil];
+
+}
 
 @end

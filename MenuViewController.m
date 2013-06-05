@@ -68,7 +68,6 @@ bool backToRootView;
     [buttonShowMenu addTarget:self action:@selector(showHiddenMenu:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:buttonShowMenu];
-    [buttonShowMenu release];
 
 	//Create a view holder to store the tabbar items
 	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(180, 245, 260, 50)];
@@ -166,13 +165,6 @@ bool backToRootView;
         tabBarHolder.hidden = NO;
         hiddenMenu = NO;
     }
-}
-- (void)dealloc
-{
-    [tabBarHolder release];
-	[tabViewControllers release];
-	[tabItemsArray release];
-    [super dealloc];
 }
 
 

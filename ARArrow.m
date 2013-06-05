@@ -20,16 +20,16 @@
     self = [super init];
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
-        position = positionEntity;
-        rotationAngleArrow = [self caculateRotationAngle:positionEntity];
+
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
+        position = positionEntity;
+        rotationAngleArrow = [self caculateRotationAngle:positionEntity];
         UIImage *imageBackgroud = [UIImage imageNamed:@"cricle.png"];
         UIImageView *imageViewBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
         imageViewBackground.image = imageBackgroud;
         [self addSubview:imageViewBackground];
-        [imageViewBackground release];
         UIImage *arrowImage = [UIImage imageNamed:@"arrow.png"];
         arrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 8, 20, 45)];
         arrowImageView.image = arrowImage;
@@ -42,10 +42,8 @@
 -(double)caculateRotationAngle:(InstanceData * )positionEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
-    [shopLocation release];
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    [point release];
     double rotationAngle;
     
     double angle=acos(distance1/distance);
@@ -74,7 +72,6 @@
 }
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     rotationAngleArrow = [self caculateRotationAngle:position];
 }
@@ -83,9 +80,5 @@
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateLocation" object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UpdateHeading" object:nil];
-
-    [userLocation release];
-    [postion release];
-    [super dealloc];
 }
 @end

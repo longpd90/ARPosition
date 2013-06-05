@@ -33,7 +33,7 @@
         labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:positionEntity]];
         [self.view addSubview:labelDistanceToShop];
         
-        userLocation = [[[LocationService sharedLocation]getOldLocation]retain];
+        userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil]; 
         [self setContentDetailForView:positionEntity];
     }
@@ -67,7 +67,6 @@
     logoImgaeView.frame = CGRectMake(5, 5, 60, 60);
     logoImgaeView.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
     [self.view addSubview:logoImgaeView];
-    [logoImgaeView release];
     UILabel *labelShopName = [[UILabel alloc]init];
     labelShopName.numberOfLines = 0;
     [labelShopName setBackgroundColor:[UIColor grayColor]];
@@ -78,7 +77,6 @@
     CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont systemFontOfSize:textSize + 4] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
     labelShopName.frame = CGRectMake(80, 5, 320, labelShopNameSize.height);
     [self.view addSubview:labelShopName];
-    [labelShopName release];
 
     
     UILabel *labelShopAddress = [[UILabel alloc]init];
@@ -91,7 +89,6 @@
     CGSize labelShopAddressSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:textSize +2 ] constrainedToSize:CGSizeMake(320, max) lineBreakMode:UILineBreakModeCharacterWrap];
     labelShopAddress.frame = CGRectMake(80, labelShopNameSize.height + 5, 320 ,labelShopAddressSize.height);
     [self.view addSubview:labelShopAddress];
-    [labelShopAddress release];
 
 
 //    UILabel *labelAddressDetail = [[UILabel alloc]init];
@@ -113,7 +110,6 @@
     labelShopDescription.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height , 300, labelShopDescriptionSize.height);
     labelShopDescription.numberOfLines = 0;
     [self.view addSubview:labelShopDescription];
-    [labelShopDescription release];
 
 
     
@@ -123,7 +119,6 @@
     [labelShopPhone setFont:[UIFont systemFontOfSize:textSize ]];
     labelShopPhone.frame = CGRectMake(80, labelShopNameSize.height + labelShopAddressSize.height  + labelShopDescriptionSize.height + 20, 320, 20);
     [self.view addSubview:labelShopPhone];
-    [labelShopPhone release];
 
     
 //    UILabel *labelTimeOpen = [[UILabel alloc]init];
@@ -151,7 +146,6 @@
     ARArrow *arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
     arrowImage.frame = CGRectMake(410,0,20, 30);
     [self.view addSubview:arrowImage];
-    [arrowImage release];
 //    UIBarButtonItem *cameraButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonItemStyleBordered target:self action:@selector(goToCamera:)];//[[UIBarButtonItem alloc]initWithTitle:@"ARShop" style:UIBarButtonSystemItemCamera target:self action:@selector(goToCamera:)];
 //    self.navigationItem.rightBarButtonItem = cameraButtonItem;
 //    [cameraButtonItem release];
@@ -166,7 +160,6 @@
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     labelDistanceToShop.text = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:position]];
 }
@@ -174,7 +167,6 @@
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
-    [shoplocation release];
     return distance;
 }
 

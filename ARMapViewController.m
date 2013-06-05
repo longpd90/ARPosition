@@ -87,7 +87,6 @@ bool firstUpdate = 1;
         [shopAnnotation.overideAnnotation addObject:positionEntity];
         [shopsAnnotations addObject:shopAnnotation];
         [mapViewPosition addAnnotation:shopAnnotation];
-        [shopAnnotation release];
     }
     
 }
@@ -111,13 +110,6 @@ bool firstUpdate = 1;
     selectedShops = nil;
     shopsAnnotations = nil;
     
-}
--(void)dealloc{
-    [super dealloc];
-    [mapViewPosition release];
-    [shopsAnnotations release];
-    [selectedAnnotation release];
-    [selectedShops release];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -147,10 +139,10 @@ bool firstUpdate = 1;
         else{
             shopAnnotation.title = shopAnnotation.name;
         }
-        if (selectedShops ) {
-            [selectedShops release];
-        }
-        
+         if (selectedShops ) {
+             selectedShops = nil;
+         }
+         
         selectedShops = [[NSMutableArray alloc]initWithArray:shopAnnotation.overideAnnotation];
         InstanceData *positionEntity = (InstanceData *)[shopAnnotation.overideAnnotation objectAtIndex:0];
         
@@ -171,7 +163,7 @@ bool firstUpdate = 1;
     if ([annotation isKindOfClass:[ARPositionAnnotation class]]) {
         ARPositionAnnotationView *annotationView = (ARPositionAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
-            annotationView = [[[ARPositionAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier]autorelease];
+            annotationView = [[ARPositionAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             
         } else {
             annotationView.annotation = annotation;
@@ -202,7 +194,6 @@ bool firstUpdate = 1;
         ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:(InstanceData *)[selectedShops objectAtIndex:0]];
         detailViewController.delegate = self;
         [self.navigationController pushViewController:detailViewController animated:YES];
-        [detailViewController release];
     }
     else{
         ARListViewController *listShopViewController = [[ARListViewController alloc]initWithNibName:@"ARListViewController" bundle:nil];
@@ -222,8 +213,6 @@ bool firstUpdate = 1;
         navigation.view.transform = scaleBegin;
         [self.view addSubview:navigation.view];
         [self animationScaleOn:navigation];
-        [navigation release];
-        [listShopViewController release];
         
         
     }
@@ -247,7 +236,6 @@ bool firstUpdate = 1;
     ARDetailViewController *detailViewController = [[ARDetailViewController alloc] initWithShop:positionEntity];
     detailViewController.delegate = self;
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
 }
 -(void)animationScaleOff:(UINavigationController *)listview{
     NSLog(@"Close");

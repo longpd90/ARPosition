@@ -26,7 +26,7 @@
     NSMutableArray *overideAnnotation;
     
 }
-@property(nonatomic,retain)  InstanceData *position;
+@property(nonatomic,strong)  InstanceData *position;
 @property(nonatomic,copy)  NSString *title;
 @property(nonatomic,copy)  NSString *subtitle;
 @property (copy) NSString *name;
@@ -37,7 +37,7 @@
 @property(nonatomic) bool isGrouped;
 @property(nonatomic) CGPoint locationInView;
 
-@property(nonatomic,retain) NSMutableArray *overideAnnotation;
+@property(nonatomic,strong) NSMutableArray *overideAnnotation;
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 - (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;

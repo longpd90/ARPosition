@@ -15,7 +15,7 @@
 @interface ARTabbarItem : UIButton{
     BOOL _on;
 }
-@property (nonatomic, assign) id <ARTabbarItemDelegate> delegate;
+@property (nonatomic, strong) id <ARTabbarItemDelegate> delegate;
 @property (nonatomic) BOOL _on;
 -(id)initWithFrame:(CGRect)frame normalState:(NSString*)n toggledState:(NSString *)t;            
 -(BOOL)isOn;

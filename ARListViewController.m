@@ -41,7 +41,7 @@
     refreshButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshData)];
     
     editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editList:)];
-    arrayButtonItem =  [[NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil]retain];
+    arrayButtonItem =  [NSMutableArray arrayWithObjects:editButton,refreshButtonItem, nil];
     
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     self.listShopView.frame = CGRectMake(0, 0, 480, 320);
@@ -110,13 +110,11 @@
 
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation: userLocation];
-    [shoplocation release];
     return distance;
 }
 
 -(void)didUpdateLocation:(NSNotification *)notifi{
     CLLocation *newLocation = (CLLocation *)[notifi object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
 //    [self sortShopByDistance];
     [self.listShopView reloadData];
@@ -188,7 +186,6 @@
         if (listType == MainList) {
             ARAPositionViewController *detailViewController = [[ARAPositionViewController alloc] initWithShop:positionEntity];
             [self.navigationController pushViewController:detailViewController animated:YES];
-            [detailViewController release];
         }
         else{
             [self.delegate showDetailInMapView:positionEntity];
@@ -213,7 +210,6 @@
         InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:indexPathCell.row];
         ARAPositionViewController *oneShopAR = [[ARAPositionViewController alloc]initWithShop:positionEntity];
         [self.navigationController pushViewController:oneShopAR animated:YES];
-        [oneShopAR release];
 //    }
 }
 
@@ -251,14 +247,4 @@
 //
 //
 //}
-- (void)dealloc
-{
-    [arrayPosition release];
-    [arrayButtonItem release];
-    [editButton release];
-    [refreshButtonItem release];
-    [userLocation release];
-    [listShopView release];
-    [super dealloc];
-}
 @end

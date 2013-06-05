@@ -20,9 +20,9 @@
     UILabel *labelDistanceToShop;
 }
 @property(nonatomic,strong) id<DetailViewDelegate> delegate;
-@property(nonatomic, retain)CLLocation *userLocation;
-@property(nonatomic, retain)InstanceData *position;
-@property(nonatomic, retain)UILabel *labelDistanceToShop;
+@property(nonatomic, strong)CLLocation *userLocation;
+@property(nonatomic, strong)InstanceData *position;
+@property(nonatomic, strong)UILabel *labelDistanceToShop;
 //- (IBAction)goToMenuSite:(id)sender;
 //- (IBAction)goToCouponSite:(id)sender;
 //- (IBAction)goToCamera:(id)sender;

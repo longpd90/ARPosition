@@ -24,9 +24,9 @@
     ARRadar *radar;
     NSMutableArray *arrayPosition;
 }
-@property (nonatomic, retain)CLLocation *userLocation;
+@property (nonatomic, strong)CLLocation *userLocation;
 //@property(nonatomic, retain) NSMutableArray *shopsArray;
-@property(nonatomic, retain) NSMutableArray *shopInRadius;
+@property(nonatomic, strong) NSMutableArray *shopInRadius;
 - (void)addVideoInput;
 //-(void)getDatabase;
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;

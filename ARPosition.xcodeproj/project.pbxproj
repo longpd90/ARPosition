@@ -17,6 +17,9 @@
 		3217A6BC174E0639007EA0F4 /* BackgroudCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BB174E0638007EA0F4 /* BackgroudCell.png */; };
 		3217A6BE174E085A007EA0F4 /* EgoImageCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BD174E085A007EA0F4 /* EgoImageCell.png */; };
 		3217A6CB174E1DF1007EA0F4 /* PositonDetailInAR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */; };
+		3230E50B175EDC56001F770F /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3230E50A175EDC56001F770F /* RatingView.m */; };
+		3230E50D175EE614001F770F /* StarRated.png in Resources */ = {isa = PBXBuildFile; fileRef = 3230E50C175EE614001F770F /* StarRated.png */; };
+		3230E50F175EE61B001F770F /* StarNoRate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3230E50E175EE61B001F770F /* StarNoRate.png */; };
 		3258072E16DB678B00559A2E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3258072D16DB678B00559A2E /* Default-568h@2x.png */; };
 		3291002A17470E420041D8A6 /* cricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3291002917470E420041D8A6 /* cricle.png */; };
 		32FFE253175DCADF008055BC /* SettingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE252175DCADF008055BC /* SettingIcon.png */; };
@@ -96,6 +99,10 @@
 		3217A6BD174E085A007EA0F4 /* EgoImageCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EgoImageCell.png; sourceTree = "<group>"; };
 		3217A6C9174E1DF0007EA0F4 /* PositonDetailInAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositonDetailInAR.h; sourceTree = "<group>"; };
 		3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositonDetailInAR.m; sourceTree = "<group>"; };
+		3230E509175EDC56001F770F /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
+		3230E50A175EDC56001F770F /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
+		3230E50C175EE614001F770F /* StarRated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarRated.png; sourceTree = "<group>"; };
+		3230E50E175EE61B001F770F /* StarNoRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarNoRate.png; sourceTree = "<group>"; };
 		3258072D16DB678B00559A2E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3291002917470E420041D8A6 /* cricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cricle.png; sourceTree = "<group>"; };
 		32FFE252175DCADF008055BC /* SettingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingIcon.png; sourceTree = "<group>"; };
@@ -222,6 +229,15 @@
 			name = "Expand button";
 			sourceTree = "<group>";
 		};
+		3230E508175EDC44001F770F /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				3230E509175EDC56001F770F /* RatingView.h */,
+				3230E50A175EDC56001F770F /* RatingView.m */,
+			);
+			name = Rating;
+			sourceTree = "<group>";
+		};
 		A7F29C1516A008380040DA28 /* Egoimage */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +352,7 @@
 		C320351916757B5900CA3D8C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3230E508175EDC44001F770F /* Rating */,
 				3217A6A8174DC8D6007EA0F4 /* Expand button */,
 				A7F29C1516A008380040DA28 /* Egoimage */,
 			);
@@ -459,6 +476,8 @@
 		C3611F4716771E81008DBE79 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3230E50E175EE61B001F770F /* StarNoRate.png */,
+				3230E50C175EE614001F770F /* StarRated.png */,
 				32FFE25E175DD2EF008055BC /* ListButton.png */,
 				32FFE25C175DD2E8008055BC /* CameraButton.png */,
 				32FFE25A175DCB25008055BC /* MapButton.png */,
@@ -570,6 +589,8 @@
 				32FFE25D175DD2E9008055BC /* CameraButton.png in Resources */,
 				32FFE25F175DD2EF008055BC /* ListButton.png in Resources */,
 				32FFE264175DEC7B008055BC /* ARSettingViewController.xib in Resources */,
+				3230E50D175EE614001F770F /* StarRated.png in Resources */,
+				3230E50F175EE61B001F770F /* StarNoRate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +631,7 @@
 				3217A6B6174DD695007EA0F4 /* RNExpandingButtonBar.m in Sources */,
 				3217A6CB174E1DF1007EA0F4 /* PositonDetailInAR.m in Sources */,
 				32FFE263175DEC7B008055BC /* ARSettingViewController.m in Sources */,
+				3230E50B175EDC56001F770F /* RatingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +704,7 @@
 		C320351516757ADB00CA3D8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -698,6 +721,7 @@
 		C320351616757ADB00CA3D8C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

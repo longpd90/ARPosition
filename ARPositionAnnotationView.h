@@ -15,8 +15,8 @@
     UIImageView *numberImageView;
     UILabel *numberlb;
 }
-@property(nonatomic,retain)  EGOImageView *backgroudImage;
-@property(nonatomic,retain)  UIImageView *numberImageView;
-@property(nonatomic,retain)  UILabel *numberlb;
+@property(nonatomic,strong)  EGOImageView *backgroudImage;
+@property(nonatomic,strong)  UIImageView *numberImageView;
+@property(nonatomic,strong)  UILabel *numberlb;
 -(id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier;
 @end

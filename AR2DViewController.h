@@ -16,7 +16,6 @@
 @interface AR2DViewController : UIViewController<CLLocationManagerDelegate,ARDetailIn2DDelegate>{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
-    NSMutableArray *shopsArray;
     CLLocation *userLocation ;
     NSMutableArray *arrayShopDistance;
     double rotationAngleArrow1;
@@ -36,7 +35,7 @@
     ARDetailIn2D *detaitlView4;
     ARDetailIn2D *detaitlView5;
 }
-@property (nonatomic, retain) NSMutableArray *arrayPosition;
+@property (nonatomic, strong) NSMutableArray *arrayPosition;
 - (void)addVideoInput;
 //- (void )getDatabase;
 -(double)caculateRotationAngle:(InstanceData * )positionEntity;

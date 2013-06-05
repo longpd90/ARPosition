@@ -23,6 +23,6 @@
 
 @property (strong, nonatomic) MenuViewController *viewController;
 
-@property (nonatomic, retain) NSMutableArray *arrayPosition;
+@property (nonatomic, strong) NSMutableArray *arrayPosition;
 
 @end

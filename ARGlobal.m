@@ -28,8 +28,6 @@
     CLLocationDistance distance = [positionLocation distanceFromLocation:userLocation];
     CLLocation *pointTemp =  [[CLLocation alloc]initWithLatitude:lat longitude:userLocation.coordinate.longitude];
     CLLocationDistance distanceToTemp = [userLocation distanceFromLocation:pointTemp];
-    [pointTemp release];
-    [positionLocation release];
     double rotationAngle;
     
     double angle=acos(distanceToTemp/distance);
@@ -54,7 +52,6 @@
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
 }
 @end

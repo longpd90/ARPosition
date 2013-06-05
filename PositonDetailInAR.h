@@ -11,20 +11,23 @@
 #import "LocationService.h"
 #import <QuartzCore/QuartzCore.h>
 #import <ArroundPlaceService/ArroundPlaceService.h>
-@interface PositonDetailInAR : UIView{
+#import "RatingView.h"
+@interface PositonDetailInAR : UIView<RatingViewDelegate>{
     UILabel *labelShopName;
     UILabel *labelDistanceToShop;
     
     CLLocation *userLocation ;
     InstanceData *position;
     EGOImageView *icon;
+    RatingView *starView;
 }
-@property (nonatomic, retain) UIImageView *imageViewBackground;
-@property (nonatomic, retain)id<ARDetailPositionInViewDelegate>delegate;
-@property (nonatomic, retain)InstanceData *position;
-@property(nonatomic, retain)UILabel *labelShopName;
-@property(nonatomic, retain)UILabel *labelDistanceToShop;
-@property(nonatomic,retain)CLLocation *userLocation ;
+@property (nonatomic, strong) RatingView *starView;
+@property (nonatomic, strong) UIImageView *imageViewBackground;
+@property (nonatomic, strong)id<ARDetailPositionInViewDelegate>delegate;
+@property (nonatomic, strong)InstanceData *position;
+@property(nonatomic, strong)UILabel *labelShopName;
+@property(nonatomic, strong)UILabel *labelDistanceToShop;
+@property(nonatomic,strong)CLLocation *userLocation ;
 - (id)initWithShop:(InstanceData *)positionEntity;
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;
 - (void)setContentDetailShop:(InstanceData *)positionEntity;

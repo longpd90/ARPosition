@@ -42,11 +42,11 @@
 - (void)setContentForView:(InstanceData *)positionEntity
 {
     float sizeWith = [self calculateSizeFrame:positionEntity];
-    self.frame = CGRectMake(0, 0, sizeWith + 50, 50);
+    self.frame = CGRectMake(0, 0, sizeWith + 53, 50);
     
     detailShop = [[ARDetailPositionInView alloc]initWithShop:positionEntity];
     detailShop.delegate = self;
-    detailShop.frame = CGRectMake(0, 0, sizeWith, 50);
+    detailShop.frame = CGRectMake(0, 0, sizeWith + 3, 50);
     [self addSubview:detailShop];
     
 //    arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
@@ -70,35 +70,26 @@
 
 -(float)calculateSizeFrame:(InstanceData *)positionEntity
 {
-    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 15) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = labelShopNameSize.width;      
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 25) lineBreakMode:UILineBreakModeCharacterWrap];
+    float originLabelDistance = MAX(labelShopNameSize.width, 190);
     float sizeWidth = originLabelDistance + 7;
     return sizeWidth;
 }
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation: userLocation];
     return distance;
 }
 
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:position]];
 }
 
 
-- (void)dealloc
-{
-    [arrowImage release];
-    [distanceToShop release];
-    [detailShop release];
-    [userLocation release];
-    [super dealloc];
-}
 
 
 @end

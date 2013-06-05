@@ -27,12 +27,12 @@
     UIImageView *imageViewBackground;
 
 }
-@property (nonatomic, retain) UILabel *labelName;
-@property (nonatomic, retain) UILabel *labelAddress;
-@property (nonatomic,retain) EGOImageView *icon;
-@property (nonatomic, retain)CLLocation *userLocation ;
-@property (nonatomic, retain) id<ARPositionCellDelegate>delegate;
-@property (nonatomic ,retain) UILabel *distanceToShop;
+@property (nonatomic, strong) UILabel *labelName;
+@property (nonatomic, strong) UILabel *labelAddress;
+@property (nonatomic,strong) EGOImageView *icon;
+@property (nonatomic, strong)CLLocation *userLocation ;
+@property (nonatomic, strong) id<ARPositionCellDelegate>delegate;
+@property (nonatomic ,strong) UILabel *distanceToShop;
 - (void)updateContentForCell:(InstanceData *)positionEntity withLocation:(CLLocation *)location;
 -(int)calculeDistance:(InstanceData *)positionEntity withLocation:(CLLocation *)location;
 @end

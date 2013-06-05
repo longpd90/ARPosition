@@ -15,8 +15,8 @@
     NSMutableArray *shopInRadarArray;
     NSMutableArray *arrayPosition;
 }
-@property (nonatomic, retain) CLLocation *userLocation;
-@property (nonatomic, retain)NSMutableArray *shopInRadarArray;
+@property (nonatomic, strong) CLLocation *userLocation;
+@property (nonatomic, strong)NSMutableArray *shopInRadarArray;
 @property int radiusSearching;
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity;
 - (void)sortShopInRadar;

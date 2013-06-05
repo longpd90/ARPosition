@@ -318,14 +318,5 @@ static EGOCache* __instance;
 #endif
 }
 
-#pragma mark -
-
-- (void)dealloc {
-#if EGO_NO_ARC
-	[diskOperationQueue release];
-	[cacheDictionary release];
-	[super dealloc];
-#endif
-}
 
 @end

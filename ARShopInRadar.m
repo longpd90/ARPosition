@@ -42,7 +42,6 @@
 }
 -(void)didUpdateLocation:(NSNotification *)notification {
     CLLocation *newLocation = (CLLocation *)[notification object];
-    [userLocation release];
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     distanceToShop = [self caculateDistanceToShop:position];
     angleRotation = [self caculateRotationAngle:position];
@@ -81,7 +80,7 @@
 }
 - (float)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     float distance = (float)[shoplocation distanceFromLocation:self.userLocation];
     float tiLe = 50.0/radiusSearching;
     return distance * tiLe;
@@ -90,10 +89,8 @@
 -(double)caculateRotationAngle:(InstanceData * )positionEntity{
     CLLocation *shopLocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     CLLocationDistance distance = [shopLocation distanceFromLocation:userLocation];
-    [shopLocation release];
     CLLocation *point =  [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:userLocation.coordinate.longitude];
     CLLocationDistance distance1 = [userLocation distanceFromLocation:point];
-    [point release];
     double rotationAngle;
     
     double angle=acos(distance1/distance);

@@ -11,6 +11,8 @@
 @implementation LocationService
 @synthesize locationManager,userLocation;
 
+static LocationService *shareService = nil;
+
 -(id)init{
     if (self = [super init]) {
         self.locationManager = [[CLLocationManager alloc]init];
@@ -25,11 +27,28 @@
 }
 
 +(id)sharedLocation{
-    LocationService *service = nil;
-    service = [[LocationService alloc]init];
+	@synchronized([LocationService class])
+	{
+		if (!shareService)
+			shareService = [[self alloc] init] ;
+        
+		return shareService;
+	}
     
-    return service;
+	return nil;
 }
+
++(id)alloc
+{
+	@synchronized([LocationService class])
+	{
+		shareService = [super alloc];
+		return shareService;
+	}
+    
+	return nil;
+}
+
 +(id)userLocation{
      return self.userLocation;
 }
@@ -39,15 +58,17 @@
     [self.locationManager startUpdatingHeading];
 }
 #pragma mark CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateHeading" object:newHeading];
 
--(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
-    
-     [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateHeading" object:newHeading];
 }
+
+//-(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
+//    
+//     [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateHeading" object:newHeading];
+//}
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-    if (userLocation) {
-        [userLocation release];
-    }
     userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -69,9 +90,4 @@
 }
 
 
--(void)dealloc{
-    [locationManager release];
-    [userLocation release];
-    [super dealloc];
-}
 @end

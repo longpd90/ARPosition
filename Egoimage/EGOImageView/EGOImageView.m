@@ -46,7 +46,6 @@
 - (void)setImageURL:(NSURL *)aURL {
 	if(imageURL) {
 		[[EGOImageLoader sharedImageLoader] removeObserver:self forURL:imageURL];
-		[imageURL release];
 		imageURL = nil;
 	}
 	
@@ -55,7 +54,7 @@
 		imageURL = nil;
 		return;
 	} else {
-		imageURL = [aURL retain];
+		imageURL = aURL;
 	}
 
 	[[EGOImageLoader sharedImageLoader] removeObserver:self];
@@ -99,15 +98,6 @@
 	if([self.delegate respondsToSelector:@selector(imageViewFailedToLoadImage:error:)]) {
 		[self.delegate imageViewFailedToLoadImage:self error:[[notification userInfo] objectForKey:@"error"]];
 	}
-}
-
-#pragma mark -
-- (void)dealloc {
-	[[EGOImageLoader sharedImageLoader] removeObserver:self];
-	self.delegate = nil;
-	self.imageURL = nil;
-	self.placeholderImage = nil;
-    [super dealloc];
 }
 
 @end

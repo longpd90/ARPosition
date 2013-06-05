@@ -80,7 +80,6 @@
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation:location];
-    [shoplocation release];
     return distance;
 
 }
@@ -94,12 +93,5 @@
 ////        [self.delegate beNCShopCellDidCleckCheckButton:self];
 ////    }
 //}
-- (void)dealloc
-{
-    [labelAddress release];
-    [icon release];
-    [distanceToShop release];
-    [super dealloc];
-}
 
 @end

@@ -23,8 +23,8 @@
     ARPositionAnnotation *selectedAnnotation;
     CLLocation *userLocation;
 }
-@property (nonatomic,retain) MKMapView *mapViewPosition;
-@property (nonatomic, retain) MKAnnotationView *selectedAnnotationView;
+@property (nonatomic,strong) MKMapView *mapViewPosition;
+@property (nonatomic, strong) MKAnnotationView *selectedAnnotationView;
 -(void)didUpdateLocation:(NSNotification *)notifi;
 -(void)addShopAnnotation;
 -(void)showDetail;

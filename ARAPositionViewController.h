@@ -25,9 +25,9 @@
     float centerX;
     float centerY;
 }
-@property(nonatomic, retain)InstanceData *position;
+@property(nonatomic, strong)InstanceData *position;
 @property double rotationAngleArrow;
-@property(nonatomic, retain) CLLocation *userLocation;
+@property(nonatomic, strong) CLLocation *userLocation;
 - (void)addVideoInput;
 - (void)setContentForView:(InstanceData *)positionEntity;
 - (id)initWithShop:(InstanceData *)positionEntity;

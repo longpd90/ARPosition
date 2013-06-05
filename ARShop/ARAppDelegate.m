@@ -21,22 +21,12 @@
 @synthesize viewController = _viewController;
 @synthesize arrayPosition;
 
-- (void)dealloc
-{
-    [_window release];
-    [_viewController release];
-    [databasePath release];
-    [arrayPosition release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[LocationService sharedLocation]startUpdate];
-
     userLocation = [[LocationService sharedLocation]getOldLocation];
     [self getData:10 withPageSize:8 withPageIndex:1 withCatagory:2 withLanguage:@"vn"];
-
     return YES;
 }
 
@@ -69,11 +59,6 @@
     UINavigationController *mapNavigation = [[UINavigationController alloc]initWithRootViewController:mapViewController];
     UINavigationController *settingNavigation = [[UINavigationController alloc]initWithRootViewController:aRSettingViewController];
 
-    [listViewController release];
-    [mapViewController release];
-    [aR3DViewController release];
-    [cameraViewController release];
-    [aRSettingViewController release];
     
     [listNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
     [cameraNavigation.view setFrame:CGRectMake(0, -20, 480, 320)];
@@ -87,11 +72,6 @@
 	[viewControllersArray addObject:mapNavigation];
     [viewControllersArray addObject:settingNavigation];
     
-    [listNavigation release];
-    [cameraNavigation release];
-    [aR3DNavigation release];
-    [mapNavigation release];
-    [settingNavigation release];
     
 	
 	NSMutableArray *tabItemsArray = [[NSMutableArray alloc] init];
@@ -101,15 +81,10 @@
     [tabItemsArray addObject:tabItem4];
     [tabItemsArray addObject:tabItem5];
     //
-    [tabItem1 release];
-    [tabItem2 release];
-    [tabItem3 release];
-    [tabItem4 release];
-    [tabItem5 release];
     //
     
         
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [[MenuViewController alloc]initWithTabViewControllers:viewControllersArray tabItems:tabItemsArray initialTab:0];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
@@ -118,11 +93,10 @@
 
 - (void)setViewConnectFail
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UIViewController *viewctrl = [[UIViewController alloc]init];
     [viewctrl.view setBackgroundColor:[UIColor blueColor]];
     self.window.rootViewController = viewctrl;
-    [viewctrl release];
     [self.window makeKeyAndVisible];
 }
 
@@ -135,18 +109,20 @@
 
 - (void)requestDidFinish:(ArroundPlaceService *)controller withResult:(NSArray *)results
 {
-//    NSLog(@"mang ket qua : %@",results);
-    arrayPosition = [[NSMutableArray arrayWithArray:results]retain];
-    [self sortShopByDistance];
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateData" object:results];
-    [self setViewConnectSuccess];
+    arrayPosition = [NSMutableArray arrayWithArray:results];
+    if (arrayPosition.count > 0) {
+        [self sortShopByDistance];
+        [self setViewConnectSuccess];
+    }
+    else{
+        [self setViewConnectFail];
+    }
 }
 
 - (void)requestDidFail:(ArroundPlaceService *)controller withError:(NSError *)error
 {
     NSLog(@"error : %@",error);
     [self setViewConnectFail];
-    
 }
 
 - (void)sortShopByDistance
@@ -162,7 +138,6 @@
     
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     float distance = [shoplocation distanceFromLocation: userLocation];
-    [shoplocation release];
     return distance;
 }
 

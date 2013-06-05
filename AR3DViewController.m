@@ -25,7 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 //        [self getDatabase];
-//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
 //        radar = [[ARRadar alloc]init];
 //        radar.frame = CGRectMake(380, 0, 100, 100);
@@ -95,7 +95,6 @@
         InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];
         ARDetailIn3D *testView = [[ARDetailIn3D alloc]initWithShop:positionEntity];
         [self.view addSubview:testView];
-        [testView release];
         
     }
 }
@@ -123,7 +122,7 @@
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity
 {
-    CLLocation *shoplocation = [[[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude]autorelease];
+    CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     int distance = (int)[shoplocation distanceFromLocation: self.userLocation];
     return distance;
 }
@@ -137,9 +136,4 @@
 //
 //}
 
-- (void)dealloc
-{
-    [radar release];
-    [super dealloc];
-}
 @end

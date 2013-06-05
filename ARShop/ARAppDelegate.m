@@ -93,8 +93,7 @@
 - (void)setViewConnectFail
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UIViewController *viewctrl = [[UIViewController alloc]init];
-    [viewctrl.view setBackgroundColor:[UIColor blueColor]];
+    ARSettingViewController *viewctrl = [[ARSettingViewController alloc]initWithNibName:@"ARSettingViewController" bundle:nil];
     self.window.rootViewController = viewctrl;
     [self.window makeKeyAndVisible];
 }

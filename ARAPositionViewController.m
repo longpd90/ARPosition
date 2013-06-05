@@ -9,6 +9,7 @@
 #import "ARAPositionViewController.h"
 #import "ARDetailIn2D.h"
 #import "LocationService.h"
+#import "ARCamera.h"
 #import <math.h>
 #define rotationRate 0.0174532925
 #define frameRadius 60
@@ -61,24 +62,11 @@
 }
 
 - (void)addVideoInput {
-    captureSession = [[AVCaptureSession alloc]init];
-    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    previewLayer.frame = CGRectMake(0, 0, 480, 320);
-    [previewLayer setOrientation:AVCaptureVideoOrientationLandscapeRight];
-    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.view.layer addSublayer:previewLayer];
-    NSError *error = nil;
-    AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
-    if ([captureSession canAddInput:deviceInput])
-        [captureSession addInput:deviceInput];
-    [captureSession startRunning];    
+    ARCamera *aRCamera = [[ARCamera alloc]init];
+    [aRCamera addVideoInput:self];
 }
 - (void)setContentForView:(InstanceData *)positionEntity
 {
-//    detailView = [[ARDetailIn2D alloc]initWithShop:positionEntity];
-//    [self.view addSubview:detailView];
     arrowView = [[ARArrow alloc]initWithShop:positionEntity];
     [self.view addSubview:arrowView];
     PositonDetailInAR *detailViewInAR = [[PositonDetailInAR alloc]initWithShop:positionEntity];

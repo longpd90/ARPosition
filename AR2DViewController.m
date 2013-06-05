@@ -31,6 +31,7 @@
     }
     return self;
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setHidden:YES];
     
@@ -42,6 +43,7 @@
 //    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateNewData:) name:@"UpdateData" object:nil];
     userLocation = [[LocationService sharedLocation] getOldLocation];
+    aRCamera = [[ARCamera alloc]init];
     [self addVideoInput];
     arrayShopDistance = [[NSMutableArray alloc]init];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
@@ -54,7 +56,6 @@
 
 }
 
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
@@ -63,19 +64,20 @@
 
 # pragma mark - add Video to App
 - (void)addVideoInput {
-    captureSession = [[AVCaptureSession alloc]init];
-    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    previewLayer.frame = CGRectMake(0, 0, 480, 320);
-    [previewLayer setOrientation:AVCaptureVideoOrientationLandscapeRight];
-    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.view.layer addSublayer:previewLayer];
-    NSError *error = nil;
-    AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
-    if ([captureSession canAddInput:deviceInput])
-        [captureSession addInput:deviceInput];
-    [captureSession startRunning];    
+    [aRCamera addVideoInput:self];
+//    captureSession = [[AVCaptureSession alloc]init];
+//    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+//    previewLayer.frame = CGRectMake(0, 0, 480, 320);
+//    [previewLayer setOrientation:AVCaptureVideoOrientationLandscapeRight];
+//    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//	[self.view.layer addSublayer:previewLayer];
+//    NSError *error = nil;
+//    AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//    
+//    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
+//    if ([captureSession canAddInput:deviceInput])
+//        [captureSession addInput:deviceInput];
+//    [captureSession startRunning];    
 }
 
 
@@ -84,7 +86,6 @@
     [arrayPosition removeAllObjects];
     arrayPosition = nil;
     arrayPosition = (NSMutableArray *)[notification object];
-    NSLog(@"so phan tu cua mang position: %d",arrayPosition.count);
     [self deleteData];
 }
 -(void)didUpdateData:(NSMutableArray *)arrayData {
@@ -104,7 +105,7 @@
         if (i < 3) {
             CGRect frame = detailView.frame;
             frame.origin.x =  5;
-            frame.origin.y = 100 * (i % 3) + 5;
+            frame.origin.y = 100 * (2 - i) + 5;
             detailView.frame = frame;
         }
         
@@ -126,7 +127,6 @@
         detailView = nil;
     }
     [arrayShopDistance removeAllObjects];
-    NSLog(@"so phan tu cua mang distance : %d",arrayShopDistance.count);
 
     [self setContentForView];
 }

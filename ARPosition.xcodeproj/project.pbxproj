@@ -17,6 +17,11 @@
 		3217A6BC174E0639007EA0F4 /* BackgroudCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BB174E0638007EA0F4 /* BackgroudCell.png */; };
 		3217A6BE174E085A007EA0F4 /* EgoImageCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BD174E085A007EA0F4 /* EgoImageCell.png */; };
 		3217A6CB174E1DF1007EA0F4 /* PositonDetailInAR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */; };
+		3229F2BC175F8B0E00245F8C /* ARLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3229F2BB175F8B0E00245F8C /* ARLogo.png */; };
+		3229F2BE175F8B3600245F8C /* ARLogoRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3229F2BD175F8B3600245F8C /* ARLogoRetina.png */; };
+		3229F2C3175F8D5700245F8C /* ARCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 3229F2C2175F8D5700245F8C /* ARCamera.m */; };
+		3229F2C6175FE02C00245F8C /* RedPlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3229F2C4175FE02C00245F8C /* RedPlusButton.png */; };
+		3229F2C9175FE04300245F8C /* CloseRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3229F2C8175FE04300245F8C /* CloseRedButton.png */; };
 		3230E50B175EDC56001F770F /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3230E50A175EDC56001F770F /* RatingView.m */; };
 		3230E50D175EE614001F770F /* StarRated.png in Resources */ = {isa = PBXBuildFile; fileRef = 3230E50C175EE614001F770F /* StarRated.png */; };
 		3230E50F175EE61B001F770F /* StarNoRate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3230E50E175EE61B001F770F /* StarNoRate.png */; };
@@ -100,6 +105,13 @@
 		3217A6BD174E085A007EA0F4 /* EgoImageCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EgoImageCell.png; sourceTree = "<group>"; };
 		3217A6C9174E1DF0007EA0F4 /* PositonDetailInAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositonDetailInAR.h; sourceTree = "<group>"; };
 		3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositonDetailInAR.m; sourceTree = "<group>"; };
+		3229F2BB175F8B0E00245F8C /* ARLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARLogo.png; sourceTree = "<group>"; };
+		3229F2BD175F8B3600245F8C /* ARLogoRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARLogoRetina.png; sourceTree = "<group>"; };
+		3229F2BF175F8B8600245F8C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3229F2C1175F8D5700245F8C /* ARCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCamera.h; sourceTree = "<group>"; };
+		3229F2C2175F8D5700245F8C /* ARCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCamera.m; sourceTree = "<group>"; };
+		3229F2C4175FE02C00245F8C /* RedPlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedPlusButton.png; sourceTree = "<group>"; };
+		3229F2C8175FE04300245F8C /* CloseRedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseRedButton.png; sourceTree = "<group>"; };
 		3230E509175EDC56001F770F /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
 		3230E50A175EDC56001F770F /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
 		3230E50C175EE614001F770F /* StarRated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarRated.png; sourceTree = "<group>"; };
@@ -293,6 +305,9 @@
 		C32034EB16757ADA00CA3D8C = {
 			isa = PBXGroup;
 			children = (
+				3229F2BF175F8B8600245F8C /* Default.png */,
+				3229F2BD175F8B3600245F8C /* ARLogoRetina.png */,
+				3229F2BB175F8B0E00245F8C /* ARLogo.png */,
 				C320350916757ADB00CA3D8C /* ARAppDelegate.h */,
 				C320350A16757ADB00CA3D8C /* ARAppDelegate.m */,
 				C320351816757B3300CA3D8C /* Classes */,
@@ -452,6 +467,8 @@
 		C320352116757CC500CA3D8C /* Views Model */ = {
 			isa = PBXGroup;
 			children = (
+				3229F2C1175F8D5700245F8C /* ARCamera.h */,
+				3229F2C2175F8D5700245F8C /* ARCamera.m */,
 				C318F71916A6AE7E002185A6 /* ARRadar.h */,
 				C318F71A16A6AE7E002185A6 /* ARRadar.m */,
 				C320354A1675836700CA3D8C /* ARDetailIn2D.h */,
@@ -481,6 +498,8 @@
 		C3611F4716771E81008DBE79 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3229F2C8175FE04300245F8C /* CloseRedButton.png */,
+				3229F2C4175FE02C00245F8C /* RedPlusButton.png */,
 				3230E50E175EE61B001F770F /* StarNoRate.png */,
 				3230E50C175EE614001F770F /* StarRated.png */,
 				32FFE25E175DD2EF008055BC /* ListButton.png */,
@@ -596,6 +615,10 @@
 				32FFE264175DEC7B008055BC /* ARSettingViewController.xib in Resources */,
 				3230E50D175EE614001F770F /* StarRated.png in Resources */,
 				3230E50F175EE61B001F770F /* StarNoRate.png in Resources */,
+				3229F2BC175F8B0E00245F8C /* ARLogo.png in Resources */,
+				3229F2BE175F8B3600245F8C /* ARLogoRetina.png in Resources */,
+				3229F2C6175FE02C00245F8C /* RedPlusButton.png in Resources */,
+				3229F2C9175FE04300245F8C /* CloseRedButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +661,7 @@
 				32FFE263175DEC7B008055BC /* ARSettingViewController.m in Sources */,
 				3230E50B175EDC56001F770F /* RatingView.m in Sources */,
 				3230E512175F2350001F770F /* ARSelectType.m in Sources */,
+				3229F2C3175F8D5700245F8C /* ARCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

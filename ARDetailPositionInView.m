@@ -55,25 +55,22 @@
 }
 - (void)setContentDetailShop:(InstanceData *)positionEntity
 {
-
     [labelDistanceToShop setFont:[UIFont systemFontOfSize:textSize - 2]];
     labelShopName.text = positionEntity.label;
     [labelShopName setFont:[UIFont boldSystemFontOfSize:textSize - 2]];
-    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 25) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = MAX(labelShopNameSize.width, 130 + 60);
+    labelShopName.numberOfLines = 0;
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(190, max) lineBreakMode:UILineBreakModeCharacterWrap];
     
     starView = [[RatingView alloc]init];
-    starView.frame = CGRectMake(53, 25, 130, 25);
+    starView.frame = CGRectMake(53, labelShopNameSize.height, 130, 25);
     [self addSubview:starView];
     [starView setImagesDeselected:@"StarNoRate.png" partlySelected:@"StarNoRate.png" fullSelected:@"StarRated.png" andDelegate:self];
 	[starView displayRating:positionEntity.rating];
     
-    labelShopName.frame = CGRectMake(53, 0,originLabelDistance,25 );
-    labelDistanceToShop.frame = CGRectMake(53 , 25,originLabelDistance, 25);
-    imageViewBackground.frame = CGRectMake(0, 0, originLabelDistance + 57, 50);
+    labelShopName.frame = CGRectMake(50, 0,190,labelShopNameSize.height );
+    labelDistanceToShop.frame = CGRectMake(53 , labelShopNameSize.height,190, 25);
+    imageViewBackground.frame = CGRectMake(0, 0, 190 + 57, labelShopNameSize.height + 25);
     icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
-
-
 }
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity

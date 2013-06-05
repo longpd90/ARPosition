@@ -12,12 +12,14 @@
 #import "ARDetailIn2D.h"
 #import "ARAPositionViewController.h"
 #import <ArroundPlaceService/ArroundPlaceService.h>
+#import "ARCamera.h"
 
 @interface AR2DViewController : UIViewController<CLLocationManagerDelegate,ARDetailIn2DDelegate>{
     AVCaptureSession *captureSession;
     AVCaptureDeviceInput *deviceInput;
     CLLocation *userLocation ;
     NSMutableArray *arrayShopDistance;
+    ARCamera *aRCamera;
 //    double rotationAngleArrow1;
 //    double rotationAngleArrow2;
 //    double rotationAngleArrow3;
@@ -37,7 +39,8 @@
 }
 @property (nonatomic, strong) NSMutableArray *arrayPosition;
 - (void)addVideoInput;
-//- (void )getDatabase;
+- (void)deleteData;
+
 //-(double)caculateRotationAngle:(InstanceData * )positionEntity;
 //- (void)setNewCenterForView:(float )angleToHeading  withDetailView:(ARDetailIn2D *)detailViewInCamera;
 //-(double)caculateRotationAngleToHeading:(double)angleToShop withAngleTonorth:(double )angleToNorth;

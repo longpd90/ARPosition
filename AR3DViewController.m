@@ -18,7 +18,7 @@
 @end
 
 @implementation AR3DViewController
-@synthesize userLocation,shopInRadius;
+@synthesize userLocation,shopInRadius,arrayPosition;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +37,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateNewData:) name:@"UpdateData" object:nil];
     arrayShopDistance = [[NSMutableArray alloc]init];
     shopInRadius = [[NSMutableArray alloc]init];
-    self.view.bounds = CGRectMake(0, 0, 480, 320);        
+    self.view.bounds = CGRectMake(0, 0, 480, 320);
+    aRCamera = [[ARCamera alloc]init];
     [self addVideoInput];
     [super viewDidLoad];
 }
@@ -55,19 +56,20 @@
 }
 
 - (void)addVideoInput {
-    captureSession = [[AVCaptureSession alloc]init];
-    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
-    previewLayer.frame = CGRectMake(0, 0, 480, 320);
-    [previewLayer setOrientation:AVCaptureVideoOrientationLandscapeRight];
-    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.view.layer addSublayer:previewLayer];
-    NSError *error = nil;
-    AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
-    if ([captureSession canAddInput:deviceInput])
-        [captureSession addInput:deviceInput];
-    [captureSession startRunning];    
+    [aRCamera addVideoInput:self];
+//    captureSession = [[AVCaptureSession alloc]init];
+//    AVCaptureVideoPreviewLayer *previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
+//    previewLayer.frame = CGRectMake(0, 0, 480, 320);
+//    [previewLayer setOrientation:AVCaptureVideoOrientationLandscapeRight];
+//    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//	[self.view.layer addSublayer:previewLayer];
+//    NSError *error = nil;
+//    AVCaptureDevice * camera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//    
+//    deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:camera error:&error];
+//    if ([captureSession canAddInput:deviceInput])
+//        [captureSession addInput:deviceInput];
+//    [captureSession startRunning];    
 
 }
 

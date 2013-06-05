@@ -7,6 +7,8 @@
 //
 
 #import "MenuViewController.h"
+#import "AR2DViewController.h"
+#import "AR3DViewController.h"
 #define kSelectedTab	@"SelectedTAB"
 
 @interface MenuViewController ()
@@ -62,15 +64,17 @@ bool backToRootView;
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
     hiddenMenu = NO;
-    UIButton *buttonShowMenu = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonShowMenu.frame = CGRectMake(440, 260, 30, 30);
-    [buttonShowMenu setBackgroundImage:[UIImage imageNamed:@"red_plus_up.png"] forState:UIControlStateNormal];
+    imagePlus = [UIImage imageNamed:@"RedPlusButton.png"];
+    imageClose = [UIImage imageNamed:@"CloseRedButton.png"];
+    buttonShowMenu = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonShowMenu.frame = CGRectMake(430, 250, 50, 50);
+    [buttonShowMenu setBackgroundImage:imagePlus forState:UIControlStateNormal];
     [buttonShowMenu addTarget:self action:@selector(showHiddenMenu:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:buttonShowMenu];
 
 	//Create a view holder to store the tabbar items
-	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(180, 245, 260, 50)];
+	tabBarHolder = [[UIView alloc] initWithFrame:CGRectMake(170, 245, 260, 50)];
 	tabBarHolder.backgroundColor = [UIColor clearColor];
     
 	//add it as a subview
@@ -120,10 +124,35 @@ bool backToRootView;
                 if (navigation.viewControllers.count>1) {
                     [navigation popToRootViewControllerAnimated:YES];
                 }
+                if (index == 1) {
+                    AR2DViewController *aR2DView = navigation.viewControllers[0];
+                    [aR2DView addVideoInput];
+                    [aR2DView deleteData];
+                }
+                if (index == 2) {
+                    AR3DViewController *aR3DView = navigation.viewControllers[0];
+                    [aR3DView addVideoInput];
+                    [aR3DView deleteData];
+                }
                 backToRootView =0;
             }
+            else {
+                UINavigationController *navigation = (UINavigationController *)[tabViewControllers objectAtIndex:i];
+                NSLog(@"index = %d",index);
+                if (index == 1) {
+                    AR2DViewController *aR2DView = navigation.viewControllers[0];
+                    [aR2DView addVideoInput];
+                    [aR2DView deleteData];
+                }
+                if (index == 2) {
+                    AR3DViewController *aR3DView = navigation.viewControllers[0];
+                    [aR3DView addVideoInput];
+                    [aR3DView deleteData];
+                }
+
+            }
             
-             		} else {
+        } else {
 			[[tabViewControllers objectAtIndex:i] view].hidden = YES;
 		}
 	}
@@ -140,7 +169,6 @@ bool backToRootView;
 	for (ARTabbarItem *tb in tabItemsArray) {		
 		if (tb == button) {
 			[tb toggleOn:YES];
-			
             tabIndex = indexC;
 			[defaults setInteger:tabIndex forKey:kSelectedTab];
             if (tabIndex ==  selectedTab) {
@@ -159,10 +187,15 @@ bool backToRootView;
 {
     if (hiddenMenu == NO) {
         tabBarHolder.hidden = YES;
+        [buttonShowMenu setBackgroundImage:imagePlus forState:UIControlStateNormal];
+
         hiddenMenu = YES;
     }
     else {
+        
         tabBarHolder.hidden = NO;
+        [buttonShowMenu setBackgroundImage:imageClose forState:UIControlStateNormal];
+
         hiddenMenu = NO;
     }
 }

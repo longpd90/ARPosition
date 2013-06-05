@@ -21,6 +21,9 @@
 	int initTab; 
     int selectedTab;
     BOOL hiddenMenu;
+    UIButton *buttonShowMenu;
+    UIImage *imagePlus;
+    UIImage *imageClose;
 
 }
 

@@ -9,8 +9,8 @@
 #import "AR3DViewController.h"
 #import "LocationService.h"
 #import "ARDetailIn2D.h"
-#import "ARDetailIn3D.h"
 #import "ARRadar.h"
+#import "ARAPositionViewController.h"
 #define rotationRate 0.0174532925
 
 @interface AR3DViewController ()
@@ -25,7 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 //        [self getDatabase];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
 //        radar = [[ARRadar alloc]init];
 //        radar.frame = CGRectMake(380, 0, 100, 100);
@@ -37,23 +37,11 @@
 
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateNewData:) name:@"UpdateData" object:nil];
+    arrayShopDistance = [[NSMutableArray alloc]init];
     shopInRadius = [[NSMutableArray alloc]init];
     self.view.bounds = CGRectMake(0, 0, 480, 320);        
     [self addVideoInput];
-//    sliderDistance = [[UISlider alloc]initWithFrame:CGRectMake(-40, 120, 150, 20)];
-//    sliderDistance.maximumValue = 10;
-//    sliderDistance.value = 2;
-//    sliderDistance.minimumValue = 1;
-//    [sliderDistance addTarget:self action:@selector(changeValueSlider:) forControlEvents:UIControlEventValueChanged];
-//    sliderDistance.transform = CGAffineTransformMakeRotation(- M_PI_2);
-//    [self.view addSubview:sliderDistance];
-//    zoomLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 40, 60, 20)];
-//    zoomLabel.text = [NSString stringWithFormat:@"2km"];
-//    zoomLabel.textColor = [UIColor whiteColor];
-//    zoomLabel.backgroundColor = [UIColor clearColor];
-//    [self.view addSubview:zoomLabel];
-    
-//    [self setContentForView];
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -91,9 +79,15 @@
 }
 -(void)setContentForView
 {
+    arrayShopDistance = nil;
     for (int i = 0; i < [arrayPosition count]; i ++) {
         InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];
+        
         ARDetailIn3D *testView = [[ARDetailIn3D alloc]initWithShop:positionEntity];
+        [arrayShopDistance addObject:testView];
+
+        testView.delegate = self;
+        [testView setIndex:i];
         [self.view addSubview:testView];
         
     }
@@ -103,7 +97,12 @@
     arrayPosition = arrayData;
     [self setContentForView];
 }
-
+-(void)didUpdateNewData:(NSNotification *)notification {
+    [arrayPosition removeAllObjects];
+    arrayPosition = nil;
+    arrayPosition = (NSMutableArray *)[notification object];
+    [self setContentForView];
+}
 //- (void)deleteData
 //{
 //    for (int i = 0; i < [shopInRadius count]; i ++) {
@@ -127,13 +126,23 @@
     return distance;
 }
 
-//- (IBAction)changeValueSlider:(id)sender
-//{
-//    UISlider *slider = (UISlider *)sender;
-//    int valueInt = (int)slider.value;
-//    zoomLabel.text = [NSString stringWithFormat:@"%dkm",valueInt];
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"UpdateRadius" object:[NSNumber numberWithInt:valueInt]];
-//
-//}
 
+- (void)didSeclectView:(int)index
+{
+    InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:index];
+    ARAPositionViewController *detailViewController = [[ARAPositionViewController alloc] initWithShop:positionEntity];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
+- (void)deleteData
+{
+    for (int i = 0; i < [arrayShopDistance count]; i ++) {
+        ARDetailIn3D *detailView = (ARDetailIn3D *)[arrayShopDistance objectAtIndex:i];
+        [detailView removeFromSuperview];
+        detailView = nil;
+    }
+    [arrayShopDistance removeAllObjects];
+
+    [self setContentForView];
+}
 @end

@@ -28,36 +28,35 @@
         distanceToShop = [NSString stringWithFormat:@"%dm",[self caculateDistanceToShop:positionEntity]];
         distanceShop = [self caculateDistanceShop:positionEntity];
         angleRotation = [self caculateRotationAngle:positionEntity];
-        [self scaleViewWithDistace];
         [self setContentForView:positionEntity];
-        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTouchesToView)];
-        recognizer.delegate = self;
-        [self addGestureRecognizer:recognizer];
-        
+        [self scaleViewWithDistace];
+
     }
     return self;
 }
+
+
 //-(void)didUpdateRadius:(NSNotification *)notification{
 //    self.radiusSearching = ([[notification object]intValue] *  1000);
 //    distanceShop = [self caculateDistanceShop:position];
 //
 //}
+
 - (void)setContentForView:(InstanceData *)positionEntity
 {
     float sizeWith = [self calculateSizeFrame:positionEntity];
-    self.frame = CGRectMake(0, 0, sizeWith, 30);
-    
+    self.frame = CGRectMake(0, 0, sizeWith + 53, 50);
     detailShop = [[ARDetailPositionInView alloc]initWithShop:positionEntity];
     detailShop.delegate = self;
-    detailShop.frame = CGRectMake(0, 0, sizeWith, 30);
+    detailShop.frame = CGRectMake(0, 0, sizeWith + 53, 50);
     [self addSubview:detailShop];
 }
 
 - (void)scaleViewWithDistace
 {
     float scaleShop = (300 - distanceShop)/300;
-    if (scaleShop < 0.5) {
-        scaleShop = 0.5;
+    if (scaleShop < 0.7) {
+        scaleShop = 0.7;
     }
     self.transform = CGAffineTransformMakeScale(scaleShop  ,scaleShop );
 }
@@ -65,14 +64,14 @@
 -(void)setFrameForView:(float )angleToHeading
 {
     float a = tanf(angleToHeading);
-    float b = 235 - 240 * a;
+    float b = 275 - 240 * a;
     float newCenterX;
     float newCenterY;
     if (0 <= angleToHeading && angleToHeading <= M_PI) {
-        newCenterY = 235 - distanceShop - 33;
+        newCenterY = 275 - distanceShop;
     }
     else {
-        newCenterY = 250 + distanceShop + 200;
+        newCenterY = 275 + distanceShop + 200;
     }
     newCenterX = (newCenterY - b)/a ;
     self.center = CGPointMake(newCenterX, newCenterY);
@@ -125,11 +124,12 @@
     }
     return angleToHeading;
 }
+
 - (float)caculateDistanceShop:(InstanceData *)positionEntity
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     float distance = (float)[shoplocation distanceFromLocation: self.userLocation];
-    float tiLe = 250.0/radiusSearching;
+    float tiLe = 300.0/radiusSearching;
     return distance * tiLe;
 
 }

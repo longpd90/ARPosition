@@ -20,6 +20,7 @@
 		3230E50B175EDC56001F770F /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3230E50A175EDC56001F770F /* RatingView.m */; };
 		3230E50D175EE614001F770F /* StarRated.png in Resources */ = {isa = PBXBuildFile; fileRef = 3230E50C175EE614001F770F /* StarRated.png */; };
 		3230E50F175EE61B001F770F /* StarNoRate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3230E50E175EE61B001F770F /* StarNoRate.png */; };
+		3230E512175F2350001F770F /* ARSelectType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3230E511175F234F001F770F /* ARSelectType.m */; };
 		3258072E16DB678B00559A2E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3258072D16DB678B00559A2E /* Default-568h@2x.png */; };
 		3291002A17470E420041D8A6 /* cricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3291002917470E420041D8A6 /* cricle.png */; };
 		32FFE253175DCADF008055BC /* SettingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FFE252175DCADF008055BC /* SettingIcon.png */; };
@@ -103,6 +104,8 @@
 		3230E50A175EDC56001F770F /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
 		3230E50C175EE614001F770F /* StarRated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarRated.png; sourceTree = "<group>"; };
 		3230E50E175EE61B001F770F /* StarNoRate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarNoRate.png; sourceTree = "<group>"; };
+		3230E510175F234F001F770F /* ARSelectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSelectType.h; sourceTree = "<group>"; };
+		3230E511175F234F001F770F /* ARSelectType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSelectType.m; sourceTree = "<group>"; };
 		3258072D16DB678B00559A2E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3291002917470E420041D8A6 /* cricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cricle.png; sourceTree = "<group>"; };
 		32FFE252175DCADF008055BC /* SettingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingIcon.png; sourceTree = "<group>"; };
@@ -469,6 +472,8 @@
 				C3FC0D5D16A78E1B00822AD4 /* ARShopInRadar.m */,
 				3217A6C9174E1DF0007EA0F4 /* PositonDetailInAR.h */,
 				3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */,
+				3230E510175F234F001F770F /* ARSelectType.h */,
+				3230E511175F234F001F770F /* ARSelectType.m */,
 			);
 			name = "Views Model";
 			sourceTree = "<group>";
@@ -632,6 +637,7 @@
 				3217A6CB174E1DF1007EA0F4 /* PositonDetailInAR.m in Sources */,
 				32FFE263175DEC7B008055BC /* ARSettingViewController.m in Sources */,
 				3230E50B175EDC56001F770F /* RatingView.m in Sources */,
+				3230E512175F2350001F770F /* ARSelectType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

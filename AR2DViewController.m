@@ -28,8 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         userLocation = [[LocationService sharedLocation] getOldLocation];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+
 //        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
 
         [self addVideoInput];
@@ -43,6 +42,10 @@
 }
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateNewData:) name:@"UpdateData" object:nil];
+    arrayShopDistance = [[NSMutableArray alloc]init];
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -55,6 +58,12 @@
     // e.g. self.myOutlet = nil;
 }
 
+-(void)didUpdateNewData:(NSNotification *)notification {
+    [arrayPosition removeAllObjects];
+    arrayPosition = nil;
+    arrayPosition = (NSMutableArray *)[notification object];
+    [self deleteData];
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
@@ -84,7 +93,7 @@
 
 -(void)didUpdateData:(NSMutableArray *)arrayData {
     arrayPosition = arrayData;
-    [self setContentForView];
+    [self deleteData];
 }
 
 - (void)setContentForView
@@ -119,13 +128,15 @@
 - (void)deleteData
 {
     for (int i = 0; i < [arrayShopDistance count]; i ++) {
-        AR2DViewController *detailView = (AR2DViewController *)[arrayShopDistance objectAtIndex:i];
-        [detailView.view removeFromSuperview];
+        ARDetailIn2D *detailView = (ARDetailIn2D *)[arrayShopDistance objectAtIndex:i];
+        [detailView removeFromSuperview];
         detailView = nil;
-        [arrayShopDistance removeAllObjects];
     }
+    [arrayShopDistance removeAllObjects];
+
     [self setContentForView];
 }
+
 
 
 -(void)didUpdateLocation:(NSNotification *)notification {

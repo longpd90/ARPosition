@@ -53,9 +53,7 @@
     
 }
 - (void)setContentDetailShop:(InstanceData *)positionEntity
-{
-    NSLog(@"gia tri rating : %d",positionEntity.rating);
-    
+{    
     [labelDistanceToShop setFont:[UIFont systemFontOfSize:textSize - 4]];
     labelShopName.text = positionEntity.label;
     labelShopName.numberOfLines = 0;

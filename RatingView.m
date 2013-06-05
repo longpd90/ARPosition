@@ -117,25 +117,25 @@
 	[viewDelegate ratingChanged:rating];
 }
 
--(void) touchesBegan: (NSSet *)touches withEvent: (UIEvent *)event
-{
-	[self touchesMoved:touches withEvent:event];
-}
-
--(void) touchesMoved: (NSSet *)touches withEvent: (UIEvent *)event
-{
-	CGPoint pt = [[touches anyObject] locationInView:self];
-	int newRating = (int) (pt.x / width) + 1;
-	if (newRating < 1 || newRating > 5)
-		return;
-	
-	if (newRating != lastRating)
-		[self displayRating:newRating];
-}
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-	[self touchesMoved:touches withEvent:event];
-}
+//-(void) touchesBegan: (NSSet *)touches withEvent: (UIEvent *)event
+//{
+//	[self touchesMoved:touches withEvent:event];
+//}
+//
+//-(void) touchesMoved: (NSSet *)touches withEvent: (UIEvent *)event
+//{
+//	CGPoint pt = [[touches anyObject] locationInView:self];
+//	int newRating = (int) (pt.x / width) + 1;
+//	if (newRating < 1 || newRating > 5)
+//		return;
+//	
+//	if (newRating != lastRating)
+//		[self displayRating:newRating];
+//}
+//
+//-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+//	[self touchesMoved:touches withEvent:event];
+//}
 
 -(float)rating {
 	return starRating;

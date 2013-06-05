@@ -16,7 +16,6 @@
 #import "ARSettingViewController.h"
 
 @implementation ARAppDelegate
-
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize arrayPosition;
@@ -26,7 +25,7 @@
 {
     [[LocationService sharedLocation]startUpdate];
     userLocation = [[LocationService sharedLocation]getOldLocation];
-    [self getData:10 withPageSize:8 withPageIndex:1 withCatagory:2 withLanguage:@"vn"];
+    [self getData:10 withPageSize:8 withPageIndex:1 withCatagory:-1 withLanguage:@"vn"];
     return YES;
 }
 

@@ -15,7 +15,7 @@
 @protocol ARDetailIn2DDelegate <NSObject>
 - (void)didSeclectView:(int )index;
 @end
-@interface ARDetailIn2D : UIView<ARDetailPositionInViewDelegate,UIGestureRecognizerDelegate>{
+@interface ARDetailIn2D : UIView<ARDetailPositionInViewDelegate>{
     ARArrow *arrowImage;
     ARDetailPositionInView *detailShop;
     CLLocation *userLocation;

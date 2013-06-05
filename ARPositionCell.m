@@ -38,7 +38,6 @@
         labelName = [[UILabel alloc]init];
         [labelName setFont:[UIFont boldSystemFontOfSize:16]];
         [labelName setBackgroundColor:[UIColor clearColor]];
-        [labelName setTextAlignment:NSTextAlignmentCenter];
         [self addSubview:labelName];
             }
     return self;
@@ -61,7 +60,7 @@
 - (void)updateContentForCell:(InstanceData *)positionEntity withLocation:(CLLocation *)location
 {    
     labelName.text = positionEntity.label;
-    CGSize labelShopNameSize = [positionEntity.address sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
     labelName.frame = CGRectMake(65, 0, 300, labelShopNameSize.height);
     labelName.numberOfLines = 0;
     labelAddress.text = positionEntity.address;

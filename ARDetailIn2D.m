@@ -42,11 +42,11 @@
 - (void)setContentForView:(InstanceData *)positionEntity
 {
     float sizeWith = [self calculateSizeFrame:positionEntity];
-    self.frame = CGRectMake(0, 0, sizeWith + 53, 50);
+    self.frame = CGRectMake(0, 0, sizeWith + 50, 50);
     
     detailShop = [[ARDetailPositionInView alloc]initWithShop:positionEntity];
     detailShop.delegate = self;
-    detailShop.frame = CGRectMake(0, 0, sizeWith + 3, 50);
+    detailShop.frame = CGRectMake(0, 0, sizeWith + 53, 50);
     [self addSubview:detailShop];
     
 //    arrowImage = [[ARArrow alloc]initWithShop:positionEntity];
@@ -54,7 +54,15 @@
 //    arrowImage.frame = CGRectMake(tdoX , 0 , 60, 60);
 //    [self addSubview:arrowImage];
     
-    [self setBackgroundColor:[UIColor clearColor]];
+    [self setBackgroundColor:[UIColor blueColor]];
+}
+
+-(float)calculateSizeFrame:(InstanceData *)positionEntity
+{
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 25) lineBreakMode:UILineBreakModeCharacterWrap];
+    float originLabelDistance = MAX(labelShopNameSize.width, 190);
+    float sizeWidth = originLabelDistance + 7;
+    return sizeWidth;
 }
 
 -(void)setIndexForView:(int )aIndex
@@ -66,14 +74,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSeclectView:)]) {
         [self.delegate didSeclectView:self.index];
     }
-}
-
--(float)calculateSizeFrame:(InstanceData *)positionEntity
-{
-    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:textSize - 2] constrainedToSize:CGSizeMake(max, 25) lineBreakMode:UILineBreakModeCharacterWrap];
-    float originLabelDistance = MAX(labelShopNameSize.width, 190);
-    float sizeWidth = originLabelDistance + 7;
-    return sizeWidth;
 }
 
 - (int)caculateDistanceToShop:(InstanceData *)positionEntity

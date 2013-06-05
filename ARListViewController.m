@@ -49,6 +49,8 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateNewData:) name:@"UpdateData" object:nil];
+    
     if (listType == MainList) {
         self.navigationItem.rightBarButtonItem = refreshButtonItem;
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:editButton,refreshButtonItem, nil];
@@ -62,6 +64,13 @@
 
 -(void)didUpdateData:(NSMutableArray *)arrayData {
     arrayPosition = arrayData;
+    [self.listShopView reloadData];
+}
+
+-(void)didUpdateNewData:(NSNotification *)notification {
+    [arrayPosition removeAllObjects];
+    arrayPosition = nil;
+    arrayPosition = (NSMutableArray *)[notification object];
     [self.listShopView reloadData];
 }
 
@@ -195,11 +204,11 @@
 }
 -(CGFloat)heightofCell:(InstanceData *)positionEntity
 {
-    CGSize labelShopNameSize = [positionEntity.address sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
+    CGSize labelShopNameSize = [positionEntity.label sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
     
     CGSize labelShopAddresSize = [positionEntity.address sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(300, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
     float results = labelShopAddresSize.height + labelShopNameSize.height;
-    return results;
+    return results + 5;
     
 }
 

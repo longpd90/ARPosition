@@ -35,7 +35,6 @@ bool firstUpdate = 1;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 //        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
 
     }
     return self;
@@ -46,6 +45,10 @@ bool firstUpdate = 1;
 }
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateNewData:) name:@"UpdateData" object:nil];
+
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     
     mapViewPosition=[[MKMapView alloc]initWithFrame:CGRectMake(0, 0, 480, 320)];
@@ -62,14 +65,19 @@ bool firstUpdate = 1;
     [self.view addSubview:showUser];
     [super viewDidLoad];
 
-
 }
 
 -(void)didUpdateData:(NSMutableArray *)arrayData {
     arrayPosition = arrayData;
     [self addShopAnnotation];
 }
-
+-(void)didUpdateNewData:(NSNotification *)notification {
+    [arrayPosition removeAllObjects];
+    arrayPosition = nil;
+    arrayPosition = (NSMutableArray *)[notification object];
+    [mapViewPosition removeAnnotations:mapViewPosition.annotations];
+    [self addShopAnnotation];
+}
 -(void)addShopAnnotation{
     shopsAnnotations = [[NSMutableArray alloc]init];
     for (int i=0; i<arrayPosition.count; i++) {

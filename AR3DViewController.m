@@ -25,9 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 //        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
-//        radar = [[ARRadar alloc]init];
-//        radar.frame = CGRectMake(380, 0, 100, 100);
-//        [self.view addSubview:radar];
+
     }
     return self;
 }
@@ -40,6 +38,9 @@
     self.view.bounds = CGRectMake(0, 0, 480, 320);
     aRCamera = [[ARCamera alloc]init];
     [self addVideoInput];
+//    radar = [[ARRadar alloc]init];
+//    radar.frame = CGRectMake(380, 0, 100, 100);
+//    [self.view addSubview:radar];
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -76,7 +77,9 @@
 
 
 -(void)didUpdateData:(NSMutableArray *)arrayData {
+
     arrayPosition = arrayData;
+
     [self deleteData];
 }
 
@@ -100,6 +103,7 @@
 
 -(void)setContentForView
 {
+//    [radar setData:arrayPosition];
     arrayShopDistance = nil;
     for (int i = 0; i < [arrayPosition count]; i ++) {
         InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];

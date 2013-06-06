@@ -19,7 +19,7 @@
 {
     self = [super init];
     if (self) {
-        radiusSearching = 10000;
+        radiusSearching = 2000;
         position = positionEntity;
 //         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
         userLocation = [[LocationService sharedLocation]getOldLocation];
@@ -67,7 +67,7 @@
     float b = 275 - 240 * a;
     float newCenterX;
     float newCenterY;
-    if (0 <= angleToHeading && angleToHeading <= M_PI) {
+    if (0 <= angleToHeading && angleToHeading <= M_PI ) {
         newCenterY = 275 - distanceShop;
     }
     else {
@@ -129,7 +129,7 @@
 {
     CLLocation *shoplocation = [[CLLocation alloc]initWithLatitude:positionEntity.latitude longitude:positionEntity.longitude];
     float distance = (float)[shoplocation distanceFromLocation: self.userLocation];
-    float tiLe = 300.0/radiusSearching;
+    float tiLe = 275.0/radiusSearching;
     return distance * tiLe;
 
 }

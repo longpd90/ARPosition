@@ -16,7 +16,7 @@
 
 -(id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier{
     if (self= [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
-        backgroudImage = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"images.jpg"]];
+        backgroudImage = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"ARMapEgo.png"]];
         ARPositionAnnotation *shopannotation = (ARPositionAnnotation *)annotation;
         backgroudImage.imageURL =[NSURL URLWithString:shopannotation.position.imageUrl];
         [backgroudImage setFrame:CGRectMake(7, 7, 40, 40)];

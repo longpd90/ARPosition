@@ -25,7 +25,7 @@
         frame.size.height = 5;
         userLocation = [[LocationService sharedLocation]getOldLocation];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateLocation:) name:@"UpdateLocation" object:nil];
         distanceToShop = [self caculateDistanceToShop:positionEntity];
         angleRotation = [self caculateRotationAngle:positionEntity];
         UIImage *arrowImage = [UIImage imageNamed:@"ShopInRadar.png"];
@@ -40,12 +40,12 @@
     float angleToHeading = [self caculateRotationAngleToHeading:angleRotation withAngleTonorth:newAngleToNorth];
     [self setFrameForView:angleToHeading withScaleDistance:distanceToShop];
 }
--(void)didUpdateLocation:(NSNotification *)notification {
-    CLLocation *newLocation = (CLLocation *)[notification object];
-    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
-    distanceToShop = [self caculateDistanceToShop:position];
-    angleRotation = [self caculateRotationAngle:position];
-}
+//-(void)didUpdateLocation:(NSNotification *)notification {
+//    CLLocation *newLocation = (CLLocation *)[notification object];
+//    userLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
+//    distanceToShop = [self caculateDistanceToShop:position];
+//    angleRotation = [self caculateRotationAngle:position];
+//}
 
 -(void)setFrameForView:(float )angleToHeading withScaleDistance:(float)scaleDistace
 {

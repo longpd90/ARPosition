@@ -26,15 +26,15 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateHeading:) name:@"UpdateHeading" object:nil];
         position = positionEntity;
         rotationAngleArrow = [self caculateRotationAngle:positionEntity];
-        UIImage *imageBackgroud = [UIImage imageNamed:@"cricle.png"];
-        UIImageView *imageViewBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
-        imageViewBackground.image = imageBackgroud;
-        [self addSubview:imageViewBackground];
-        UIImage *arrowImage = [UIImage imageNamed:@"arrow.png"];
-        arrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 8, 20, 45)];
+//        UIImage *imageBackgroud = [UIImage imageNamed:@"cricle.png"];
+//        UIImageView *imageViewBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+//        imageViewBackground.image = imageBackgroud;
+//        [self addSubview:imageViewBackground];
+        UIImage *arrowImage = [UIImage imageNamed:@"ArrowBlue.png"];
+        arrowImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         arrowImageView.image = arrowImage;
         [self addSubview:arrowImageView];
-        self.frame = CGRectMake(0,0,60, 60);
+        self.frame = CGRectMake(0,0,40, 40);
     }
     return self;
 }

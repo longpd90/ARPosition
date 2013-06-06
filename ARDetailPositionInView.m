@@ -69,7 +69,7 @@
     
     labelShopName.frame = CGRectMake(50, 0,190,labelShopNameSize.height );
     labelDistanceToShop.frame = CGRectMake(53 , labelShopNameSize.height,190, 25);
-    imageViewBackground.frame = CGRectMake(0, 0, 190 + 57, labelShopNameSize.height + 25);
+    imageViewBackground.frame = CGRectMake(0, 0, 190 + 57, labelShopNameSize.height + 30);
     icon.imageURL = [NSURL URLWithString:positionEntity.imageUrl];
 }
 

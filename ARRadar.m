@@ -22,9 +22,6 @@
     self = [super init];
     if (self) {
         userLocation = [[LocationService sharedLocation]getOldLocation];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateRadius:) name:@"UpdateRadius" object:nil];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didUpdateData:) name:@"Updata" object:nil];
-
         shopInRadarArray = [[NSMutableArray alloc]init];
         self.radiusSearching = 2000;
         
@@ -33,18 +30,22 @@
         imageViewRadar.image = imageRadar;
         [self addSubview:imageViewRadar];
         [self setBackgroundColor:[UIColor clearColor]];
-        [self removeShopInRadar];
 
             }
     return self;
 }
--(void)didUpdateData:(NSNotification *)notification {
-    arrayPosition = (NSMutableArray *)[notification object];
-}
+//-(void)didUpdateData:(NSNotification *)notification {
+//    arrayPosition = (NSMutableArray *)[notification object];
+//}
 
--(void)didUpdateRadius:(NSNotification *)notification{
-    self.radiusSearching = ([[notification object]intValue] *  1000);
+//-(void)didUpdateRadius:(NSNotification *)notification{
+//    self.radiusSearching = ([[notification object]intValue] *  1000);
+//    [self removeShopInRadar];
+//}
+- (void)setData:(NSMutableArray*)arrayData{
+    arrayPosition = arrayData;
     [self removeShopInRadar];
+
 }
 
 - (void)sortShopInRadar
@@ -60,12 +61,16 @@
         }
     }
 }
+
 - (void)removeShopInRadar
 {
     for (int i = 0; i < [shopInRadarArray count]; i ++) {
         ARShopInRadar *shopTest = (ARShopInRadar *)[shopInRadarArray objectAtIndex:i];
         [shopTest removeFromSuperview];
+        shopTest = nil;
     }
+    [shopInRadarArray removeAllObjects];
+    shopInRadarArray = nil;
     [self sortShopInRadar];
 }
 

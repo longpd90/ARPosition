@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3202C51D1744EA5C00904FD1 /* ArroundPlaceService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3202C51C1744EA5C00904FD1 /* ArroundPlaceService.framework */; };
+		320DA1081760262C00F04DC5 /* ArrowBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 320DA1071760262C00F04DC5 /* ArrowBlue.png */; };
+		320DA11017602C2700F04DC5 /* EgoImageCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 320DA10F17602C2700F04DC5 /* EgoImageCell.png */; };
+		320DA11217602CB400F04DC5 /* ARMapEgo.png in Resources */ = {isa = PBXBuildFile; fileRef = 320DA11117602CB400F04DC5 /* ARMapEgo.png */; };
 		3217A6AD174DCA65007EA0F4 /* red_x_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6AC174DCA65007EA0F4 /* red_x_up.png */; };
 		3217A6AF174DCA6C007EA0F4 /* red_x_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6AE174DCA6C007EA0F4 /* red_x_down.png */; };
 		3217A6B1174DCA7D007EA0F4 /* red_plus_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6B0174DCA7D007EA0F4 /* red_plus_up.png */; };
@@ -15,7 +18,6 @@
 		3217A6B6174DD695007EA0F4 /* RNExpandingButtonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3217A6B5174DD695007EA0F4 /* RNExpandingButtonBar.m */; };
 		3217A6B8174DD6B3007EA0F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3217A6B7174DD6B2007EA0F4 /* QuartzCore.framework */; };
 		3217A6BC174E0639007EA0F4 /* BackgroudCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BB174E0638007EA0F4 /* BackgroudCell.png */; };
-		3217A6BE174E085A007EA0F4 /* EgoImageCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 3217A6BD174E085A007EA0F4 /* EgoImageCell.png */; };
 		3217A6CB174E1DF1007EA0F4 /* PositonDetailInAR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */; };
 		3229F2BC175F8B0E00245F8C /* ARLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3229F2BB175F8B0E00245F8C /* ARLogo.png */; };
 		3229F2BE175F8B3600245F8C /* ARLogoRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3229F2BD175F8B3600245F8C /* ARLogoRetina.png */; };
@@ -42,7 +44,6 @@
 		A7EBB98C169AC144004924AC /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A7EBB98B169AC144004924AC /* location.gpx */; };
 		A7EE6666169D3C0C00D172AF /* numberView.png in Resources */ = {isa = PBXBuildFile; fileRef = A7EE6665169D3C0B00D172AF /* numberView.png */; };
 		A7F08DB4167724F000D46DCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F08DB3167724F000D46DCF /* LocationService.m */; };
-		A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7F21FB6167B0C9E006AE452 /* images.jpg */; };
 		A7F21FBF167B23EF006AE452 /* ARPositionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F21FBE167B23EF006AE452 /* ARPositionAnnotation.m */; };
 		A7F29C2416A008380040DA28 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1816A008380040DA28 /* EGOCache.m */; };
 		A7F29C2516A008380040DA28 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F29C1B16A008380040DA28 /* EGOImageButton.m */; };
@@ -94,6 +95,9 @@
 
 /* Begin PBXFileReference section */
 		3202C51C1744EA5C00904FD1 /* ArroundPlaceService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ArroundPlaceService.framework; sourceTree = "<group>"; };
+		320DA1071760262C00F04DC5 /* ArrowBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowBlue.png; sourceTree = "<group>"; };
+		320DA10F17602C2700F04DC5 /* EgoImageCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EgoImageCell.png; sourceTree = "<group>"; };
+		320DA11117602CB400F04DC5 /* ARMapEgo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARMapEgo.png; sourceTree = "<group>"; };
 		3217A6AC174DCA65007EA0F4 /* red_x_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_x_up.png; sourceTree = "<group>"; };
 		3217A6AE174DCA6C007EA0F4 /* red_x_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_x_down.png; sourceTree = "<group>"; };
 		3217A6B0174DCA7D007EA0F4 /* red_plus_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_plus_up.png; sourceTree = "<group>"; };
@@ -102,7 +106,6 @@
 		3217A6B5174DD695007EA0F4 /* RNExpandingButtonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNExpandingButtonBar.m; sourceTree = "<group>"; };
 		3217A6B7174DD6B2007EA0F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3217A6BB174E0638007EA0F4 /* BackgroudCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroudCell.png; sourceTree = "<group>"; };
-		3217A6BD174E085A007EA0F4 /* EgoImageCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EgoImageCell.png; sourceTree = "<group>"; };
 		3217A6C9174E1DF0007EA0F4 /* PositonDetailInAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositonDetailInAR.h; sourceTree = "<group>"; };
 		3217A6CA174E1DF1007EA0F4 /* PositonDetailInAR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositonDetailInAR.m; sourceTree = "<group>"; };
 		3229F2BB175F8B0E00245F8C /* ARLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARLogo.png; sourceTree = "<group>"; };
@@ -137,7 +140,6 @@
 		A7EE6665169D3C0B00D172AF /* numberView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = numberView.png; sourceTree = "<group>"; };
 		A7F08DB2167724F000D46DCF /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		A7F08DB3167724F000D46DCF /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
-		A7F21FB6167B0C9E006AE452 /* images.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpg; sourceTree = "<group>"; };
 		A7F21FBD167B23EF006AE452 /* ARPositionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPositionAnnotation.h; sourceTree = "<group>"; };
 		A7F21FBE167B23EF006AE452 /* ARPositionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPositionAnnotation.m; sourceTree = "<group>"; };
 		A7F29C1716A008380040DA28 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
@@ -498,6 +500,9 @@
 		C3611F4716771E81008DBE79 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				320DA11117602CB400F04DC5 /* ARMapEgo.png */,
+				320DA10F17602C2700F04DC5 /* EgoImageCell.png */,
+				320DA1071760262C00F04DC5 /* ArrowBlue.png */,
 				3229F2C8175FE04300245F8C /* CloseRedButton.png */,
 				3229F2C4175FE02C00245F8C /* RedPlusButton.png */,
 				3230E50E175EE61B001F770F /* StarNoRate.png */,
@@ -508,7 +513,6 @@
 				32FFE256175DCAFA008055BC /* AR2DIcon.png */,
 				32FFE254175DCAEC008055BC /* AR3DIcon.png */,
 				32FFE252175DCADF008055BC /* SettingIcon.png */,
-				3217A6BD174E085A007EA0F4 /* EgoImageCell.png */,
 				3217A6BB174E0638007EA0F4 /* BackgroudCell.png */,
 				3258072D16DB678B00559A2E /* Default-568h@2x.png */,
 				3217A6B2174DCA83007EA0F4 /* red_plus_down.png */,
@@ -523,7 +527,6 @@
 				A706EFE2169BDE2A0057D1FE /* CurrentLocations.png */,
 				A706EFE3169BDE2A0057D1FE /* MapFrame.png */,
 				C3435E2F167ECE80004B7FD0 /* arrow.png */,
-				A7F21FB6167B0C9E006AE452 /* images.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -586,7 +589,6 @@
 				C32035351675803500CA3D8C /* AR2DViewController.xib in Resources */,
 				C320353A1675804C00CA3D8C /* ARDetailViewController.xib in Resources */,
 				C310BDA1167886CF00DA1D55 /* ARShopDatabase.sqlite in Resources */,
-				A7F21FB7167B0C9E006AE452 /* images.jpg in Resources */,
 				C3435E30167ECE80004B7FD0 /* arrow.png in Resources */,
 				C3FFA3FD1681B034007B7963 /* BeNCWebViewController.xib in Resources */,
 				C30B2CFE1695336200B56235 /* ARAPositionViewController.xib in Resources */,
@@ -605,7 +607,6 @@
 				3217A6B1174DCA7D007EA0F4 /* red_plus_up.png in Resources */,
 				3217A6B3174DCA83007EA0F4 /* red_plus_down.png in Resources */,
 				3217A6BC174E0639007EA0F4 /* BackgroudCell.png in Resources */,
-				3217A6BE174E085A007EA0F4 /* EgoImageCell.png in Resources */,
 				32FFE253175DCADF008055BC /* SettingIcon.png in Resources */,
 				32FFE255175DCAED008055BC /* AR3DIcon.png in Resources */,
 				32FFE257175DCAFA008055BC /* AR2DIcon.png in Resources */,
@@ -619,6 +620,9 @@
 				3229F2BE175F8B3600245F8C /* ARLogoRetina.png in Resources */,
 				3229F2C6175FE02C00245F8C /* RedPlusButton.png in Resources */,
 				3229F2C9175FE04300245F8C /* CloseRedButton.png in Resources */,
+				320DA1081760262C00F04DC5 /* ArrowBlue.png in Resources */,
+				320DA11017602C2700F04DC5 /* EgoImageCell.png in Resources */,
+				320DA11217602CB400F04DC5 /* ARMapEgo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

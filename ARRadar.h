@@ -22,5 +22,7 @@
 - (void)sortShopInRadar;
 - (id)init;
 - (void)removeShopInRadar;
+- (void)setData:(NSMutableArray*)arrayData;
+
 
 @end

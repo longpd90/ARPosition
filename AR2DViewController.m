@@ -98,6 +98,7 @@
     for (int i = 0; i < 5; i ++) {
         InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:i];
         ARDetailIn2D *detailView = [[ARDetailIn2D alloc]initWithShop:positionEntity];
+        [self scaleViewWithDistace:detailView];
         detailView.delegate = self;
         [detailView setIndex:i];
         [arrayShopDistance addObject:detailView];
@@ -105,20 +106,22 @@
         if (i < 3) {
             CGRect frame = detailView.frame;
             frame.origin.x =  5;
-            frame.origin.y = 100 * (2 - i) + 5;
+            frame.origin.y = 96 * (2 - i) + 5;
             detailView.frame = frame;
         }
         
         else if (i >=3 && i < 5 ) {
             CGRect frame = detailView.frame;
             frame.origin.x =  480 - frame.size.width - 2;
-            frame.origin.y = 115 * (i % 3) + 50;
+            frame.origin.y = 120 * (4 - i) + 50;
             detailView.frame = frame;
         }
         [self.view addSubview:detailView];
         
     }
 }
+
+
 - (void)deleteData
 {
     for (int i = 0; i < [arrayShopDistance count]; i ++) {
@@ -131,6 +134,10 @@
     [self setContentForView];
 }
 
+- (void)scaleViewWithDistace:(ARDetailIn2D *)detail2DView
+{
+    detail2DView.transform = CGAffineTransformMakeScale(0.85  ,0.85 );
+}
 - (void)didSeclectView:(int)index
 {
     InstanceData *positionEntity = (InstanceData *)[arrayPosition objectAtIndex:index];

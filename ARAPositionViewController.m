@@ -68,6 +68,7 @@
 - (void)setContentForView:(InstanceData *)positionEntity
 {
     arrowView = [[ARArrow alloc]initWithShop:positionEntity];
+    
     [self.view addSubview:arrowView];
     PositonDetailInAR *detailViewInAR = [[PositonDetailInAR alloc]initWithShop:positionEntity];
     [self.view addSubview:detailViewInAR];

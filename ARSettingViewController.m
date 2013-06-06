@@ -73,7 +73,7 @@
     [self.view addSubview:labelRadius];
     
     UIButton *buttonSumit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    buttonSumit.frame = CGRectMake(200, 210, 70, 50) ;
+    buttonSumit.frame = CGRectMake(220, 205, 70, 50) ;
     [buttonSumit setTitle:@"Submit" forState:UIControlStateNormal];
     [buttonSumit addTarget:self action:@selector(Submit:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonSumit];
